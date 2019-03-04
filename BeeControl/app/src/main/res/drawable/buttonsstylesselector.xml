@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:drawable="@drawable/buttonsstylesnormal"/>
+<item android:drawable="@drawable/buttonsstulescliked"
+    android:state_pressed="true"/>
+
+</selector>
