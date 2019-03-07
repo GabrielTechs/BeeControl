@@ -39,7 +39,7 @@
             app:fontFamily="serif" />
 
         <EditText
-            android:id="@+id/txtname"
+            android:id="@+id/txtUser"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -50,7 +50,7 @@
             android:textColorHint="#fff" />
 
         <EditText
-            android:id="@+id/txtpassword"
+            android:id="@+id/txtPassword"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -63,7 +63,7 @@
             android:textColorHint="#fff" />
 
         <Button
-            android:id="@+id/txtlogin"
+            android:id="@+id/btnLogin"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -74,7 +74,7 @@
             android:textColor="#fff" />
 
         <TextView
-            android:id="@+id/tx"
+            android:id="@+id/txtForgotPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -84,12 +84,14 @@
             app:fontFamily="monospace" />
 
         <TextView
+            android:id="@+id/txtRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:gravity="center"
             android:text="Registrate"
             android:textColor="#dfe0e2"
+            android:onClick="register"
             app:fontFamily="monospace" />
     </LinearLayout>
 

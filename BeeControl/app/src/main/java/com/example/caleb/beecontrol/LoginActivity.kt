@@ -1,7 +1,9 @@
 package com.example.caleb.beecontrol
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 class LoginActivity : AppCompatActivity()
 {
@@ -10,6 +12,10 @@ class LoginActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+    }
+
+    fun register(view:View){
+        startActivity(Intent(this, RegistroActivity::class.java))
     }
 
 }

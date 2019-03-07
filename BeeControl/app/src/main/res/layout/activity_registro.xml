@@ -34,20 +34,19 @@
             tools:layout_editor_absoluteY="0dp" />
 
 
-
         <EditText
-            android:id="@+id/txtname"
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
             android:layout_height="40dp"
             android:layout_gravity="left"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edittextstyleregistro"
             android:gravity="left"
             android:hint="Nombre"
             android:textColorHint="#fff" />
 
         <EditText
-            android:id="@+id/txtapellido"
+            android:id="@+id/txtApellido"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="right"
@@ -68,24 +67,24 @@
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/txtcontra"
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:ems="10"
-            android:background="@drawable/edittextstyleregistro"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/edittextstyleregistro"
+            android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/txtcontraconfir"
+            android:id="@+id/txtConfPasword"
             android:layout_width="match_parent"
-            android:background="@drawable/edittextstyleregistro"
             android:layout_height="40dp"
-            android:ems="10"
             android:layout_marginBottom="4dp"
-            android:inputType="textPassword"
-            android:hint="Contraseña"/>
+            android:background="@drawable/edittextstyleregistro"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword" />
 
         <TextView
             android:id="@+id/textView"
@@ -95,14 +94,14 @@
             android:text="Use 8 o más caracteres con una mezcla de letras, números y símbolos"/>
 
         <Button
-            android:id="@+id/txtbutton"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttonsstylesnormalregistro"
             android:layout_alignEnd="@+id/linearLayout"
             android:layout_alignRight="@+id/linearLayout"
             android:layout_alignBottom="@+id/linearLayout"
-            android:text="Siguiente"/>
+            android:background="@drawable/buttonsstylesnormalregistro"
+            android:text="Siguiente" />
 
     </LinearLayout>
 
