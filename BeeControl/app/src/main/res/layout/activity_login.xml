@@ -31,7 +31,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="42dp"
+            android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:layout_marginBottom="15dp"
             android:paddingBottom="15dp"
             android:text="La mejor app para el control de las asistencias"
             android:textColor="@color/colorPrimary"
@@ -68,6 +70,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="60dp"
             android:background="@drawable/buttonsstylesnormal"
             android:drawableLeft="@drawable/ic_send_black_24dp"
             android:text="Login"
@@ -81,6 +84,7 @@
             android:gravity="center"
             android:text="Olvidaste tu contraseña?"
             android:textColor="#dfe0e2"
+            android:textSize="18sp"
             app:fontFamily="monospace" />
 
         <TextView
@@ -88,10 +92,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="50dp"
             android:gravity="center"
+            android:onClick="register"
             android:text="Registrate"
             android:textColor="#dfe0e2"
-            android:onClick="register"
+            android:textSize="18sp"
             app:fontFamily="monospace" />
     </LinearLayout>
 
