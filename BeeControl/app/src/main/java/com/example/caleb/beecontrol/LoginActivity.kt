@@ -14,8 +14,13 @@ class LoginActivity : AppCompatActivity()
         setContentView(R.layout.activity_login)
     }
 
-    fun register(view:View){
-        startActivity(Intent(this, RegistroActivity::class.java))
+    fun login(view:View){
+        startActivity(Intent(this, MenuActivity::class.java))
+    }
+
+    fun register(view:View)
+    {
+        startActivity(Intent(this, RegisterActivity::class.java))
     }
 
 }
