@@ -42,7 +42,7 @@
             app:fontFamily="serif" />-->
 
         <EditText
-            android:id="@+id/txtUser"
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="40dp"
