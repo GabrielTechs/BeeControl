@@ -157,8 +157,7 @@
             android:layout_alignBottom="@+id/linearLayout"
             android:background="@drawable/buttonsstylesnormalregistro"
             android:text="Siguiente"
-            android:textColor="#fff"
-            />
+            android:textColor="#fff"/>
 
     </LinearLayout>
 
