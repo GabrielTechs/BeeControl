@@ -15,11 +15,11 @@
         <item
             android:id="@+id/txtRecursosH"
             android:icon="@drawable/ic_wc_black_24dp"
-            android:title="Slideshow" />
+            android:title="Recursos Humanos" />
         <item
             android:id="@+id/txtConfi"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="configuracion" />
     </group>
 
     <item android:title="Communicate">
