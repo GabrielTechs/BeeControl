@@ -11,6 +11,10 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".ViajesActivity"></activity>
         <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/NoActionBar"></activity>
+        <activity
             android:name=".ControlActivity"
             android:label="@string/title_activity_assistance"
             android:theme="@style/NoActionBar" />
