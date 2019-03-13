@@ -3,7 +3,7 @@ package com.example.caleb.beecontrol
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class assistanceActivity : AppCompatActivity() {
+class ControlActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
