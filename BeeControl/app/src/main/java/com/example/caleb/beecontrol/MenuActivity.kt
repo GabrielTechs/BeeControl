@@ -1,5 +1,6 @@
 package com.example.caleb.beecontrol
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -60,6 +61,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.txtControla-> {
                 // Handle the camera action
+                startActivity(Intent(this, ControlActivity::class.java))
             }
             R.id.txtAsistencia -> {
 
