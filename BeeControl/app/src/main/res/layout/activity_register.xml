@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/logoblanco"
+            app:srcCompat="@drawable/d"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="0dp" />
@@ -156,7 +156,9 @@
             android:layout_alignRight="@+id/linearLayout"
             android:layout_alignBottom="@+id/linearLayout"
             android:background="@drawable/buttonsstylesnormalregistro"
-            android:text="Siguiente" />
+            android:text="Siguiente"
+            android:textColor="#fff"
+            />
 
     </LinearLayout>
 

@@ -27,7 +27,7 @@
             android:layout_marginBottom="90dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
-            app:srcCompat="@drawable/logoblanco" />
+            app:srcCompat="@drawable/d" />
 
        <!-- <TextView
             android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
             android:fontFamily="sans-serif"
             android:onClick="login"
             android:text="Accede"
-            android:textColor="#000"/>
+            android:textColor="#fff"/>
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
 
 
