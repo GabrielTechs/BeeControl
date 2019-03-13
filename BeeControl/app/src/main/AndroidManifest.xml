@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ViajesActivity"></activity>
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
@@ -25,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".AssistanceActivity" />
     </application>
 
 </manifest>

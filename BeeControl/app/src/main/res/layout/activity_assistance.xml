@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FDFDFE">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="#3498db"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:onClick="back"
+            style="@android:style/TextAppearance.Large"
+            android:fontFamily="sans-serif"
+            android:textColor="#fff"/>
+        <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Asistencia"
+            android:textColor="#000"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFDFDFE"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edittextstyle"
+            android:gravity="start"
+            android:layout_marginTop="10dp"
+            android:text="Empleado"
+            android:textColorHint="#fff"
+            android:typeface="serif"/>
+
+        <Button
+            android:id="@+id/buttondate"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittextstyle"
+            android:textColorHint="#fff"
+            android:layout_below="@id/user"
+            android:text="Fecha"
+            android:onClick="clickDataPicker"
+            android:gravity="start"
+            android:typeface="serif"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/Condition"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/user"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edittextstyle"
+            android:gravity="start"
+            android:textColorHint="#fff"
+            android:typeface="serif"
+            android:text="Condicion"/>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/listheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/Condition"
+            >
+
+            <TextView
+                android:id="@+id/usuario"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="33"
+                android:text="Empleado"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/edittextstyle"
+                />
+            <TextView
+                android:id="@+id/condicion"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="33"
+                android:text="Condicion"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/edittextstyle"
+                />
+            <TextView
+                android:id="@+id/fecha"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="33"
+                android:text="Fecha"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:background="@drawable/edittextstyle"
+                />
+        </LinearLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/listheader"
+            android:background="@drawable/edittextstyle"            android:textColorHint="#fff"
+            android:textStyle="bold"
+            android:typeface="serif"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
