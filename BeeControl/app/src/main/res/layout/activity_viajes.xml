@@ -55,6 +55,7 @@
 
         <Button
             android:id="@+id/addtrip"
+            android:onClick="addtrip"
             android:layout_width="60dp"
             android:layout_height="45dp"
             android:layout_alignParentRight="true"

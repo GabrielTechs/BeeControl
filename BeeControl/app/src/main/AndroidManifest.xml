@@ -18,7 +18,6 @@
             android:name=".ControlActivity"
             android:label="@string/title_activity_assistance"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".MenuActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
