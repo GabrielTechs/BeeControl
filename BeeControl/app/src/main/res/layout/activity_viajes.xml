@@ -33,7 +33,8 @@
             android:textColor="#000"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:typeface="serif" />
+            android:typeface="serif"
+            app:fontFamily="sans-serif-condensed" />
     </RelativeLayout>
 
     <RelativeLayout
