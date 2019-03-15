@@ -8,12 +8,4 @@
     tools:context=".MenuActivity"
     tools:showIn="@layout/app_bar_menu">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/fondo"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>

@@ -22,14 +22,13 @@
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:onClick="back"
             style="@android:style/TextAppearance.Large"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif"
             android:textColor="#fff"/>
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="@font/crimson_text"
             android:text="Registro de viajes"
             android:textColor="#000"
             android:textSize="25sp"
@@ -48,8 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="90dp"
-            android:text="Nombre del camionero"
-            android:typeface="@font/crimson_text" />
+            android:text="Nombre del camionero" />
 
 
         <TextView
@@ -64,8 +62,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Nombre de la carga"
-            android:typeface="@font/crimson_text" />
+            android:text="Nombre de la carga" />
 
         <TextView
             android:id="@+id/txtNombreCarga"
@@ -74,13 +71,11 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/edittextstyle" />
-
         <EditText
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Asunto"
-            android:typeface="@font/crimson_text" />
+            android:text="Asunto"/>
 
         <EditText
             android:id="@+id/txtNombreAsunto"
@@ -97,8 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:singleLine="true"
-            android:text="Hora de entrada"
-            android:typeface="@font/crimson_text" />
+            android:text="Hora de entrada" />
 
         <EditText
             android:id="@+id/txtHoraEntrada"
@@ -116,8 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Hora de salida"
-            android:typeface="@font/crimson_text" />
+            android:text="Hora de salida" />
 
         <EditText
             android:id="@+id/editText3"
@@ -138,8 +131,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/buttonsstylesnormal"
             android:text="Siguiente"
-            android:textColor="#fff"
-            android:typeface="@font/crimson_text" />
+            android:textColor="#fff" />
 
 
     </LinearLayout>
