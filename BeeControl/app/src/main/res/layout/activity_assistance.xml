@@ -17,7 +17,7 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:onClick="back"
@@ -31,7 +31,7 @@
             android:gravity="center"
             android:text="@string/Asistencia"
             android:textColor="#000"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:typeface="serif" />
     </RelativeLayout>

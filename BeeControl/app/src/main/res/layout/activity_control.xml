@@ -23,7 +23,8 @@
             android:onClick="back"
             style="@android:style/TextAppearance.Large"
             android:fontFamily="sans-serif"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            tools:ignore="OnClick" />
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
             android:layout_width="match_parent"
