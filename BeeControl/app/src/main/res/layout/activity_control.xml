@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ControlActivity">
+
+
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -100,46 +102,71 @@
             android:ems="10"
             android:inputType="textMultiLine" />
 
-        <TextView
-            android:layout_width="150dp"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:singleLine="true"
-            android:text="Hora de entrada"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-black" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/txtHoraEntrada"
-            android:layout_width="370dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/edittextstyle"
-            android:ems="10"
-            android:inputType="time"
-            android:singleLine="true" />
+            <TextView
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="20dp"
+                android:text="Fecha"
+                android:textSize="18sp"
+                app:fontFamily="sans-serif-black" />
 
-        <TextView
-            android:layout_width="150dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="30dp"
+                android:gravity="right"
+                android:text="Hora"
+                android:textSize="18sp"
+                app:fontFamily="sans-serif-black" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Hora de salida"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-black" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="370dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/edittextstyle"
-            android:ems="10"
-            android:inputType="time"
-            android:singleLine="true" />
+            <EditText
+                android:id="@+id/et_mostrar_fecha_picker"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/edittextstyle"
+                android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
+                android:ems="10"
+                android:hint="@string/formato_fecha"
+                android:inputType="date"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <EditText
+                android:id="@+id/et_mostrar_hora_picker"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/edittextstyle"
+                android:drawableRight="@drawable/ic_access_time_black_24dp"
+                android:ems="10"
+                android:hint="@string/formato_hora"
+                android:inputType="time"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker" />
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/txtSiguienteR"

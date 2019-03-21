@@ -2,6 +2,7 @@
     <string name="app_name">BeeControl</string>
     <string name="title_activity_assistance">assistanceActivity</string>
     <string name="large_text">
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -90,6 +91,11 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="titlulo_pickers">Obtener fecha y hora</string>
+
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="formato_hora">hh:mm</string>
+
     <string name="action_settings">Settings</string>
     <string name="Asistencia">Asistencia</string>
     <string name="title_activity_menu">MenuActivity</string>

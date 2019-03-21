@@ -8,4 +8,16 @@
     tools:context=".MenuActivity"
     tools:showIn="@layout/app_bar_menu">
 
+    <SearchView
+        android:layout_width="395dp"
+        android:layout_height="50dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="395dp"
+        android:layout_height="601dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="66dp" />
 </android.support.constraint.ConstraintLayout>
