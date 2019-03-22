@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistroActivity"
+    tools:context=".RegisterActivity"
     android:background="#FDFDFE" tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout
@@ -27,18 +27,27 @@
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/logoblanco"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="0dp" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:ignore="VectorDrawableCompat"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"/>
 
         <EditText
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="left"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edittextstyleregistro"
             android:gravity="left"
@@ -70,7 +79,7 @@
             android:id="@+id/txtPasswordR"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/edittextstyleregistro"
             android:ems="10"
             android:hint="Contraseña"
@@ -80,7 +89,7 @@
             android:id="@+id/txtConfPasword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edittextstyleregistro"
             android:ems="10"
             android:hint="Contraseña"
@@ -90,7 +99,8 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="#000"
             android:text="Use 8 o más caracteres con una mezcla de letras, números y símbolos"/>
 
         <Button
