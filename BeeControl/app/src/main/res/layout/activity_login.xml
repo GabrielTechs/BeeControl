@@ -39,7 +39,7 @@
             app:fontFamily="serif" />
 
         <EditText
-            android:id="@+id/txtUser"
+            android:id="@+id/txtEmailR"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -50,7 +50,7 @@
             android:textColorHint="#fff" />
 
         <EditText
-            android:id="@+id/txtPassword"
+            android:id="@+id/txtPasswordR"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -71,7 +71,8 @@
             android:background="@drawable/buttonsstylesnormal"
             android:drawableLeft="@drawable/ic_send_black_24dp"
             android:text="Login"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:onClick="login"/>
 
         <TextView
             android:id="@+id/txtForgotPass"
@@ -89,9 +90,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:gravity="center"
-            android:text="Registrate"
+            android:text="@string/registrate"
             android:textColor="#dfe0e2"
-            android:onClick="register"
+
             app:fontFamily="monospace" />
     </LinearLayout>
 
