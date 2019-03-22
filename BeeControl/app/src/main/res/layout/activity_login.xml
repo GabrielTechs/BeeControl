@@ -66,7 +66,7 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:onClick="login"
+
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_gravity="center"

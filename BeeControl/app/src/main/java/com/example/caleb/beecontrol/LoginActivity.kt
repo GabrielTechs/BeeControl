@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity()
 
 
         txtRegister.setOnClickListener(){
-            var intent = Intent(this,RegistroActivity::class.java)
+            var intent = Intent(this,RegisterActivity::class.java)
             startActivity(intent)
         }
 
@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity()
 
 
 
-    private fun signIn(email: String, password: String) {
+    fun signIn(email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {task->
             if(task.isSuccessful){
 
