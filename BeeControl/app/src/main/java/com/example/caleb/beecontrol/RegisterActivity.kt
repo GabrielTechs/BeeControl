@@ -19,8 +19,8 @@ class RegisterActivity : AppCompatActivity() {
     fun register(view: View){
         /* var nombre = txtName.text.toString()
              var apellido = txtApellido.text.toString()*/
-        var email = txtEmailR.text.toString()
-        var password = txtPasswordR.text.toString()
+        var email = txtEmail.text.toString()
+        var password = txtPassword.text.toString()
 
         CreateAccount(email, password)
     }

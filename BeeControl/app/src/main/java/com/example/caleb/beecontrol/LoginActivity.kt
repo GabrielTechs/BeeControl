@@ -12,21 +12,21 @@ class LoginActivity : AppCompatActivity()
 {
 
     var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-       // FirebaseApp.initializeApp(this);
+    }
 
-        txtRegister.setOnClickListener(){
-            var intent = Intent(this,RegisterActivity::class.java)
-            startActivity(intent)
-        }
+    fun register(view:View){
+        var intent = Intent(this,RegisterActivity::class.java)
+        startActivity(intent)
     }
 
     fun login(view: View){
-        var email = txtEmailR.text.toString()
-        var password = txtPasswordR.toString()
+        var email = txtEmail.text.toString()
+        var password = txtPassword.toString()
 
         signIn(email, password)
     }
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity()
     fun signIn(email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {task->
             if(task.isSuccessful){
-                var intent = Intent(this, PProfileActivity::class.java)
+                var intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
             }
         }
