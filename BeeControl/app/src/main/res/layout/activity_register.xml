@@ -27,92 +27,123 @@
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_marginBottom="50dp"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/logoblanco"
+            app:srcCompat="@drawable/d"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="0dp" />
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"/>
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <EditText
+                android:id="@+id/txtName"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextstyleregistro"
+                android:gravity="left"
+                android:hint="Nombre"
+                android:singleLine="true"
+                android:textColorHint="#fff"
+                android:typeface="serif" />
+
+            <EditText
+                android:id="@+id/txtApellido"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextstyleregistro"
+                android:gravity="left"
+                android:hint="Apellido"
+                android:singleLine="true"
+                android:textColorHint="#fff"
+                android:typeface="serif" />
+
+        </LinearLayout>
 
         <EditText
-            android:id="@+id/txtName"
-            android:layout_width="match_parent"
+            android:id="@+id/txtEmail"
+            android:layout_width="320dp"
             android:layout_height="40dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittextstyleregistro"
-            android:gravity="left"
-            android:hint="Nombre"
-            android:textColorHint="#fff" />
-
-        <EditText
-            android:id="@+id/txtApellido"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="right"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittextstyleregistro"
-            android:gravity="left"
-            android:hint="Apellido"
-            android:textColorHint="#fff" />
-
-        <EditText
-            android:id="@+id/txtEmailR"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:hint="Coreo Electronico"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittextstyleregistro"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/txtPasswordR"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/edittextstyleregistro"
             android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword" />
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textColorHint="#fff"
+            android:typeface="serif" />
 
-        <EditText
-            android:id="@+id/txtConfPasword"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edittextstyleregistro"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword" />
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <EditText
+                android:id="@+id/txtPassword"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edittextstyleregistro"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColorHint="#fff"
+                android:typeface="serif" />
+
+            <EditText
+                android:id="@+id/txtConfPasword"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextstyleregistro"
+                android:ems="10"
+                android:hint="Confirmar"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColorHint="#fff"
+                android:typeface="serif" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="40dp"
+            android:text="Use 8 o más caracteres con una mezcla de letras, números y símbolos"
             android:textColor="#000"
-            android:text="Use 8 o más caracteres con una mezcla de letras, números y símbolos"/>
+            app:fontFamily="sans-serif-medium" />
 
         <Button
             android:id="@+id/btnRegister"
-            android:onClick="register"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_alignEnd="@+id/linearLayout"
             android:layout_alignRight="@+id/linearLayout"
             android:layout_alignBottom="@+id/linearLayout"
             android:background="@drawable/buttonsstylesnormalregistro"
-            android:text="Siguiente" />
+            android:text="Siguiente"
+            android:textColor="#fff"/>
 
     </LinearLayout>
 

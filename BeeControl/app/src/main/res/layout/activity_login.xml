@@ -10,9 +10,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="407dp"
-        android:layout_height="950dp"
-        android:background="#071013"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/p4"
         android:orientation="vertical"
         android:padding="20dp"
         android:paddingTop="60dp"
@@ -24,69 +24,71 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="90dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
-            app:srcCompat="@drawable/logonegro" />
+            app:srcCompat="@drawable/d" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="15dp"
-            android:paddingBottom="15dp"
-            android:text="La mejor app para el control de las asistencias"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
-            app:fontFamily="serif" />
 
         <EditText
-            android:id="@+id/txtEmailR"
-            android:layout_width="280dp"
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:background="@drawable/edittextstyle"
+            android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="10dp"
             android:gravity="left"
-            android:hint="Username"
+            android:hint="USUARIO"
+            android:singleLine="true"
+            android:textColor="#fff"
             android:textColorHint="#fff" />
 
+
         <EditText
-            android:id="@+id/txtPasswordR"
-            android:layout_width="280dp"
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/edittextstyle"
+            android:layout_marginBottom="50dp"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawablePadding="10dp"
             android:gravity="left"
-            android:hint="Password"
+            android:hint="CONTRASEÑA"
             android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="#fff"
             android:textColorHint="#fff" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="280dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="60dp"
-            android:background="@drawable/buttonsstylesnormal"
-            android:drawableLeft="@drawable/ic_send_black_24dp"
-            android:text="Login"
-            android:textColor="#fff"
-            android:onClick="login"/>
+
 
         <TextView
             android:id="@+id/txtForgotPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Olvidaste tu contraseña?"
-            android:textColor="#dfe0e2"
+            android:textColor="#fff"
             android:textSize="18sp"
-            app:fontFamily="monospace" />
+            app:fontFamily="sans-serif-smallcaps" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/buttonsstylesnormal"
+            android:fontFamily="sans-serif"
+            android:onClick="login"
+            android:text="Accede"
+            android:textColor="#fff"
+            android:drawableRight="@drawable/ic_send_black_24dp"/>
+
 
         <TextView
             android:id="@+id/txtRegister"
@@ -95,10 +97,13 @@
             android:layout_margin="1dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="@string/registrate"
-            android:textColor="#dfe0e2"
+            android:onClick="register"
+            android:text="No tienes una cuenta? Registrate"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-smallcaps" />
 
-            app:fontFamily="monospace" />
+
     </LinearLayout>
 
 
