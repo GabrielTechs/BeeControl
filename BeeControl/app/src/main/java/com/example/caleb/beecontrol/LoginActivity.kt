@@ -14,45 +14,31 @@ class LoginActivity : AppCompatActivity()
     var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?)
     {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
        // FirebaseApp.initializeApp(this);
-
 
         txtRegister.setOnClickListener(){
             var intent = Intent(this,RegisterActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
+    fun login(view: View){
+        var email = txtEmailR.text.toString()
+        var password = txtPasswordR.toString()
 
-
-        fun login(view: View){
-                var email = txtEmailR.text.toString()
-                var password = txtPasswordR.toString()
-
-                signIn(email, password)
-        }
-
-
-
+        signIn(email, password)
+    }
 
 
     fun signIn(email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {task->
             if(task.isSuccessful){
-
                 var intent = Intent(this, PProfileActivity::class.java)
                 startActivity(intent)
             }
-
         }
 
     }
-
-
-
 }
