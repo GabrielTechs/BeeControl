@@ -47,7 +47,6 @@
     <SearchView
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/edittextstyle"
         >
 
@@ -61,8 +60,7 @@
             android:layout_marginRight="25dp"
             android:layout_alignParentRight="true"
             android:layout_weight="1"
-            android:background="@drawable/ic_playlist_add_black_24dp"
-            android:layout_marginTop="10dp"/>
+            android:background="@drawable/ic_playlist_add_black_24dp" />
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
