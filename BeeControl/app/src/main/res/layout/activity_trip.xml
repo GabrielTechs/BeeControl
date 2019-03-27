@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:background="#3498db"
         android:orientation="vertical"
@@ -18,22 +18,35 @@
         <Button
             android:id="@+id/button"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:onClick="back"
             style="@android:style/TextAppearance.Large"
             android:fontFamily="sans-serif"
             android:textColor="#fff"/>
+
+        <Button
+            android:id="@+id/addtrip"
+            android:onClick="addtrip"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_playlist_add_black_24dp" />
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Viajes de camiones"
+            android:text="@string/viajes_de_camiones"
             android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold"
             android:typeface="serif" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -41,34 +54,38 @@
         android:layout_height="match_parent"
         android:layout_below="@id/header"
         android:orientation="vertical"
-        android:padding="16dp"
         android:background="#FFFDFDFE"
         >
-    <SearchView
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:background="@drawable/edittextstyle"
-        >
 
-    </SearchView>
+        <SearchView
+            android:id="@+id/tripsearch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="10"
+            android:background="@drawable/edittextstyle"
+            >
+        </SearchView>
 
-        <Button
-            android:id="@+id/addtrip"
-            android:onClick="addtrip"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginRight="25dp"
-            android:layout_alignParentRight="true"
-            android:layout_weight="1"
-            android:background="@drawable/ic_playlist_add_black_24dp" />
-        <ListView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/addtrip"
-            android:background="@drawable/edittextstyle"            android:textColorHint="#fff"
-            android:textStyle="bold"
-            android:typeface="serif"
-            />
-    </RelativeLayout>
+            android:layout_below="@id/tripsearch"
+            android:layout_marginTop="10dp">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edittextstyle"            android:textColorHint="#fff"
+                android:textStyle="bold"
+                android:typeface="serif">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
