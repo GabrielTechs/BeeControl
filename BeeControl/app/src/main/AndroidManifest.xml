@@ -13,7 +13,6 @@
         <activity android:name=".TripspecActivity"></activity>
         <activity android:name=".mypassword"></activity>
         <activity android:name=".ForgotmypasswordActivity" />
-        <activity android:name=".ViajesActivity" />
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
