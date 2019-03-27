@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".TripActivity"></activity>
+        <activity android:name=".TripspecActivity"></activity>
         <activity android:name=".mypassword"></activity>
         <activity android:name=".ForgotmypasswordActivity" />
         <activity android:name=".ViajesActivity" />
