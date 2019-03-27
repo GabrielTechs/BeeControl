@@ -152,7 +152,7 @@
 
             <EditText
                 android:id="@+id/et_mostrar_hora_picker"
-                android:layout_width="175dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:background="@drawable/edittextstyle"

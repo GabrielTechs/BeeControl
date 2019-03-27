@@ -23,4 +23,9 @@ class LoginActivity : AppCompatActivity()
         startActivity(Intent(this, RegisterActivity::class.java))
     }
 
+    fun forgotPass(view:View)
+    {
+        startActivity(Intent(this, ForgotmypasswordActivity::class.java))
+    }
+
 }
