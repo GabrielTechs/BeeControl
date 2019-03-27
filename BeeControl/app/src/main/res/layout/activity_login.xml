@@ -20,15 +20,22 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="80dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
             app:srcCompat="@drawable/d" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -81,6 +88,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Olvidaste tu contraseña?"
+            android:onClick="forgotPass"
             android:textColor="#fff"
             android:textSize="18sp"
             app:fontFamily="sans-serif-smallcaps" />

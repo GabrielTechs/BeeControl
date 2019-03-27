@@ -80,4 +80,10 @@ class LoginActivity : AppCompatActivity()
                 })
         }
     }
+
+    fun forgotPass(view:View)
+    {
+        startActivity(Intent(this, ForgotmypasswordActivity::class.java))
+    }
+
 }

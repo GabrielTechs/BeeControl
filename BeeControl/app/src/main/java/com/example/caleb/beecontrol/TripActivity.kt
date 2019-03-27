@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class ViajesActivity : AppCompatActivity() {
+class TripActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_viajes)
+        setContentView(R.layout.activity_trip)
     }
 
     fun addtrip(view: View){

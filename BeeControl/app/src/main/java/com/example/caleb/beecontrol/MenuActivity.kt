@@ -61,7 +61,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.txtControla-> {
                 // Handle the camera action
-                startActivity(Intent(this, ViajesActivity::class.java))
+                startActivity(Intent(this, TripActivity::class.java))
             }
             R.id.txtAsistencia -> {
                 startActivity(Intent(this, AssistanceActivity::class.java))
