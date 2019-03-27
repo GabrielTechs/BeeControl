@@ -141,7 +141,7 @@
             android:layout_alignEnd="@+id/linearLayout"
             android:layout_alignRight="@+id/linearLayout"
             android:layout_alignBottom="@+id/linearLayout"
-            android:background="@drawable/buttonsstylesnormalregistro"
+            android:background="@drawable/buttonsstylesnormal"
             android:text="Siguiente"
             android:textColor="#fff"/>
 
