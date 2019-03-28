@@ -70,9 +70,10 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.txtConfi-> {
-
             }
-            R.id.nav_share -> {
+            R.id.txtSalir ->
+            {
+                startActivity(Intent(this, LoginActivity::class.java))
 
             }
             R.id.nav_send -> {

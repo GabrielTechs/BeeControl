@@ -161,18 +161,26 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttondate" />
 
+
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <Button
-            android:id="@+id/txtSiguienteR"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/buttonsstylesnormal"
-            android:text="Siguiente"
-            android:textColor="#fff" />
+            <Button
+                android:id="@+id/txtSiguienteR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/buttonsstylesnormal"
+                android:text="Siguiente"
+                android:textColor="#fff" />
+        </LinearLayout>
+
 
 
     </LinearLayout>
