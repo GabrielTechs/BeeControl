@@ -19,10 +19,16 @@ import com.google.android.gms.tasks.OnCompleteListener
 import android.R.attr.password
 import android.support.v4.app.FragmentActivity
 import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
+
+
 
 
 class RegisterActivity : AppCompatActivity() {
 
+    lateinit var txtName: EditText
+    lateinit var txtLastName: EditText
     lateinit var txtEmail: EditText
     lateinit var txtPassword: EditText
     lateinit var txtConfPassword: EditText
@@ -30,11 +36,14 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var progressBar: ProgressBar
 
     lateinit var firebaseAuth: FirebaseAuth
+    lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        txtName = findViewById(R.id.txtName)
+        txtLastName = findViewById(R.id.txtLastName)
         txtEmail = findViewById(R.id.txtEmail)
         txtPassword = findViewById(R.id.txtPassword)
         txtConfPassword = findViewById(R.id.txtConfPasword)
@@ -43,6 +52,12 @@ class RegisterActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
         firebaseAuth =  FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        val settings = FirebaseFirestoreSettings.Builder()
+                .setTimestampsInSnapshotsEnabled(true)
+                .build()
+        db.firestoreSettings = settings
 
         btnRegister.setOnClickListener{
             createAccount()
@@ -51,10 +66,21 @@ class RegisterActivity : AppCompatActivity() {
 
     fun createAccount() {
 
+        var name: String = txtName.text.toString()
+        var lastName: String = txtLastName.text.toString()
         var email: String = txtEmail.text.toString()
         var password: String = txtPassword.text.toString()
         var confPass: String = txtConfPassword.text.toString()
 
+
+        if(TextUtils.isEmpty(name)){
+            Toast.makeText(applicationContext, "Introdusca su primer nombre", Toast.LENGTH_LONG).show()
+            return
+        }
+        if(TextUtils.isEmpty(lastName)){
+            Toast.makeText(applicationContext, "Introdusca su apellido", Toast.LENGTH_LONG).show()
+            return
+        }
         if(TextUtils.isEmpty(email)){
             Toast.makeText(applicationContext, "Introdusca su email", Toast.LENGTH_LONG).show()
             return
@@ -80,6 +106,15 @@ class RegisterActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         progressBar.visibility = View.INVISIBLE
+                        val user = HashMap<String, Any>()
+                        user["name"] = name
+                        user["lastName"] = lastName
+                        user["email"] = email
+
+                        db.collection("user").document(email)
+                                .set(user)
+                                .addOnSuccessListener { Log.d("RegisterActivity", "DocumentSnapshot successfully written!") }
+                                .addOnFailureListener { e -> Log.w("RegisterActivity", "Error writing document", e) }
                         Log.d("RegisterSuccess", "createUserWithEmail:success")
                         Toast.makeText(applicationContext, "Usuario registrado corractamente!", Toast.LENGTH_SHORT).show()
                         var intent = Intent(this, LoginActivity::class.java)
