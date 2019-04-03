@@ -108,7 +108,7 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:hint="Correo electronico" />
+                android:hint="Correo electrónico" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -118,7 +118,7 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:hint="por si se me olvido algo"/>
+                android:hint="Edad"/>
 
             <Button
                 android:id="@+id/btnSave"

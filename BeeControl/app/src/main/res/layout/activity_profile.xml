@@ -108,7 +108,7 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Correo electronico" />
+                android:text="Correo electrónico" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -118,7 +118,7 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="por si se me olvido algo" />
+                android:text="Edad" />
 
             <Button
                 android:id="@+id/btnRegister"
