@@ -29,7 +29,7 @@
             android:layout_marginBottom="80dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
-            app:srcCompat="@drawable/sinfondoB" />
+            app:srcCompat="@drawable/sinfondob" />
 
         <ProgressBar
             android:id="@+id/progressBar"
