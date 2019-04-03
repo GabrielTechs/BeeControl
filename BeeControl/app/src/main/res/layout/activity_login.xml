@@ -65,7 +65,7 @@
             android:singleLine="true"
             android:textColor="#fff"
             android:textColorHint="#fff" />
-
+        
         <TextView
             android:id="@+id/txtForgotPass"
             android:layout_width="match_parent"
