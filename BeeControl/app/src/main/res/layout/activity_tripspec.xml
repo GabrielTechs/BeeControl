@@ -7,13 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".ControlActivity">
 
-
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentTop="true"
-        android:background="#3498db"
+        android:background="#449DD1"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -25,7 +24,6 @@
             android:onClick="back"
             style="@android:style/TextAppearance.Large"
             android:fontFamily="sans-serif"
-            android:textColor="#fff"
             tools:ignore="OnClick" />
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
@@ -33,10 +31,10 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Viaje"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:typeface="serif" />
+            android:typeface="monospace"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -55,12 +53,12 @@
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
-
         <TextView
             android:id="@+id/txtNombreC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
+            android:drawableRight="@drawable/ic_person_btnblue_24dp"
             android:singleLine="true" />
 
         <TextView
@@ -76,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
+            android:drawableRight="@drawable/ic_local_shipping_black_24dp"
             android:singleLine="true" />
 
         <TextView
@@ -170,27 +169,17 @@
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
-        <ScrollView
-            android:id="@+id/txtAsuntotrip"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/edittextstyle"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
-
-        <TextView
-            android:id="@+id/txtNombreAsunto"
-            android:layout_width="match_parent"
+        <EditText
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="top|left"
+            android:maxLines="10"
             android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:background="@drawable/edittextstyle"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
+            android:scrollbars="vertical"
+            />
 
     </LinearLayout>
 
