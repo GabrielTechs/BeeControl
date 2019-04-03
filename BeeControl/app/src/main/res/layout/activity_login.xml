@@ -28,7 +28,7 @@
             android:layout_marginBottom="80dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
-            app:srcCompat="@drawable/d" />
+            app:srcCompat="@drawable/sinfondob" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -47,6 +47,7 @@
             android:drawablePadding="10dp"
             android:gravity="left"
             android:hint="USUARIO"
+            android:background="@drawable/edittextstylebox"
             android:singleLine="true"
             android:textColor="#fff"
             android:textColorHint="#fff" />
@@ -59,6 +60,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="50dp"
+            android:background="@drawable/edittextstylebox"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:drawablePadding="10dp"
             android:gravity="left"
