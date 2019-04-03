@@ -27,10 +27,10 @@ class TripActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
-        val query = tripbookRef.orderBy("tripId", Query.Direction.DESCENDING)
+        val query = tripbookRef.orderBy("priority", Query.Direction.DESCENDING)
 
-        val options = FirestoreRecyclerOptions.Builder<TripNew>()
-                .setQuery(query, TripNew::class.java)
+        val options = FirestoreRecyclerOptions.Builder<Trip>()
+                .setQuery(query, Trip::class.java)
                 .build()
 
         adapter = TripAdapter(options)
