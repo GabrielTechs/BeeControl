@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="#000" tools:layout_editor_absoluteY="25dp">
+    android:background="#000"
+    tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -28,7 +29,7 @@
             android:layout_marginBottom="80dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
-            app:srcCompat="@drawable/d" />
+            app:srcCompat="@drawable/sinfondoB" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -39,10 +40,11 @@
 
         <EditText
             android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/edittextstyle"
             android:drawableLeft="@drawable/ic_person_black_24dp"
             android:drawablePadding="10dp"
             android:gravity="left"
@@ -52,6 +54,7 @@
             android:textColorHint="#fff" />
 
 
+
         <EditText
             android:id="@+id/txtPassword"
             android:layout_width="match_parent"
@@ -59,6 +62,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="50dp"
+            android:background="@drawable/edittextstyle"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:drawablePadding="10dp"
             android:gravity="left"
@@ -67,8 +71,6 @@
             android:singleLine="true"
             android:textColor="#fff"
             android:textColorHint="#fff" />
-
-
 
         <TextView
             android:id="@+id/txtForgotPass"

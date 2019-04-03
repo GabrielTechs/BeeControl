@@ -66,7 +66,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="10"
-            android:background="@drawable/edittextstyle"
+            android:background="@drawable/edittextstylebox"
             >
         </SearchView>
 
@@ -80,7 +80,8 @@
                 android:id="@+id/recycleView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/edittextstyle"            android:textColorHint="#fff"
+                android:background="@drawable/edittextstylebox"
+                android:textColorHint="#fff"
                 android:textStyle="bold"
                 android:typeface="serif">
 
