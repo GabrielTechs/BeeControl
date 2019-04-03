@@ -22,7 +22,7 @@
             android:title="Configuracion" />
     </group>
 
-    <item android:title="Otros">
+    <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/txtSalir"

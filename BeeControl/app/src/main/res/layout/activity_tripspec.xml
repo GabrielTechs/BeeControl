@@ -60,7 +60,7 @@
             android:id="@+id/txtNombreC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittextstylebox"
+            android:background="@drawable/edittextstyle"
             android:singleLine="true" />
 
         <TextView
@@ -75,7 +75,7 @@
             android:id="@+id/txtNombreCarga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittextstylebox"
+            android:background="@drawable/edittextstyle"
             android:singleLine="true" />
 
         <TextView
@@ -90,7 +90,7 @@
             android:id="@+id/buttondate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittextstylebox"
+            android:background="@drawable/edittextstyle"
             android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
             android:gravity="start"
             android:text="@string/formato_fecha"
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/edittextstylebox"
+                android:background="@drawable/edittextstyle"
                 android:drawableRight="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
                 android:hint="@string/formato_hora"
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/edittextstylebox"
+                android:background="@drawable/edittextstyle"
                 android:drawableRight="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
                 android:hint="@string/formato_hora"
@@ -174,7 +174,7 @@
             android:id="@+id/txtAsuntotrip"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/edittextstylebox"
+            android:background="@drawable/edittextstyle"
             >
 
             <LinearLayout
@@ -187,7 +187,7 @@
             android:id="@+id/txtNombreAsunto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edittextstylebox"
+            android:background="@drawable/edittextstyle"
             android:ems="10"
             android:inputType="textMultiLine" />
 

@@ -51,7 +51,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/edittextstylebox" />
+            android:background="@drawable/edittextstyle" />
 
         <LinearLayout
             android:id="@+id/conditioners"
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="33"
-                android:background="@drawable/edittextstylebox"
+                android:background="@drawable/edittextstyle"
                 android:gravity="center"
                 android:text="Empleado"
                 android:textAlignment="center"
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="33"
-                android:background="@drawable/edittextstylebox"
+                android:background="@drawable/edittextstyle"
                 android:gravity="center"
                 android:text="Condicion"
                 android:textAlignment="center"
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="33"
-                android:background="@drawable/edittextstylebox"
+                android:background="@drawable/edittextstyle"
                 android:gravity="center"
                 android:text="Fecha"
                 android:textAlignment="center"
@@ -153,7 +153,7 @@
                 android:id="@+id/recycleView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/edittextstylebox"
+                android:background="@drawable/edittextstyle"
                 android:textColorHint="#fff"
                 android:textStyle="bold"
                 android:typeface="serif">
