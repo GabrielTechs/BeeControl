@@ -19,9 +19,9 @@ public class TripAdapter extends FirestoreRecyclerAdapter<Trip, TripAdapter.Trip
     @Override
     protected void onBindViewHolder(@NonNull TripHolder holder, int position, @NonNull Trip model) {
         holder.txtTripDate.setText(model.getTripDate());
-        holder.txtTruckDriverName.setText((model.getTruckDriverName()));
+        holder.txtTripDriverName.setText((model.getTripDriverName()));
         holder.txtTripTitle.setText(model.getTripTitle());
-        holder.txtTripPartingHour.setText(model.getTripPartingHour());
+        holder.txtTripId.setText(String.valueOf(model.getTripId()));
 
     }
 
@@ -35,17 +35,17 @@ public class TripAdapter extends FirestoreRecyclerAdapter<Trip, TripAdapter.Trip
 
     class TripHolder extends RecyclerView.ViewHolder {
 
-        TextView txtTruckDriverName;
+        TextView txtTripDriverName;
         TextView txtTripTitle;
         TextView txtTripDate;
-        TextView txtTripPartingHour;
+        TextView txtTripId;
 
         public TripHolder(@NonNull View itemView) {
             super(itemView);
-            txtTruckDriverName = itemView.findViewById(R.id.txtTripDriverName);
+            txtTripDriverName = itemView.findViewById(R.id.txtTripDriverName);
             txtTripTitle = itemView.findViewById(R.id.txtTripTitle);
             txtTripDate = itemView.findViewById(R.id.txtTripDate);
-            txtTripPartingHour = itemView.findViewById(R.id.txtTripPartingHour);
+            txtTripId = itemView.findViewById(R.id.txtTripId);
         }
     }
 }

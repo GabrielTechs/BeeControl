@@ -1,10 +1,12 @@
 package com.example.caleb.beecontrol
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.CollectionReference
@@ -14,7 +16,7 @@ import com.google.firebase.firestore.Query
 class TripActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
-    private val tripbookRef = db.collection("tripbook")
+    private val tripbookRef = db.collection("Trips")
 
     private var adapter: TripAdapter? = null
 
@@ -33,10 +35,15 @@ class TripActivity : AppCompatActivity() {
 
         adapter = TripAdapter(options)
 
-        val recyclerview = findViewById<RecyclerView>(R.id.recycleViewTrip)
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewTrip)
         recyclerview.setHasFixedSize(true)
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = adapter
+    }
+
+    fun addtrip(view: View){
+        var intent = Intent(this, ControlActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onStart() {
