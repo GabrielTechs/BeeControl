@@ -1,16 +1,16 @@
 package com.example.caleb.beecontrol;
 
-public class AssistanceNew {
+public class Assistance {
 
     public String employeeName;
     public String status;
     public String assistDate;
 
-    AssistanceNew(){
+    Assistance(){
 
     }
 
-    AssistanceNew(String employeeName, String status, String assistDate){
+    Assistance(String employeeName, String status, String assistDate){
         this.employeeName = employeeName;
         this.status = status;
         this.assistDate = assistDate;

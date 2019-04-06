@@ -10,18 +10,16 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import org.w3c.dom.Text;
+
+public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assistance, AssistanceAdapter.AssistanceHolder>{
 
 
-public class AssistanceAdapter extends FirestoreRecyclerAdapter<AssistanceNew, AssistanceAdapter.AssistanceHolder>{
-
-
-    public AssistanceAdapter(@NonNull FirestoreRecyclerOptions<AssistanceNew> options) {
+    public AssistanceAdapter(@NonNull FirestoreRecyclerOptions<Assistance> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AssistanceHolder holder, int position, @NonNull AssistanceNew model) {
+    protected void onBindViewHolder(@NonNull AssistanceHolder holder, int position, @NonNull Assistance model) {
         holder.txtEmployeeName.setText(model.getEmployeeName());
         holder.txtStatus.setText(model.getStatus());
         holder.txtAssistDate.setText(model.getAssistDate());

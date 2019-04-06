@@ -10,16 +10,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.activity_assistance.*
-import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
 
 
 class AssistanceActivity : AppCompatActivity() {
@@ -39,8 +33,8 @@ class AssistanceActivity : AppCompatActivity() {
     private fun setUpRecyclerView() {
         val query = AssistancebookRef.orderBy("status", Query.Direction.ASCENDING)
 
-        val options = FirestoreRecyclerOptions.Builder<AssistanceNew>()
-                .setQuery(query, AssistanceNew::class.java)
+        val options = FirestoreRecyclerOptions.Builder<Assistance>()
+                .setQuery(query, Assistance::class.java)
                 .build()
 
         adapter = AssistanceAdapter(options)
