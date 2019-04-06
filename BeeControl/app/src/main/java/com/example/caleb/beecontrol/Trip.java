@@ -1,16 +1,16 @@
 package com.example.caleb.beecontrol;
 
-public class TripNew {
+public class Trip {
     public String tripDate;
     public String tripTitle;
     public String tripDriverName;
     public int tripId;
 
-    TripNew(){
+    Trip(){
 
     }
 
-    TripNew(String tripDate, String tripTitle, String tripDriverName, int tripId){
+    Trip(String tripDate, String tripTitle, String tripDriverName, int tripId){
         this.tripDate = tripDate;
         this.tripTitle = tripTitle;
         this.tripDriverName = tripDriverName;
