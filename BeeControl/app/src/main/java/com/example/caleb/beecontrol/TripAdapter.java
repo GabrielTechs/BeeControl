@@ -10,14 +10,14 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class TripAdapter extends FirestoreRecyclerAdapter<Trip, TripAdapter.TripHolder> {
+public class TripAdapter extends FirestoreRecyclerAdapter<TripNew, TripAdapter.TripHolder> {
 
-    public TripAdapter(@NonNull FirestoreRecyclerOptions<Trip> options) {
+    public TripAdapter(@NonNull FirestoreRecyclerOptions<TripNew> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull TripHolder holder, int position, @NonNull Trip model) {
+    protected void onBindViewHolder(@NonNull TripHolder holder, int position, @NonNull TripNew model) {
         holder.txtTripDate.setText(model.getTripDate());
         holder.txtTripDriverName.setText((model.getTripDriverName()));
         holder.txtTripTitle.setText(model.getTripTitle());
