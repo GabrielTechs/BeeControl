@@ -13,18 +13,18 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import org.w3c.dom.Text;
 
 
-public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assitance, AssistanceAdapter.AssistanceHolder>{
+public class AssistanceAdapter extends FirestoreRecyclerAdapter<AssistanceNew, AssistanceAdapter.AssistanceHolder>{
 
 
-    public AssistanceAdapter(@NonNull FirestoreRecyclerOptions<Assitance> options) {
+    public AssistanceAdapter(@NonNull FirestoreRecyclerOptions<AssistanceNew> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AssistanceHolder holder, int position, @NonNull Assitance model) {
-        holder.usuario.setText(model.getUsuario());
-        holder.condicion.setText(model.getCondicion());
-        holder.fecha.setText(model.getFecha());
+    protected void onBindViewHolder(@NonNull AssistanceHolder holder, int position, @NonNull AssistanceNew model) {
+        holder.txtEmployeeName.setText(model.getEmployeeName());
+        holder.txtStatus.setText(model.getStatus());
+        holder.txtAssistDate.setText(model.getAssistDate());
     }
 
     @NonNull
@@ -37,15 +37,15 @@ public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assitance, Assis
 
     class AssistanceHolder extends RecyclerView.ViewHolder{
 
-        TextView usuario ;
-        TextView condicion;
-        TextView fecha;
+        TextView txtEmployeeName;
+        TextView txtStatus;
+        TextView txtAssistDate;
 
         public AssistanceHolder(@NonNull View itemView) {
             super(itemView);
-            usuario = itemView.findViewById(R.id.usuario);
-            condicion = itemView.findViewById(R.id.condicion);
-            fecha = itemView.findViewById(R.id.fecha);
+            txtEmployeeName = itemView.findViewById(R.id.usuario);
+            txtStatus = itemView.findViewById(R.id.condicion);
+            txtAssistDate = itemView.findViewById(R.id.fecha);
         }
     }
 

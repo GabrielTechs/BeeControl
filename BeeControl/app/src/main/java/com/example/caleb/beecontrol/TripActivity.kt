@@ -32,10 +32,10 @@ class TripActivity : AppCompatActivity() {
 
         adapter = TripAdapter(options)
 
-        val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewTrip)
-        recyclerview.setHasFixedSize(true)
-        recyclerview.layoutManager = LinearLayoutManager(this)
-        recyclerview.adapter = adapter
+        val tripRecylerView = findViewById<RecyclerView>(R.id.recyclerViewTrip)
+        tripRecylerView.setHasFixedSize(true)
+        tripRecylerView.layoutManager = LinearLayoutManager(this)
+        tripRecylerView.adapter = adapter
     }
 
     fun addtrip(view: View){
