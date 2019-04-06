@@ -21,10 +21,12 @@
     </SearchView>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="395dp"
-        android:layout_height="601dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondooficina"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="66dp" >
+        tools:layout_editor_absoluteY="66dp"
+        tools:ignore="MissingConstraints">
 
     </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

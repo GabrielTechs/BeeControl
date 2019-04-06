@@ -11,27 +11,28 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="#3498db"
+        android:background="#449DD1"
         android:orientation="vertical"
         android:padding="10dp">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnback"
             style="@android:style/TextAppearance.Large"
             android:layout_width="40dp"
+            android:layout_weight="6"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_arrow_back_black_24dp"
-            android:fontFamily="sans-serif"
             android:onClick="back"
             android:textColor="#fff" />
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
+            android:id="@+id/txtassistance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/Asistencia"
-            android:textColor="#000"
-            android:textSize="20sp"
+            android:textColor="#fff"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:typeface="serif" />
     </RelativeLayout>
@@ -75,7 +76,8 @@
                 android:entries="@array/assistance_array"
                 android:gravity="start"
                 android:padding="10dp"
-                android:textColorHint="#000"
+                android:textColorHint="#363732"
+                android:backgroundTint="@color/colorPrimary"
                 android:typeface="serif" />
 
             <Button
@@ -89,14 +91,13 @@
                 android:gravity="start"
                 android:hint="Fecha"
                 android:onClick="clickDataPicker"
-                android:textColorHint="#000"
+                android:textColorHint="#363732"
                 android:textSize="18dp"
                 android:typeface="serif" />
 
         </LinearLayout>
 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/listheader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +114,7 @@
                 android:gravity="center"
                 android:text="Empleado"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#363732"
                 android:textStyle="bold"
                 android:typeface="serif" />
 
@@ -126,7 +127,7 @@
                 android:gravity="center"
                 android:text="Condicion"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#363732"
                 android:textStyle="bold"
                 android:typeface="serif" />
 
@@ -139,7 +140,7 @@
                 android:gravity="center"
                 android:text="Fecha"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#363732"
                 android:textStyle="bold"
                 android:typeface="serif" />
         </LinearLayout>

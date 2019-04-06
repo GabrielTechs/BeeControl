@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".TripActivity"></activity>
-        <activity android:name=".TripspecActivity"></activity>
-        <activity android:name=".mypassword"></activity>
+        <activity android:name=".EditprofileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".TripActivity" />
+        <activity android:name=".TripspecActivity" />
+        <activity android:name=".mypassword" />
         <activity android:name=".ForgotmypasswordActivity" />
         <activity
             android:name=".MenuActivity"

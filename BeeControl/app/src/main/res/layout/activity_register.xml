@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="407dp"
-        android:layout_height="950dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#FFFDFDFE"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/d"
+            app:srcCompat="@drawable/sinfondon"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="0dp" />
@@ -46,19 +46,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginTop="20dp">
 
             <EditText
                 android:id="@+id/txtName"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="left"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/edittextstyleregistro"
                 android:gravity="left"
                 android:hint="Nombre"
@@ -67,11 +65,11 @@
                 android:typeface="serif" />
 
             <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/txtLastName"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
                 android:background="@drawable/edittextstyleregistro"
                 android:gravity="left"
                 android:hint="Apellido"
@@ -83,10 +81,10 @@
 
         <EditText
             android:id="@+id/txtEmail"
-            android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
             android:background="@drawable/edittextstyleregistro"
             android:ems="10"
             android:hint="Correo Electrónico"
@@ -97,18 +95,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginTop="20dp">
 
             <EditText
                 android:id="@+id/txtPassword"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/edittextstyleregistro"
                 android:ems="10"
                 android:hint="Contraseña"
@@ -119,9 +116,10 @@
 
             <EditText
                 android:id="@+id/txtConfPasword"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
                 android:background="@drawable/edittextstyleregistro"
                 android:ems="10"
                 android:hint="Confirmar"
@@ -136,16 +134,17 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginBottom="40dp"
             android:text="Use 8 o más caracteres con una mezcla de letras, números y símbolos"
-            android:textColor="#000"
+            android:textColor="#363732"
             app:fontFamily="sans-serif-medium" />
 
         <Button
             android:id="@+id/btnRegister"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_alignEnd="@+id/linearLayout"

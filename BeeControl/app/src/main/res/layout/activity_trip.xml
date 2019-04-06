@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="#3498db"
+        android:background="#449DD1"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/viajes_de_camiones"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold"
             android:typeface="serif" />
