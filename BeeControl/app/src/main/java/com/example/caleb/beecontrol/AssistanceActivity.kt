@@ -25,7 +25,7 @@ import javax.xml.datatype.DatatypeConstants.MONTHS
 class AssistanceActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
-    private val AssistancebookRef = db.collection("Assistancebook")
+    private val AssistancebookRef = db.collection("Assistance")
 
     private var adapter: AssistanceAdapter? = null
 
@@ -37,10 +37,10 @@ class AssistanceActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
-        val query =AssistancebookRef.orderBy("priority", Query.Direction.DESCENDING)
+        val query = AssistancebookRef.orderBy("status", Query.Direction.ASCENDING)
 
-        val options = FirestoreRecyclerOptions.Builder<Assitance>()
-                .setQuery(query, Assitance::class.java)
+        val options = FirestoreRecyclerOptions.Builder<AssistanceNew>()
+                .setQuery(query, AssistanceNew::class.java)
                 .build()
 
         adapter = AssistanceAdapter(options)
