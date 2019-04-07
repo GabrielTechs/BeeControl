@@ -8,17 +8,28 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import org.w3c.dom.Text
 
 class ControlActivity : AppCompatActivity() {
+
+    lateinit var txtTripDriverName: EditText
+    lateinit var txtTripTitle: EditText
+    lateinit var txtTripDescription: EditText
+    lateinit var txtTripDate: TextView
+    lateinit var txtTripPartingHour: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_control)
     }
+
     fun login(view: View){
         startActivity(Intent(this, MenuActivity::class.java))
     }
+
     @RequiresApi(Build.VERSION_CODES.N)
     fun clickDataPicker(view: View) {
         val c = Calendar.getInstance()

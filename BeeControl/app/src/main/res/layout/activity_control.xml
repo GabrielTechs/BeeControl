@@ -54,7 +54,7 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/txtTripDriverName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
@@ -70,7 +70,7 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtCargoname"
+            android:id="@+id/txtTripTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
@@ -86,7 +86,7 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtAsunto"
+            android:id="@+id/txtTripDescription"
             android:inputType="textMultiLine"
             android:lines="8"
             android:minLines="6"
@@ -130,8 +130,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttondate"
+            <TextView
+                android:id="@+id/txtTripDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -145,7 +145,7 @@
                 android:typeface="serif" />
 
             <EditText
-                android:id="@+id/et_mostrar_hora_picker"
+                android:id="@+id/txtTripPartingHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
