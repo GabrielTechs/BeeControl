@@ -7,22 +7,42 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_assistance.*
-import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 
 class AssistanceActivity : AppCompatActivity() {
+
+    private val db = FirebaseFirestore.getInstance()
+    private val AssistancebookRef = db.collection("Assistance")
+
+    private var adapter: AssistanceAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assistance)
+        setUpRecyclerView()
+    }
+
+    private fun setUpRecyclerView() {
+        val query = AssistancebookRef.orderBy("status", Query.Direction.ASCENDING)
+
+        val options = FirestoreRecyclerOptions.Builder<Assistance>()
+                .setQuery(query, Assistance::class.java)
+                .build()
+
+        adapter = AssistanceAdapter(options)
+
+        val recyclerview = findViewById<RecyclerView>(R.id.recycleViewAssist)
+        recyclerview.setHasFixedSize(true)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.adapter = adapter
     }
 
     fun login(view:View){
@@ -40,5 +60,16 @@ class AssistanceActivity : AppCompatActivity() {
             Toast.makeText(this, """$dayOfMonth - ${monthOfYear + 1} - $year""", Toast.LENGTH_LONG).show()
         }, year, month, day)
         dpd.show()
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        adapter!!.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter!!.stopListening()
     }
 }

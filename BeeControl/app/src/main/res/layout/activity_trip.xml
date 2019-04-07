@@ -36,7 +36,6 @@
             android:layout_weight="1"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_playlist_add_black_24dp" />
-        <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,13 +76,13 @@
             android:layout_marginTop="10dp">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycleView"
+                android:id="@+id/recyclerViewTrip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/edittextstyle"            android:textColorHint="#fff"
+                android:background="@drawable/edittextstyle"
+                android:textColorHint="#fff"
                 android:textStyle="bold"
                 android:typeface="serif">
-
             </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
