@@ -36,9 +36,7 @@ class LoginActivity : AppCompatActivity()
         firebaseAuth =  FirebaseAuth.getInstance()
 
         btnLogin.setOnClickListener{
-            //signIn()
-            var intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)
+            signIn()
         }
 
         txtRegister.setOnClickListener {
@@ -47,7 +45,7 @@ class LoginActivity : AppCompatActivity()
         }
     }
 
-    /*fun signIn() {
+    fun signIn() {
         var email = txtEmail.text.toString()
         var password = txtPassword.text.toString()
 
@@ -81,7 +79,7 @@ class LoginActivity : AppCompatActivity()
                     }
                 })
         }
-    }*/
+    }
 
     fun forgotPass(view:View)
     {
