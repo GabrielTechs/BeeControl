@@ -24,7 +24,7 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="10dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
             app:srcCompat="@drawable/sinfondob" />
@@ -32,9 +32,12 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_marginBottom="30dp"
+            android:indeterminateDrawable="@drawable/cpb1"
+            android:visibility="invisible"/>
+
 
         <EditText
             android:id="@+id/txtEmail"
@@ -91,7 +94,6 @@
             android:background="@drawable/buttonsstylesnormal"
             android:drawableRight="@drawable/ic_send_black_24dp"
             android:fontFamily="sans-serif"
-            android:onClick="login"
             android:text="Accede"
             android:textColor="#fff" />
 
@@ -102,7 +104,6 @@
             android:layout_margin="1dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:onClick="register"
             android:text="No tienes una cuenta? Registrate"
             android:textColor="#fff"
             android:textSize="18sp"
