@@ -1,1 +1,2 @@
 # BeeControl
+Es un proyecto desarrollado por del INTEC, para una empresa llamada Supliyeso. Dicho proyecto es un control de asistencia mediante una tecnología llamada Beacon, los dispositivos moviles dectetan la señal de Bluetooth que radian los beacon y así mediante la aplicación que lleva por nombre BeeControl podemos saber cuales trabajadores estan ahí presente, cual fue su hora de llegada y salida.
