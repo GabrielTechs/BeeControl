@@ -139,7 +139,6 @@
                 android:background="@drawable/edittextstyle"
                 android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
                 android:gravity="start"
-                android:onClick="clickDataPicker"
                 android:hint="@string/formato_fecha"
                 android:textColorHint="#363732"
                 android:typeface="serif" />
@@ -167,7 +166,7 @@
             android:padding="20dp">
 
             <Button
-                android:id="@+id/btnNext"
+                android:id="@+id/btnCreateTrip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
