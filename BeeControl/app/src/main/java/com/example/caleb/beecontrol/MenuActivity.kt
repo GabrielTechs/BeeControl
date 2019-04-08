@@ -67,7 +67,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(this, AssistanceActivity::class.java))
             }
             R.id.txtRecursosH -> {
-
+                startActivity(Intent(this, EmployeesActivity::class.java))
             }
             R.id.txtConfi-> {
                 startActivity(Intent(this, ProfileActivity::class.java))
