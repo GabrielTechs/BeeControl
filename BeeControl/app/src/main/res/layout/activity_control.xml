@@ -54,7 +54,7 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/txtTripDriverName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
@@ -70,12 +70,13 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtCargoname"
+            android:id="@+id/txtTripTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
             android:drawableRight="@drawable/ic_local_shipping_black_24dp"
             android:singleLine="true" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,8 +108,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttondate"
+            <TextView
+                android:id="@+id/txtTripDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -116,13 +117,12 @@
                 android:background="@drawable/edittextstyle"
                 android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
                 android:gravity="start"
-                android:onClick="clickDataPicker"
                 android:hint="@string/formato_fecha"
                 android:textColorHint="#363732"
                 android:typeface="serif" />
 
             <EditText
-                android:id="@+id/et_mostrar_hora_picker"
+                android:id="@+id/txtTripPartingHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -131,7 +131,7 @@
                 android:drawableRight="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
                 android:hint="@string/formato_hora"
-                android:inputType="time"
+                android:inputType="datetime"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttondate" />
 
@@ -146,7 +146,7 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtAsunto"
+            android:id="@+id/txtTripDescription"
             android:inputType="textMultiLine"
             android:lines="8"
             android:minLines="6"
@@ -165,13 +165,13 @@
             android:padding="20dp">
 
             <Button
-                android:id="@+id/btnNext"
+                android:id="@+id/btnCreateTrip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/buttonsstylesnormal"
-                android:text="Registrar"
+                android:text="Crear viaje"
                 android:textColor="#fff" />
         </LinearLayout>
 
