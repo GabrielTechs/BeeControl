@@ -11,11 +11,11 @@ El único prerequisito para poder utilizar la apliación será, que el individuo
 
 ### Instalación
 Pasos para instalar la aplicación:
-* ```1) - Ser empleado activo de Supliyeso```
-* ```2) - Acceder a Google play```
-* ```3) - Escribir *BeeControl* en el buscador```
-* ```4) - Pulsar el boton de descarga```
-* ```5) - Esperar que la app se descargue y luego si no tiene una cuenta debe de acceder a la pantalla de registro```
+* ```- Ser empleado activo de Supliyeso```
+* ```- Acceder a Google play```
+* ```- Escribir *BeeControl* en el buscador```
+* ```- Pulsar el boton de descarga```
+* ```- Esperar que la app se descargue y luego si no tiene una cuenta debe de acceder a la pantalla de registro```
 
 ## Running the tests
 
