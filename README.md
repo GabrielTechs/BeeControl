@@ -42,9 +42,9 @@ Give an example
 Add additional notes about how to deploy this on a live system
 
 ## Construcción del Software
-*[Android Studio](https://android-studio.uptodown.com/windows) - Para la parte del Front-end.
-*[Kotlin](https://kotlinlang.org/) - Para la parte del Back-end.
-*[Firebase](https://firebase.google.com/?hl=es-419) - Para la base de datos.
+* [Android Studio](https://android-studio.uptodown.com/windows) - Para la parte del Front-end.
+* [Kotlin](https://kotlinlang.org/) - Para la parte del Back-end.
+* [Firebase](https://firebase.google.com/?hl=es-419) - Para la base de datos.
 
 ## Built With
 
