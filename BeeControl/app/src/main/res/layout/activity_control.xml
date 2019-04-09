@@ -124,7 +124,6 @@
                 app:fontFamily="sans-serif-black" />
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,6 +157,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/buttondate" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Asunto"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <EditText
+            android:id="@+id/txtAsunto"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="top|left"
+            android:maxLines="10"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/edittextstyle"
+            android:scrollbars="vertical"
+        />
 
         <LinearLayout
             android:layout_width="match_parent"

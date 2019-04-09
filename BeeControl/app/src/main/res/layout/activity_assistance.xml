@@ -25,6 +25,7 @@
             android:onClick="back"
             android:textColor="#fff" />
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
+
         <TextView
             android:id="@+id/txtassistance"
             android:layout_width="match_parent"
