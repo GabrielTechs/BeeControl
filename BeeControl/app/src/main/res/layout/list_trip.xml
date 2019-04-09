@@ -42,16 +42,17 @@
             android:typeface="serif" />
 
         <TextView
-            android:id="@+id/txtpriority"
+            android:id="@+id/txtTripPartingHour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@id/txtTripId"
-            android:text="Prioridad"
+            android:text="@string/formato_hora"
             android:textSize="18sp"
             android:textColor="#CC000000"
             android:typeface="serif" />
+
 
         <TextView
             android:id="@+id/txtTripDriverName"

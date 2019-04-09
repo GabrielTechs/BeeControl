@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Toast
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 class TripActivity : AppCompatActivity() {
@@ -36,6 +38,22 @@ class TripActivity : AppCompatActivity() {
         tripRecylerView.setHasFixedSize(true)
         tripRecylerView.layoutManager = LinearLayoutManager(this)
         tripRecylerView.adapter = adapter
+
+        adapter!!.setOnItemClickListener { documentSnapshot, position ->
+            val trip = documentSnapshot.toObject(Trip::class.java)
+            val path = documentSnapshot.reference.path
+
+            val intent = Intent(this, TripspecActivity::class.java)
+
+            intent.putExtra("tripDriverName", trip!!.getTripDriverName())
+            intent.putExtra("tripTitle", trip.getTripTitle())
+            intent.putExtra("tripDate", trip.getTripDate())
+            intent.putExtra("tripPartingHour", trip.getTripPartingHour())
+            intent.putExtra("tripEntryHour", trip.getTripEntryHour())
+            intent.putExtra("tripDescription", trip.getTripDescription())
+
+            startActivity(intent)
+        }
     }
 
     fun addtrip(view: View){

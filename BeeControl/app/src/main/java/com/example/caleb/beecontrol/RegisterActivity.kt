@@ -110,6 +110,7 @@ class RegisterActivity : AppCompatActivity() {
                         user["name"] = name
                         user["lastName"] = lastName
                         user["email"] = email
+                        user["role"] = ""
 
                         db.collection("user").document(email)
                                 .set(user)
@@ -123,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
                         // If sign in fails, display a message to the user.
                         progressBar.visibility = View.INVISIBLE
                         Log.w("RegisterFailed", "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(applicationContext, "La autenticacion ha fallado",
+                        Toast.makeText(applicationContext, "Revise los datos introducidos",
                                 Toast.LENGTH_SHORT).show()
                     }
                 })

@@ -153,7 +153,7 @@
                 android:drawableRight="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
                 android:hint="@string/formato_hora"
-                android:inputType="time"
+                android:inputType="datetime"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttondate" />
 
@@ -172,7 +172,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/buttonsstylesnormal"
-                android:text="Siguiente"
+                android:text="Crear viaje"
                 android:textColor="#fff" />
         </LinearLayout>
 

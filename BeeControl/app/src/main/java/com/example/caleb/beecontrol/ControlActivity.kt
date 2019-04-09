@@ -1,6 +1,7 @@
 package com.example.caleb.beecontrol
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +10,7 @@ import android.support.annotation.RequiresApi
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ControlActivity : AppCompatActivity() {
@@ -40,6 +42,8 @@ class ControlActivity : AppCompatActivity() {
 
         btnCreateTrip.setOnClickListener {
             createTrip()
+            var intent = Intent(this, TripActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -51,7 +55,7 @@ class ControlActivity : AppCompatActivity() {
         val day = c.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
             txtTripDate.text = "$mDay/$mMonth/$mYear"
-        }, year, month, day)
+        }, year, month + 1, day)
         dpd.show()
     }
 
@@ -59,6 +63,17 @@ class ControlActivity : AppCompatActivity() {
         var tripTitle: String = txtTripTitle.text.toString()
         var tripDriverName: String = txtTripDriverName.text.toString()
         var tripDate: String = txtTripDate.text.toString()
+        var tripDescription: String = txtTripDescription.text.toString()
+        var tripPartingHour: String = txtTripPartingHour.text.toString()
 
+        if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripDate.isEmpty() ||
+                tripDriverName.isEmpty() || tripPartingHour.isEmpty()){
+            Toast.makeText(this, "Llene los campos restantes", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        tripCollectionRef.add(Trip(tripDate, tripTitle, tripDriverName, tripPartingHour, "", tripDescription, 10))
+
+        Toast.makeText(this, "Viaje agregado!", Toast.LENGTH_SHORT).show()
     }
 }
