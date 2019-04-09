@@ -1,8 +1,6 @@
 # BeeControl
 Es un proyecto desarrollado por del INTEC, para una empresa llamada Supliyeso. Dicho proyecto es un control de asistencia mediante una tecnología llamada Beacon, los dispositivos moviles dectetan la señal de Bluetooth que radian los beacon y así mediante la aplicación que lleva por nombre BeeControl podemos saber cuales trabajadores estan ahí presente, cual fue su hora de llegada y salida.
-## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 ## Puesta en marcha
 Para poder utilizar el software, primero debe ser empleado de la compañia que nos contrató para desarrollar dicho producto, después de eso debe de crear una cuenta con las informaciones básicas ``` por ejemplo: Nombre, Apellido``` cosas relacionadas a informaciones personales. Todos los empleados cuando esten dentro de la empresa debe de tener el Bluetooth encendidos de sus telefonos para así siempre poder monitorearlos.
 
@@ -43,6 +41,11 @@ Give an example
 
 Add additional notes about how to deploy this on a live system
 
+## Construcción del Software
+*[Android Studio](https://android-studio.uptodown.com/windows) - Para la parte del Front-end.
+*[Kotlin](https://kotlinlang.org/) - Para la parte del Back-end.
+*[Firebase](https://firebase.google.com/?hl=es-419) - Para la base de datos.
+
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
@@ -56,7 +59,15 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+## Versiones
+Esta es la primera versión de nuestro software BeeControl, Versión 1.0.0.
 
+## Autores
+* **Raycris Maldonado** - *Front-end*
+* **Gabriel Henríquez** - *Front-end*
+* **Juan José Mariñez** - *Back-end*
+* **Caleb Gómez** - *Back-end*
+* **Jhovanna Monegro** - *QA*
 ## Authors
 
 * **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
