@@ -63,8 +63,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 Esta es la primera versión de nuestro software BeeControl, Versión 1.0.0.
 
 ## Autores
-* **Raycris Maldonado** - *Front-end*
-* **Gabriel Henríquez** - *Front-end*
+* **Raycris Maldonado** - *Front-end* - [Raycris](https://github.com/Raycris)
+* **Gabriel Henríquez** - *Front-end* - [Gabriel](https://github.com/GabrielTechs)
 * **Juan José Mariñez** - *Back-end*
 * **Caleb Gómez** - *Back-end*
 * **Jhovanna Monegro** - *QA*
