@@ -42,8 +42,6 @@ class ControlActivity : AppCompatActivity() {
 
         btnCreateTrip.setOnClickListener {
             createTrip()
-            var intent = Intent(this, TripActivity::class.java)
-            startActivity(intent)
         }
     }
 
@@ -75,5 +73,7 @@ class ControlActivity : AppCompatActivity() {
         tripCollectionRef.add(Trip(tripDate, tripTitle, tripDriverName, tripPartingHour, "", tripDescription, 10))
 
         Toast.makeText(this, "Viaje agregado!", Toast.LENGTH_SHORT).show()
+        var intent = Intent(this, TripActivity::class.java)
+        startActivity(intent)
     }
 }
