@@ -6,31 +6,18 @@ These instructions will get you a copy of the project up and running on your loc
 ## Puesta en marcha
 Para poder utilizar el software, primero debe ser empleado de la compañia que nos contrató para desarrollar dicho producto, después de eso debe de crear una cuenta con las informaciones básicas ``` por ejemplo: Nombre, Apellido``` cosas relacionadas a informaciones personales. Todos los empleados cuando esten dentro de la empresa debe de tener el Bluetooth encendidos de sus telefonos para así siempre poder monitorearlos.
 
-### Prerequisites
+### Prerequisito
 
-What things you need to install the software and how to install them
+El único prerequisito para poder utilizar la apliación será, que el individuo sea un empleado activo de la empresa, no importa el cargo.
 
-```
-Give examples
-```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+### Instalación
+Pasos para instalar la aplicación:
+```1) - Ser empleado activo de Supliyeso```
+```2) - Acceder a Google play```
+```3) - Escribir *BeeControl* en el buscador```
+```4) - Pulsar el boton de descarga```
+```5) - Esperar que la app se descargue y luego si no tiene una cuenta debe de acceder a la pantalla de registro```
 
 ## Running the tests
 
