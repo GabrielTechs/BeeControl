@@ -36,10 +36,34 @@
             android:typeface="serif" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:orientation="vertical"
+        android:background="#FFFDFDFE"
+        >
+
+        <SearchView
+            android:id="@+id/employeesearch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="10"
+            android:background="@drawable/edittextstyle"
+            >
+        </SearchView>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header"
+        android:layout_below="@id/search"
         android:layout_marginTop="5dp">
 
     <android.support.v7.widget.RecyclerView
