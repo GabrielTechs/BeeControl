@@ -28,10 +28,6 @@
                 android:id="@+id/txtSalir"
                 android:icon="@drawable/ic_transfer_within_a_station_black_24dp"
                 android:title="Salir" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
         </menu>
     </item>
 
