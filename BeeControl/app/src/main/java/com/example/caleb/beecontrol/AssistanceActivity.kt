@@ -60,6 +60,11 @@ class AssistanceActivity : AppCompatActivity() {
     fun back(view:View){
         startActivity(Intent(this, MenuActivity::class.java))
     }
+    fun addassistance(view: View){
+        var intent = Intent(this, NewassistanceActivity::class.java)
+        startActivity(intent)
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     fun datePicker() {
         val c = Calendar.getInstance()

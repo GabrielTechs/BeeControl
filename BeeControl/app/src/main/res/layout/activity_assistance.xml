@@ -26,6 +26,17 @@
             android:textColor="#fff" />
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
 
+        <Button
+            android:id="@+id/btnAddAssistance"
+            android:onClick="addassistance"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_person_add_black_24dp" />
+
         <TextView
             android:id="@+id/txtassistance"
             android:layout_width="match_parent"

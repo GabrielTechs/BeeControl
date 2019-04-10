@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".EmployeesActivity"></activity>
+        <activity android:name=".NewassistanceActivity"></activity>
+        <activity android:name=".EmployeesActivity" />
         <activity android:name=".EditprofileActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TripActivity" />

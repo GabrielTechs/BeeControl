@@ -24,7 +24,7 @@
             android:background="@drawable/ic_arrow_back_mainblue_24dp"
             android:onClick="back"
             android:textColor="#fff" />
-
+<!--
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="0dp" />
-
+-->
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
