@@ -23,7 +23,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fondooficina"
+        android:background="@drawable/beaconf3"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="66dp"
         tools:ignore="MissingConstraints">
