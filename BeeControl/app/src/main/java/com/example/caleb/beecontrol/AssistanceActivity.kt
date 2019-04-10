@@ -57,7 +57,7 @@ class AssistanceActivity : AppCompatActivity() {
         recyclerview.adapter = adapter
     }
 
-    fun login(view:View){
+    fun back(view:View){
         startActivity(Intent(this, MenuActivity::class.java))
     }
     @RequiresApi(Build.VERSION_CODES.N)

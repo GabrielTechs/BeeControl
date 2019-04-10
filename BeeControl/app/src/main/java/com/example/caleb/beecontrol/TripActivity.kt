@@ -6,10 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.Toast
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 class TripActivity : AppCompatActivity() {
@@ -55,9 +53,11 @@ class TripActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
+    fun back(view:View){
+        startActivity(Intent(this, MenuActivity::class.java))
+    }
     fun addtrip(view: View){
-        var intent = Intent(this, ControlActivity::class.java)
+        var intent = Intent(this, NewtripActivity::class.java)
         startActivity(intent)
     }
 

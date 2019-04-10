@@ -7,13 +7,14 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ControlActivity : AppCompatActivity() {
+class NewtripActivity : AppCompatActivity() {
 
     lateinit var txtTripDriverName: EditText
     lateinit var txtTripTitle: EditText
@@ -27,7 +28,7 @@ class ControlActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_control)
+        setContentView(R.layout.activity_newtrip)
 
         txtTripDriverName = findViewById(R.id.txtTripDriverName)
         txtTripTitle = findViewById(R.id.txtTripTitle)
@@ -75,5 +76,8 @@ class ControlActivity : AppCompatActivity() {
         Toast.makeText(this, "Viaje agregado!", Toast.LENGTH_SHORT).show()
         var intent = Intent(this, TripActivity::class.java)
         startActivity(intent)
+    }
+    fun back(view: View){
+        startActivity(Intent(this, TripActivity::class.java))
     }
 }

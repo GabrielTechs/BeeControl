@@ -14,14 +14,13 @@
         android:layout_alignParentTop="true"
         android:background="#449DD1"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <Button
             android:id="@+id/btnback"
             style="@android:style/TextAppearance.Large"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_height="40dp"
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:onClick="back"
             android:textColor="#fff" />
@@ -34,7 +33,7 @@
             android:gravity="center"
             android:text="@string/Asistencia"
             android:textColor="#fff"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:typeface="serif" />
     </RelativeLayout>

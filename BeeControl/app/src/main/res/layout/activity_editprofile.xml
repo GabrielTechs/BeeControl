@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DCE1E9">
@@ -8,10 +9,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="100dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnback"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_arrow_back_mainblue_24dp"
+                android:onClick="back"
+                android:textColor="#fff" />
+
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/user_profile_photo"
@@ -70,8 +84,8 @@
                 android:layout_margin="5dp"
                 android:background="#fff"
                 android:elevation="4dp"
-                android:hint="Nombre de empleado"
                 android:padding="20dp"
+                android:hint="Nombre de empleado"
                 android:singleLine="true" />
 
             <EditText

@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DCE1E9"
-    tools:context=".ControlActivity">
+    tools:context=".NewtripActivity">
 
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:background="#449DD1"
         android:orientation="vertical"
@@ -19,8 +19,8 @@
         <Button
             android:id="@+id/button"
             style="@android:style/TextAppearance.Large"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:fontFamily="sans-serif"
             android:onClick="back"
@@ -33,7 +33,7 @@
             android:gravity="center"
             android:text="Registro de viajes"
             android:textColor="#fff"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:typeface="serif" />
 

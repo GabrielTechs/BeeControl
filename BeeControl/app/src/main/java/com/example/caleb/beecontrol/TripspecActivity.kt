@@ -1,7 +1,9 @@
 package com.example.caleb.beecontrol
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.TextView
 
 
@@ -34,5 +36,8 @@ class TripspecActivity : AppCompatActivity() {
         txtTripEntryHour.text = trip.getString("tripEntryHour")
         txtTripDescription.text = trip.getString("tripDescription")
 
+    }
+    fun back(view: View){
+        startActivity(Intent(this, TripActivity::class.java))
     }
 }

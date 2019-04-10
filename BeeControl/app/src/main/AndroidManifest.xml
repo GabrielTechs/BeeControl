@@ -16,14 +16,14 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TripActivity" />
         <activity android:name=".TripspecActivity" />
-        <activity android:name=".mypassword" />
+        <activity android:name=".NewpasswordActivity" />
         <activity android:name=".ForgotmypasswordActivity" />
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".ControlActivity"
+            android:name=".NewtripActivity"
             android:label="@string/title_activity_assistance"
             android:theme="@style/NoActionBar" />
         <activity android:name=".LoginActivity">

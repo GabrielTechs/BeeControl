@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ControlActivity">
+    android:background="#DCE1E9"
+    android:clipToPadding="false"
+    tools:context=".NewtripActivity">
 
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:background="#449DD1"
         android:orientation="vertical"
@@ -18,12 +19,12 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_back_black_24dp"
             style="@android:style/TextAppearance.Large"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_arrow_back_black_24dp"
             android:fontFamily="sans-serif"
-            tools:ignore="OnClick" />
+            android:onClick="back" />
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
             android:layout_width="match_parent"
@@ -31,23 +32,23 @@
             android:gravity="center"
             android:text="Viaje"
             android:textColor="#fff"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:typeface="monospace"/>
+            android:typeface="monospace" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_below="@id/header"
-        android:padding="10dp"
-        >
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Nombre del camionero"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
@@ -58,13 +59,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
             android:drawableRight="@drawable/ic_person_btnblue_24dp"
+            android:elevation="4dp"
             android:singleLine="true" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Nombre de la carga"
-            android:layout_marginTop="20dp"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -74,12 +76,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
             android:drawableRight="@drawable/ic_local_shipping_black_24dp"
+            android:elevation="4dp"
             android:singleLine="true" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Fecha"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
@@ -90,95 +93,96 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
             android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
+            android:elevation="4dp"
             android:gravity="start"
             android:text="@string/formato_fecha"
             android:textColorHint="#fff"
             android:typeface="serif" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="5dp"
-                android:text="Hora entrada"
-                android:textSize="18sp"
-                app:fontFamily="sans-serif-black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginLeft="5dp"
                 android:text="Hora salida"
                 android:textSize="18sp"
                 app:fontFamily="sans-serif-black" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="Hora entrada"
+                android:textSize="18sp"
+                app:fontFamily="sans-serif-black" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#DCE1E9"
+            android:clipToPadding="false"
+            android:elevation="4dp"
             android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtTripEntryHour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/edittextstyle"
-                android:drawableRight="@drawable/ic_access_time_black_24dp"
-                android:ems="10"
-                android:hint="@string/formato_hora"
-                android:inputType="time"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttondate" />
 
             <TextView
                 android:id="@+id/txtTripPartingHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="5dp"
                 android:background="@drawable/edittextstyle"
                 android:drawableRight="@drawable/ic_access_time_black_24dp"
+                android:elevation="4dp"
                 android:ems="10"
                 android:hint="@string/formato_hora"
                 android:inputType="time"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttondate" />
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/txtTripEntryHour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittextstyle"
+                android:drawableRight="@drawable/ic_access_time_black_24dp"
+                android:elevation="4dp"
+                android:ems="10"
+                android:hint="@string/formato_hora"
+                android:inputType="time"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Asunto"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
         <EditText
             android:id="@+id/txtTripDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittextstyle"
+            android:elevation="4dp"
+            android:gravity="top|left"
             android:inputType="textMultiLine"
             android:lines="8"
-            android:minLines="6"
-            android:gravity="top|left"
             android:maxLines="10"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:background="@drawable/edittextstyle"
-            android:scrollbars="vertical"
-            />
+            android:minLines="6"
+            android:scrollbars="vertical" />
 
     </LinearLayout>
 

@@ -129,6 +129,8 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 })
         }
-
+    }
+    fun back(view: View){
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }
