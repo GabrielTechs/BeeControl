@@ -19,7 +19,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
-
+<!--
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
             app:srcCompat="@drawable/sinfondob" />
-
+-->
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
