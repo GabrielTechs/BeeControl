@@ -33,7 +33,6 @@
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
-            android:layout_weight="1"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_playlist_add_black_24dp" />
         <TextView

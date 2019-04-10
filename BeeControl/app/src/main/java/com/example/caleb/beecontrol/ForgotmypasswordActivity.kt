@@ -3,6 +3,7 @@ package com.example.caleb.beecontrol
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 
 class ForgotmypasswordActivity : AppCompatActivity()
@@ -17,8 +18,11 @@ class ForgotmypasswordActivity : AppCompatActivity()
         btnSendEmail = findViewById(R.id.btnSendEmail)
 
         btnSendEmail.setOnClickListener {
-            var intent = Intent(this, mypassword::class.java)
+            var intent = Intent(this, NewpasswordActivity::class.java)
             startActivity(intent)
         }
+    }
+    fun back(view: View){
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

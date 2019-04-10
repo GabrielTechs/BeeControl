@@ -24,7 +24,8 @@
             android:layout_weight="6"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_arrow_back_black_24dp"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:onClick="back"/>
         <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
             android:id="@+id/txtempleados"

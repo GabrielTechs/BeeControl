@@ -70,8 +70,8 @@
                 android:layout_margin="5dp"
                 android:background="#fff"
                 android:elevation="4dp"
-                android:hint="Nombre de empleado"
                 android:padding="20dp"
+                android:hint="Nombre de empleado"
                 android:singleLine="true" />
 
             <EditText
