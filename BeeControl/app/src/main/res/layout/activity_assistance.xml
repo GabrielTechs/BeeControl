@@ -44,9 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
-        android:background="#DCE1E9"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:clipToPadding="false"
+        >
 
         <SearchView
             android:id="@+id/user"
@@ -80,22 +81,18 @@
                 android:typeface="serif" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/buttondate"
+        <TextView
+            android:id="@+id/txtAssistanceDate"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="#fff"
-            android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
             android:elevation="4dp"
-            android:gravity="start"
-            android:hint="Fecha"
-            android:onClick="clickDataPicker"
+            android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
+            android:hint="@string/formato_fecha"
             android:padding="15dp"
-            android:stateListAnimator="@null"
             android:textColorHint="#363732"
-            android:textSize="17dp"
-            android:translationZ="4dp" />
+            android:typeface="serif" />
 
     </LinearLayout>
 
@@ -104,8 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_margin="5dp"
         android:background="#fff"
         android:elevation="4dp"
         android:orientation="horizontal">
