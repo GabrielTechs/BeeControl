@@ -1,17 +1,25 @@
 # BeeControl
-Es un proyecto desarrollado por del INTEC, para una empresa llamada Supliyeso. Dicho proyecto es un control de asistencia mediante una tecnología llamada Beacon, los dispositivos moviles dectetan la señal de Bluetooth que radian los beacon y así mediante la aplicación que lleva por nombre BeeControl podemos saber cuales trabajadores estan ahí presente, cual fue su hora de llegada y salida.
+Es un proyecto desarrollado por estudiantes del INTEC, para una empresa llamada Supliyeso. Dicho proyecto es un control de asistencia mediante una tecnología llamada Beacon, los dispositivos móviles dectetan la señal de Bluetooth que emiten los beacon y así mediante la aplicación que lleva por nombre BeeControl podemos saber cuales trabajadores estan ahí presente, cual fue su hora de llegada y salida.
 
 ## Puesta en marcha
 Para poder utilizar el software, primero debe ser empleado de la compañia que nos contrató para desarrollar dicho producto, después de eso debe de crear una cuenta con las informaciones básicas ``` por ejemplo: Nombre, Apellido``` cosas relacionadas a informaciones personales. Todos los empleados cuando esten dentro de la empresa debe de tener el Bluetooth encendidos de sus telefonos para así siempre poder monitorearlos.
 
 ### Prerequisito
 
-El único prerequisito para poder utilizar la apliación será, que el individuo sea un empleado activo de la empresa, no importa el cargo.
+El único prerequisito para poder utilizar la apliación será, que el individuo sea un empleado activo de la empresa, no importa el cargo. 
+* ```- Ser empleado activo de Supliyeso```
+* ```- Versión del Bluetooth 5.0```
+* ```- Sistema operativo Android```
+* ```- Android 5.0 (LOLLIPOP) Nivel de API:21 o mayor```
+* ```- Bluetooth encendido```
+* ```- GPS encendido```
+
+
 
 
 ### Instalación
 Pasos para instalar la aplicación:
-* ```- Ser empleado activo de Supliyeso```
+
 * ```- Acceder a Google play```
 * ```- Escribir *BeeControl* en el buscador```
 * ```- Pulsar el boton de descarga```
@@ -44,13 +52,9 @@ Add additional notes about how to deploy this on a live system
 ## Construcción del Software
 * [Android Studio](https://android-studio.uptodown.com/windows) - Para la parte del Front-end.
 * [Kotlin](https://kotlinlang.org/) - Para la parte del Back-end.
+* [Java](https://www.java.com/es/) - Para Back-end.
 * [Firebase](https://firebase.google.com/?hl=es-419) - Para la base de datos.
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [XML](https://www.xml.com/) - Para código en android studio(Front-end).
 
 ## Contributing
 
@@ -59,8 +63,8 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-## Versiones
-Esta es la primera versión de nuestro software BeeControl, Versión 1.0.0.
+## Control de versiones
+Utilizamos Github y Gitkraken para el control de versiones. Para ver la version disponible ir a nuestro repositorio [Hacer clik aquí](https://github.com/GabrielTechs/BeeControl)
 
 ## Autores
 * **Raycris Maldonado** - *Front-end* - [Raycris](https://github.com/Raycris)
@@ -68,18 +72,3 @@ Esta es la primera versión de nuestro software BeeControl, Versión 1.0.0.
 * **Juan José Mariñez** - *Back-end* - [Juan José](https://github.com/JMarinez)
 * **Caleb Gómez** - *Back-end*
 * **Jhovanna Monegro** - *QA*
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
