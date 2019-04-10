@@ -8,10 +8,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="100dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnback"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_arrow_back_mainblue_24dp"
+                android:onClick="back"
+                android:textColor="#fff" />
+
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/user_profile_photo"
