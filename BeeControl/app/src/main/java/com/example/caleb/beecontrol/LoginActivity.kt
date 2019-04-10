@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity()
         firebaseAuth =  FirebaseAuth.getInstance()
 
         btnLogin.setOnClickListener{
-            //signIn()
+            signIn()
             var intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }
@@ -69,8 +69,8 @@ class LoginActivity : AppCompatActivity()
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         progressBar.visibility = View.INVISIBLE
-                        Log.d("SignInSuccess", "signInWithEmail:success")
-                        var intent = Intent(this, MenuActivity::class.java)
+
+                        val intent = Intent(this, MenuActivity::class.java)
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.

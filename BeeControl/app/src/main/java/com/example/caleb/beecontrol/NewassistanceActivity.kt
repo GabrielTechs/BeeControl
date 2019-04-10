@@ -56,9 +56,9 @@ class NewassistanceActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun saveAssistance(){
-        var employeeName: String = txtEmployeeName.text.toString()
-        var assistDate: String = txtAssistanceDate.text.toString()
-        var status: String = spinStatus.selectedItem.toString()
+        val employeeName: String = txtEmployeeName.text.toString()
+        val assistDate: String = txtAssistanceDate.text.toString()
+        val status: String = spinStatus.selectedItem.toString()
 
         if(employeeName.trim().isEmpty() || assistDate.trim().isEmpty()){
             Toast.makeText(this, "Llene los campos restantes", Toast.LENGTH_SHORT).show()
@@ -68,7 +68,7 @@ class NewassistanceActivity : AppCompatActivity() {
         assistanceCollectionRef.add(Assistance(employeeName, status, assistDate))
 
         Toast.makeText(this, "Assistencia guardada!", Toast.LENGTH_SHORT).show()
-        var intent = Intent(this, AssistanceActivity::class.java)
+        val intent = Intent(this, AssistanceActivity::class.java)
         startActivity(intent)
     }
 }
