@@ -67,6 +67,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtEmployeeName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -77,6 +78,7 @@
                 android:text="Nombre de empleado" />
 
             <TextView
+                android:id="@+id/txtEmployeeLastName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -89,6 +91,7 @@
                 android:text="Apellido" />
 
             <TextView
+                android:id="@+id/txtEmployeeRole"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -99,6 +102,7 @@
                 android:text="Puesto" />
 
             <TextView
+                android:id="@+id/txtEmployeeEmail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

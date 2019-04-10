@@ -33,7 +33,7 @@
             android:elevation="5dp">
 
             <TextView
-                android:id="@+id/txtUsername"
+                android:id="@+id/txtEmployeeFullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
@@ -43,7 +43,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/txtUserid"
+                android:id="@+id/txtEmployeeId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#363732"
