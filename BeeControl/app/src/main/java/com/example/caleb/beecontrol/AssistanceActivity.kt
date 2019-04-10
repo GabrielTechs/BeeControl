@@ -10,10 +10,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_assistance.*
 
 
 class AssistanceActivity : AppCompatActivity() {
@@ -21,13 +23,23 @@ class AssistanceActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val AssistancebookRef = db.collection("Assistance")
 
+    lateinit var txtAssistanceDate: TextView
+
     private var adapter: AssistanceAdapter? = null
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assistance)
         setUpRecyclerView()
+
+        txtAssistanceDate = findViewById(R.id.txtAssistanceDate)
+
+        txtAssistanceDate.setOnClickListener{
+            datePicker()
+        }
+
     }
 
     private fun setUpRecyclerView() {
@@ -49,16 +61,14 @@ class AssistanceActivity : AppCompatActivity() {
         startActivity(Intent(this, MenuActivity::class.java))
     }
     @RequiresApi(Build.VERSION_CODES.N)
-    fun clickDataPicker(view: View) {
+    fun datePicker() {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
-
-        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            // Display Selected date in Toast
-            Toast.makeText(this, """$dayOfMonth - ${monthOfYear + 1} - $year""", Toast.LENGTH_LONG).show()
-        }, year, month, day)
+        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+            txtAssistanceDate.text = "$mDay/$mMonth/$mYear"
+        }, year, month + 1, day)
         dpd.show()
     }
 
