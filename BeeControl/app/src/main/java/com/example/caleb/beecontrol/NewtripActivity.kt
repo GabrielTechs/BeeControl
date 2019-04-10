@@ -77,6 +77,7 @@ class NewtripActivity : AppCompatActivity() {
         var intent = Intent(this, TripActivity::class.java)
         startActivity(intent)
     }
+
     fun back(view: View){
         startActivity(Intent(this, TripActivity::class.java))
     }

@@ -36,6 +36,10 @@ class AssistanceActivity : AppCompatActivity() {
 
         txtAssistanceDate = findViewById(R.id.txtAssistanceDate)
 
+        btnAddAssistance.setOnClickListener {
+            val intent = Intent(this, NewassistanceActivity::class.java)
+            startActivity(intent)
+        }
         txtAssistanceDate.setOnClickListener{
             datePicker()
         }
@@ -60,10 +64,7 @@ class AssistanceActivity : AppCompatActivity() {
     fun back(view:View){
         startActivity(Intent(this, MenuActivity::class.java))
     }
-    fun addassistance(view: View){
-        var intent = Intent(this, NewassistanceActivity::class.java)
-        startActivity(intent)
-    }
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun datePicker() {

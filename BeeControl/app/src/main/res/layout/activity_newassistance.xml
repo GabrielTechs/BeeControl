@@ -55,7 +55,7 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/txtEmployeeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
@@ -68,31 +68,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Correo electronico"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-black" />
-
-        <EditText
-            android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:drawableRight="@drawable/ic_mail_outline_mainblue_24dp"
-            android:elevation="4dp"
-            android:padding="15dp"
-            android:singleLine="true" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="Fecha"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
         <TextView
-            android:id="@+id/txtAssistanceDate"
+            android:id="@+id/txtAssistDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
@@ -124,7 +105,7 @@
             android:orientation="vertical">
 
             <Spinner
-                android:id="@+id/Condition"
+                android:id="@+id/AssistStatus"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
