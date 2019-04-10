@@ -138,13 +138,14 @@
             android:id="@+id/txtTripDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="@drawable/edittextstyle"
             android:elevation="4dp"
             android:inputType="textMultiLine"
-            android:lines="8"
-            android:maxLines="10"
-            android:minLines="6"
-            android:scrollbars="vertical" />
+            android:lines="6"
+            android:maxLines="4"
+            android:minLines="4"
+            android:gravity="top|left"
+            android:scrollbars="vertical"/>
 
         <Button
             android:id="@+id/btnCreateTrip"
