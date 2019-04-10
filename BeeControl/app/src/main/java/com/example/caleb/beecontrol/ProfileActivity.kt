@@ -24,10 +24,12 @@ class ProfileActivity : AppCompatActivity() {
 
         val employee = intent.extras
 
-        txtEmployeeName.text = employee!!.getString("name")
+        if(employee != null){
+        txtEmployeeName.text = employee.getString("name")
         txtEmployeeLastName.text = employee.getString("lastName")
         txtEmployeeRole.text = employee.getString("role")
         txtEmployeeEmail.text = employee.getString("email")
+        }
         
     }
     fun editProf(view: View){

@@ -57,7 +57,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onBeaconServiceConnect() {
         val myBeaconNamespaceId = Identifier.parse("1ef930cc1f0e886be663")
-        val myBeaconInstanceId = Identifier.parse("000000000000")
+        val myBeaconInstanceId = Identifier.parse("123456780099")
         val region = Region("my-beacon-region", myBeaconNamespaceId, myBeaconInstanceId, null)
         mBeaconManager.addMonitorNotifier(this)
         try {
