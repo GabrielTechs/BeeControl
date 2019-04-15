@@ -37,8 +37,6 @@ class LoginActivity : AppCompatActivity()
 
         btnLogin.setOnClickListener{
             signIn()
-            var intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)
         }
 
         txtRegister.setOnClickListener {
@@ -69,7 +67,6 @@ class LoginActivity : AppCompatActivity()
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         progressBar.visibility = View.INVISIBLE
-
                         val intent = Intent(this, MenuActivity::class.java)
                         startActivity(intent)
                     } else {
