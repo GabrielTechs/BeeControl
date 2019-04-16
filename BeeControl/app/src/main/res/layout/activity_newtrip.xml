@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCE1E9"
+    tools:context=".NewtripActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="#449DD1"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/button"
+            style="@android:style/TextAppearance.Large"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:fontFamily="sans-serif"
+            android:onClick="back"
+            android:textColor="#fff"
+            tools:ignore="OnClick" />
+        <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Registro de viajes"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre_del_camionero"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <EditText
+            android:id="@+id/txtTripDriverName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:drawableRight="@drawable/ic_person_btnblue_24dp"
+            android:elevation="4dp"
+            android:padding="15dp"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Nombre de la carga"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <EditText
+            android:id="@+id/txtTripTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:drawableRight="@drawable/ic_local_shipping_black_24dp"
+            android:elevation="4dp"
+            android:padding="15dp"
+            android:singleLine="true" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Fecha"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/txtTripDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
+            android:elevation="4dp"
+            android:gravity="start"
+            android:hint="@string/formato_fecha"
+            android:padding="15dp"
+            android:textColorHint="#363732"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Hora"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <EditText
+            android:id="@+id/txtTripPartingHour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:drawableRight="@drawable/ic_access_time_black_24dp"
+            android:elevation="4dp"
+            android:ems="10"
+            android:hint="@string/formato_hora"
+            android:inputType="datetime"
+            android:padding="15dp"
+            android:textColorHint="#363732">
+        </EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Asunto"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <EditText
+            android:id="@+id/txtTripDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittextstyle"
+            android:elevation="4dp"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:maxLines="4"
+            android:minLines="4"
+            android:gravity="top|left"
+            android:scrollbars="vertical"/>
+
+        <Button
+            android:id="@+id/btnCreateTrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/buttonsstylesnormal"
+            android:text="Crear viaje"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.caleb.beecontrol">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".NewassistanceActivity"></activity>
+        <activity android:name=".EmployeesActivity" />
+        <activity android:name=".EditprofileActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".TripActivity" />
+        <activity android:name=".TripspecActivity" />
+        <activity android:name=".NewpasswordActivity" />
+        <activity android:name=".ForgotmypasswordActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".NewtripActivity"
+            android:label="@string/title_activity_assistance"
+            android:theme="@style/NoActionBar" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +34,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".AssistanceActivity" />
     </application>
 
 </manifest>
