@@ -14,9 +14,6 @@ El único prerequisito para poder utilizar la apliación será, que el individuo
 * ```- Bluetooth encendido```
 * ```- GPS encendido```
 
-
-
-
 ### Instalación
 Pasos para instalar la aplicación:
 
@@ -25,29 +22,6 @@ Pasos para instalar la aplicación:
 * ```- Pulsar el boton de descarga```
 * ```- Esperar que la app se descargue y luego si no tiene una cuenta debe de acceder a la pantalla de registro```
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Construcción del Software
 * [Android Studio](https://android-studio.uptodown.com/windows) - Para la parte del Front-end.
@@ -56,13 +30,6 @@ Add additional notes about how to deploy this on a live system
 * [Firebase](https://firebase.google.com/?hl=es-419) - Para la base de datos.
 * [XML](https://www.xml.com/) - Para código en android studio(Front-end).
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 ## Control de versiones
 Utilizamos Github y Gitkraken para el control de versiones. Para ver la version disponible ir a nuestro repositorio [Hacer clik aquí](https://github.com/GabrielTechs/BeeControl)
 
