@@ -6,7 +6,7 @@ Para poder utilizar el software, primero debe ser empleado de la compañia que n
 
 ### Prerequisito
 
-El único prerequisito para poder utilizar la apliación será, que el individuo sea un empleado activo de la empresa, no importa el cargo. 
+El único prerrequisito para poder utilizar la apliación será, que el individuo sea un empleado activo de la empresa, no importa el cargo. 
 * ```- Ser empleado activo de Supliyeso```
 * ```- Versión del Bluetooth 5.0```
 * ```- Sistema operativo Android```
@@ -19,7 +19,7 @@ Pasos para instalar la aplicación:
 
 * ```- Acceder a Google play```
 * ```- Escribir *BeeControl* en el buscador```
-* ```- Pulsar el boton de descarga```
+* ```- Pulsar el botón de descarga```
 * ```- Esperar que la app se descargue y luego si no tiene una cuenta debe de acceder a la pantalla de registro```
 
 
