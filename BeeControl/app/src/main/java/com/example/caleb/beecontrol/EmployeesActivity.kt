@@ -39,7 +39,7 @@ class EmployeesActivity : AppCompatActivity() {
         employeeRecyclerView.layoutManager = LinearLayoutManager(this)
         employeeRecyclerView.adapter = adapter
 
-        adapter!!.setOnItemClickListener { documentSnapshot, position ->
+        adapter.setOnItemClickListener { documentSnapshot, position ->
             val employee = documentSnapshot.toObject(Employee::class.java)
 
             val intent = Intent(this,ProfileActivity::class.java)
@@ -55,11 +55,11 @@ class EmployeesActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        adapter!!.startListening()
+        adapter.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-        adapter!!.stopListening()
+        adapter.stopListening()
     }
 }

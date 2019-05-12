@@ -11,74 +11,49 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
 import org.altbeacon.beacon.*
 import org.altbeacon.beacon.BeaconParser
 import org.altbeacon.beacon.BeaconManager
 
-class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, BeaconConsumer,
-        MonitorNotifier {
+class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     protected val TAG = "MenuActivity"
-    private val PERMISSION_REQUEST_COARSE_LOCATION = 1
-    private val REQUEST_ENABLE_BLUETOOTH = 1
-    private val DEFAULT_SCAN_PERIOD_MS = 6000L
-    private val ALL_BEACONS_REGION = "AllBeaconsRegion"
-    lateinit private var mBeaconManager: BeaconManager
-    lateinit private var mRegion: Region
+    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         setSupportActionBar(toolbar)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        val headerLayout = nav_view.getHeaderView(0)
+
+        var account: TextView = headerLayout.findViewById(R.id.userEmail)
+
+        account.text = firebaseAuth.currentUser?.email.toString()
+
         nav_view.setNavigationItemSelectedListener(this)
     }
 
-    override fun onResume(){
-        super.onResume()
-        mBeaconManager = BeaconManager.getInstanceForApplication(this)
-        // Detect the main Eddystone-UID frame:
-        mBeaconManager.beaconParsers.add(BeaconParser().setBeaconLayout(BeaconParser.EDDYSTONE_UID_LAYOUT))
-        mBeaconManager.bind(this)
-    }
+    override fun onStart() {
+        super.onStart()
+        val user = firebaseAuth.currentUser
 
-    override fun onBeaconServiceConnect() {
-        val myBeaconNamespaceId = Identifier.parse("1ef930cc1f0e886be663")
-        val myBeaconInstanceId = Identifier.parse("123456780099")
-        val region = Region("my-beacon-region", myBeaconNamespaceId, myBeaconInstanceId, null)
-        mBeaconManager.addMonitorNotifier(this)
-        try {
-            mBeaconManager.startMonitoringBeaconsInRegion(region)
+        if(user != null){
+            Toast.makeText(applicationContext, user.email, Toast.LENGTH_SHORT).show()
         }
-        catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-    }
-
-    override fun didDetermineStateForRegion(p0: Int, p1: Region?) {
-
-    }
-
-    override fun didEnterRegion(p0: Region?) {
-        Toast.makeText(this, "I detected a beacon in the region with namespace id " + p0!!.id1 +
-                " and instance id: " + p0.id2, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun didExitRegion(p0: Region?) {
-
-    }
-
-    public override fun onPause() {
-        super.onPause()
-        mBeaconManager.unbind(this)
     }
 
     override fun onBackPressed() {

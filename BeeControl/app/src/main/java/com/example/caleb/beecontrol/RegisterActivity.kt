@@ -110,7 +110,7 @@ class RegisterActivity : AppCompatActivity() {
                         user["name"] = name
                         user["lastName"] = lastName
                         user["email"] = email
-                        user["role"] = ""
+                        user["role"] = "Empleado"
 
                         db.collection("user").document(email)
                                 .set(user)
