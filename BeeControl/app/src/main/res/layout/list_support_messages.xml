@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:elevation="4dp"
+    >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/edittextstyle">
+
+        <TextView
+            android:id="@+id/txtSupportMessageDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSupportMessageName"
+            android:text="@string/formato_fecha"
+            android:textSize="15sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/txtSupportMessageId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="000000"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/txtSupportMessageName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="Empleado"
+            android:textSize="18sp"
+            android:textColor="#B3000000"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/txtSupportMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSupportMessageDate"
+            android:gravity="start"
+            android:text="Asunto"
+            android:textSize="18sp"
+            android:textColor="#B3000000"
+            android:typeface="serif" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -24,7 +24,7 @@
 
     <item android:title="Otras opciones">
         <menu>
-            <item android:id="@+id/ayuda"
+            <item android:id="@+id/txtAyuda"
                 android:icon="@drawable/ic_help_black_24dp"
                 android:title="Ayuda">
 

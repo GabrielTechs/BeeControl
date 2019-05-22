@@ -8,13 +8,18 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.view.View
-import kotlinx.android.synthetic.main.activity_newassistance.*
+import kotlinx.android.synthetic.main.activity_support.*
 
-class NewassistanceActivity : AppCompatActivity() {
+class SupportActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_newassistance)
+        setContentView(R.layout.activity_support)
+
+        txtSupportDate.setOnClickListener{
+            datePicker()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -24,12 +29,12 @@ class NewassistanceActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-            txtAssistanceDate.text = "$mDay/$mMonth/$mYear"
+            txtSupportDate.text = "$mDay/$mMonth/$mYear"
         }, year, month + 1, day)
         dpd.show()
     }
 
     fun back(view: View){
-        startActivity(Intent(this, AssistanceActivity::class.java))
+        startActivity(Intent(this, MenuActivity::class.java))
     }
 }

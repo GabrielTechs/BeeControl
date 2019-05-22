@@ -36,6 +36,17 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:typeface="serif" />
+        <Button
+            android:id="@+id/supportmessages"
+            android:onClick="seemessages"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_recent_support_messages_24dp" />
+
     </RelativeLayout>
 
     <RelativeLayout

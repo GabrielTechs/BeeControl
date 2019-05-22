@@ -5,17 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class EmployeesActivity : AppCompatActivity() {
+class SupportMessagesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_employees)
+        setContentView(R.layout.activity_support_messages)
     }
     fun back(view: View){
-        startActivity(Intent(this, MenuActivity::class.java))
-    }
-    fun seemessages(view: View){
-        var intent = Intent(this, SupportMessagesActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, EmployeesActivity::class.java))
     }
 }
