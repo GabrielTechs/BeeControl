@@ -62,4 +62,8 @@ class EmployeesActivity : AppCompatActivity() {
         super.onStop()
         adapter.stopListening()
     }
+    fun seemessages(view: View){
+        var intent = Intent(this, SupportMessagesActivity::class.java)
+        startActivity(intent)
+    }
 }

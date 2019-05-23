@@ -10,6 +10,7 @@ import android.support.annotation.RequiresApi
 import android.view.View
 import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_newassistance.*
 
 class NewassistanceActivity : AppCompatActivity() {
 
@@ -38,6 +39,19 @@ class NewassistanceActivity : AppCompatActivity() {
             saveAssistance()
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun datePicker() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+            txtAssistanceDate.text = "$mDay/$mMonth/$mYear"
+        }, year, month + 1, day)
+        dpd.show()
+    }
+
     fun back(view: View){
         startActivity(Intent(this, AssistanceActivity::class.java))
     }

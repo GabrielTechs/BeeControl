@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Nueva Asistencia"
+            android:text="Soporte"
             android:textColor="#fff"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -55,7 +55,7 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtEmployeeName"
+            android:id="@+id/txtSupportName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
@@ -68,12 +68,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="Correo electronico"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <EditText
+            android:id="@+id/txtSupportEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:drawableRight="@drawable/ic_mail_outline_mainblue_24dp"
+            android:elevation="4dp"
+            android:padding="15dp"
+            android:singleLine="true" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Fecha"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
         <TextView
-            android:id="@+id/txtAssistDate"
+            android:id="@+id/txtSupportDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
@@ -86,46 +105,35 @@
             android:typeface="serif" />
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Condicion"
+            android:text="Asunto"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
-        <LinearLayout
-            android:id="@+id/spinner"
+        <TextView
+            android:id="@+id/txtSupportDescription"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/search"
-            android:layout_marginTop="10dp"
-            android:background="#fff"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/InBoxColorSize"
+            android:background="@drawable/edittextstyle"
             android:elevation="4dp"
-            android:orientation="vertical">
-
-            <Spinner
-                android:id="@+id/AssistStatus"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/colorPrimary"
-                android:clickable="false"
-                android:entries="@array/assistance_array"
-                android:gravity="start"
-                android:padding="10dp"
-                android:textColorHint="#363732"
-                android:typeface="serif" />
-        </LinearLayout>
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:maxLines="4"
+            android:minLines="4"
+            android:gravity="top|left"
+            android:scrollbars="vertical"/>
 
         <Button
-            android:id="@+id/btnSaveAssistance"
+            android:id="@+id/btnCreateSupport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:background="@drawable/buttonsstylesnormal"
-            android:text="Guardar"
+            android:text="Enviar Mensaje"
             android:textColor="#fff" />
 
     </LinearLayout>

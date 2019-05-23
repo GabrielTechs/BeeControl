@@ -22,8 +22,13 @@
             android:title="Configuracion" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Otras opciones">
         <menu>
+            <item android:id="@+id/txtAyuda"
+                android:icon="@drawable/ic_help_black_24dp"
+                android:title="Ayuda">
+
+            </item>
             <item
                 android:id="@+id/txtSalir"
                 android:icon="@drawable/ic_transfer_within_a_station_black_24dp"

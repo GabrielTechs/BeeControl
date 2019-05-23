@@ -138,10 +138,13 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.txtConfi-> {
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
+            R.id.txtAyuda ->
+            {
+                startActivity(Intent(this, SupportActivity::class.java))
+            }
             R.id.txtSalir ->
             {
                 startActivity(Intent(this, LoginActivity::class.java))
-
             }
         }
 
