@@ -10,19 +10,12 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_register.*
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.AuthResult
-import com.google.android.gms.tasks.Task
-import android.support.annotation.NonNull
 import com.google.android.gms.tasks.OnCompleteListener
-import android.R.attr.password
-import android.support.v4.app.FragmentActivity
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
-
-
+import com.google.firebase.firestore.FieldValue
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -130,6 +123,14 @@ class RegisterActivity : AppCompatActivity() {
                 })
         }
     }
+
+    fun incrementId(view: View) {
+        val db = FirebaseFirestore.getInstance()
+        val path = db.collection("EmployeeID").document("Counter")
+
+        //path.update("Id", FieldValue.increment(1))
+    }
+
     fun back(view: View){
         startActivity(Intent(this, LoginActivity::class.java))
     }

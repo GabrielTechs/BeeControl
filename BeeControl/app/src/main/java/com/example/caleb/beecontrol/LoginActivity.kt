@@ -40,14 +40,14 @@ class LoginActivity : AppCompatActivity()
         }
 
         txtRegister.setOnClickListener {
-            var intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
 
     fun signIn() {
-        var email = txtEmail.text.toString()
-        var password = txtPassword.text.toString()
+        val email = txtEmail.text.toString()
+        val password = txtPassword.text.toString()
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(applicationContext, "Introdusca su email", Toast.LENGTH_LONG).show()

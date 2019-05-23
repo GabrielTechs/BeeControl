@@ -5,7 +5,13 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
+import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
+import com.estimote.proximity_sdk.api.ProximityObserverBuilder
+import com.estimote.proximity_sdk.api.ProximityZoneBuilder
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +27,37 @@ class TripActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trip)
         setUpRecyclerView()
+
+        val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
+        val proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
+                .withBalancedPowerMode()
+                .onError { /* handle errors here */ }
+                .build()
+
+        val zone = ProximityZoneBuilder()
+                .forTag("esdras-mateo-s-proximity-f-b7w")
+                .inFarRange()
+                .onEnter { Toast.makeText(applicationContext, "Entraste a la zona", Toast.LENGTH_LONG).show()}
+                .onExit { Toast.makeText(applicationContext, "Saliste a la zona", Toast.LENGTH_LONG).show()}
+                .onContextChange {/* do something here */}
+                .build()
+
+        RequirementsWizardFactory
+                .createEstimoteRequirementsWizard()
+                .fulfillRequirements(this,
+                        // onRequirementsFulfilled
+                        {
+                            Log.d("app", "requirements fulfilled")
+                            proximityObserver.startObserving(zone)
+                        },
+                        // onRequirementsMissing
+                        { requirements ->
+                            Log.e("app", "requirements missing: $requirements")
+                        }
+                        // onError
+                ) { throwable ->
+                    Log.e("app", "requirements error: $throwable")
+                }
     }
 
     private fun setUpRecyclerView() {
