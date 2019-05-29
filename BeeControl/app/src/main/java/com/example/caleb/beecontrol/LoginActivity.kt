@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity()
                 .inNearRange()
                 .onEnter { context ->
 
-                    var beacon = context.attachments["coconut"]
+                    var beacon = context.attachments["beecontrol-afk"]
                     Toast.makeText(applicationContext, "Welcome to $beacon's zone", Toast.LENGTH_LONG).show()
                     Log.d("app", "Welcome to $beacon's zone")
                     null
