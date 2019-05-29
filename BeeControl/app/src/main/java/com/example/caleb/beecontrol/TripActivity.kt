@@ -27,37 +27,6 @@ class TripActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trip)
         setUpRecyclerView()
-
-        val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
-        val proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
-                .withBalancedPowerMode()
-                .onError { /* handle errors here */ }
-                .build()
-
-        val zone = ProximityZoneBuilder()
-                .forTag("esdras-mateo-s-proximity-f-b7w")
-                .inFarRange()
-                .onEnter { Toast.makeText(applicationContext, "Entraste a la zona", Toast.LENGTH_LONG).show()}
-                .onExit { Toast.makeText(applicationContext, "Saliste a la zona", Toast.LENGTH_LONG).show()}
-                .onContextChange {/* do something here */}
-                .build()
-
-        RequirementsWizardFactory
-                .createEstimoteRequirementsWizard()
-                .fulfillRequirements(this,
-                        // onRequirementsFulfilled
-                        {
-                            Log.d("app", "requirements fulfilled")
-                            proximityObserver.startObserving(zone)
-                        },
-                        // onRequirementsMissing
-                        { requirements ->
-                            Log.e("app", "requirements missing: $requirements")
-                        }
-                        // onError
-                ) { throwable ->
-                    Log.e("app", "requirements error: $throwable")
-                }
     }
 
     private fun setUpRecyclerView() {

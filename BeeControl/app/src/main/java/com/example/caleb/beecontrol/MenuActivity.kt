@@ -35,28 +35,13 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     protected val TAG = "MenuActivity"
     lateinit var firebaseAuth: FirebaseAuth
-    lateinit var proximityObserver: ProximityObserver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         setSupportActionBar(toolbar)
 
-        val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
-        proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
-                .withBalancedPowerMode()
-                .onError { /* handle errors here */ }
-                .build()
-
-        val zone = ProximityZoneBuilder()
-                .forTag("esdras-mateo-s-proximity-f-b7w")
-                .inFarRange()
-                .onEnter {Toast.makeText(applicationContext, "Entraste a la zona", Toast.LENGTH_LONG).show()}
-                .onExit {Toast.makeText(applicationContext, "Saliste a la zona", Toast.LENGTH_LONG).show()}
-                .onContextChange {/* do something here */}
-                .build()
-
-        firebaseAuth = FirebaseAuth.getInstance()
+                firebaseAuth = FirebaseAuth.getInstance()
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -71,22 +56,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        RequirementsWizardFactory
-                .createEstimoteRequirementsWizard()
-                .fulfillRequirements(this,
-                        // onRequirementsFulfilled
-                        {
-                            Log.d("app", "requirements fulfilled")
-                            proximityObserver.startObserving(zone)
-                        },
-                        // onRequirementsMissing
-                        { requirements ->
-                            Log.e("app", "requirements missing: $requirements")
-                        }
-                        // onError
-                ) { throwable ->
-                    Log.e("app", "requirements error: $throwable")
-                }
     }
 
     fun scann(view: View){

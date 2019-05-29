@@ -11,6 +11,26 @@ import com.google.firebase.auth.AuthResult
 import com.google.android.gms.tasks.OnCompleteListener
 import android.util.Log
 import android.widget.*
+import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
+import com.estimote.proximity_sdk.api.ProximityObserverBuilder
+import com.estimote.proximity_sdk.api.ProximityObserver
+import com.estimote.proximity_sdk.api.ProximityZoneContext
+import com.estimote.proximity_sdk.api.ProximityZoneBuilder
+import com.estimote.proximity_sdk.api.ProximityZone
+import kotlin.Unit
+import com.estimote.mustard.rx_goodness.rx_requirements_wizard.Requirement
+import java.time.temporal.TemporalQueries.zone
+import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
+
+
+
+
+
+
+
+
+
+
 
 
 class LoginActivity : AppCompatActivity()
@@ -22,11 +42,39 @@ class LoginActivity : AppCompatActivity()
     lateinit var btnLogin: Button
     lateinit var txtRegister: TextView
     lateinit var progressBar: ProgressBar
+    private var proximityObserver: ProximityObserver? = null
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
+
+        this.proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
+                .onError { throwable ->
+                    Log.e("app", "proximity observer error: $throwable")
+                    null
+                }
+                .withBalancedPowerMode()
+                .build()
+
+        val zone = ProximityZoneBuilder()
+                .forTag("beecontrol-afk")
+                .inNearRange()
+                .onEnter { context ->
+
+                    var beacon = context.attachments["coconut"]
+                    Toast.makeText(applicationContext, "Welcome to $beacon's zone", Toast.LENGTH_LONG).show()
+                    Log.d("app", "Welcome to $beacon's zone")
+                    null
+                }
+                .onExit {
+                    Log.d("app", "Bye bye, come again!")
+                    null
+                }
+                .build()
+
 
         txtEmail = findViewById(R.id.txtEmail)
         txtPassword = findViewById(R.id.txtPassword)
@@ -43,6 +91,26 @@ class LoginActivity : AppCompatActivity()
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+        RequirementsWizardFactory
+                .createEstimoteRequirementsWizard()
+                .fulfillRequirements(this,
+                        // onRequirementsFulfilled
+                        {
+                            Log.d("app", "requirements fulfilled")
+                            proximityObserver!!.startObserving(zone)
+                            null
+                        },
+                        // onRequirementsMissing
+                        { requirements ->
+                            Log.e("app", "requirements missing: $requirements")
+                            null
+                        }
+                        // onError
+                ) { throwable ->
+                    Log.e("app", "requirements error: $throwable")
+                    null
+                }
     }
 
     fun signIn() {
