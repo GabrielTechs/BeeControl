@@ -7,7 +7,7 @@
         <item
             android:id="@+id/txtControla"
             android:icon="@drawable/ic_directions_bus_black_24dp"
-            android:title="Entada/Salida" />
+            android:title="Entrada" />
         <item
             android:id="@+id/txtAsistencia"
             android:icon="@drawable/ic_supervisor_account_black_24dp"
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/txtConfi"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Configuracion" />
+            android:title="Configuración" />
     </group>
 
     <item android:title="Otras opciones">

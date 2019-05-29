@@ -54,7 +54,7 @@ class TripActivity : AppCompatActivity() {
         }
     }
     fun back(view:View){
-        startActivity(Intent(this, MenuActivity::class.java))
+        startActivity(Intent(this, Control::class.java))
     }
     fun addtrip(view: View){
         var intent = Intent(this, NewtripActivity::class.java)

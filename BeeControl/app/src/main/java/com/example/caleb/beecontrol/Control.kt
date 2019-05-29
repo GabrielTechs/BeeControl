@@ -12,7 +12,7 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
 
-class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class Control : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

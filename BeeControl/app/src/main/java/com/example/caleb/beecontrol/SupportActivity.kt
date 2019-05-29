@@ -35,6 +35,6 @@ class SupportActivity : AppCompatActivity() {
     }
 
     fun back(view: View){
-        startActivity(Intent(this, MenuActivity::class.java))
+        startActivity(Intent(this, Control::class.java))
     }
 }

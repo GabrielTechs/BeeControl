@@ -3,13 +3,8 @@ package com.example.caleb.beecontrol
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_login.*
-import com.google.firebase.auth.AuthResult
-import com.google.android.gms.tasks.OnCompleteListener
-import android.util.Log
 import android.widget.*
 
 
@@ -37,7 +32,7 @@ class LoginActivity : AppCompatActivity()
 
         btnLogin.setOnClickListener{
             //signIn()
-            var intent = Intent(this, MenuActivity::class.java)
+            var intent = Intent(this, Control::class.java)
             startActivity(intent)
         }
 
@@ -70,7 +65,7 @@ class LoginActivity : AppCompatActivity()
                         // Sign in success, update UI with the signed-in user's information
                         progressBar.visibility = View.INVISIBLE
                         Log.d("SignInSuccess", "signInWithEmail:success")
-                        var intent = Intent(this, MenuActivity::class.java)
+                        var intent = Intent(this, Control::class.java)
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.

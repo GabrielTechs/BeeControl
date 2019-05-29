@@ -22,8 +22,8 @@
         <activity android:name=".NewpasswordActivity" />
         <activity android:name=".ForgotmypasswordActivity" />
         <activity
-            android:name=".MenuActivity"
-            android:label="@string/title_activity_menu"
+            android:name=".Control"
+            android:label="Control"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".NewtripActivity"
