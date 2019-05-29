@@ -12,15 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".SupportMessagesActivity"></activity>
-        <activity android:name=".SupportActivity" />
+        <activity android:name=".SupportActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".AssistanceActivity" />
         <activity android:name=".NewassistanceActivity" />
         <activity android:name=".EmployeesActivity" />
         <activity android:name=".EditprofileActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TripActivity" />
-        <activity android:name=".TripspecActivity" />
+        <activity android:name=".TripspecActivity"/>
         <activity android:name=".NewpasswordActivity" />
         <activity android:name=".ForgotmypasswordActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity
             android:name=".Control"
             android:label="Control"
@@ -28,7 +31,8 @@
         <activity
             android:name=".NewtripActivity"
             android:label="@string/title_activity_assistance"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,8 +40,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".AssistanceActivity" />
     </application>
 
 </manifest>
