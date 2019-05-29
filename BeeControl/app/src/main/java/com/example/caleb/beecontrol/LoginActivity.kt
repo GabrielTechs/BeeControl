@@ -3,6 +3,8 @@ package com.example.caleb.beecontrol
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.*
@@ -16,6 +18,8 @@ import kotlin.Unit
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.Requirement
 import java.time.temporal.TemporalQueries.zone
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
 
 class LoginActivity : AppCompatActivity()
 {

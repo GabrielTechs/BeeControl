@@ -14,6 +14,7 @@ import android.widget.TextView
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_assistance.*
 
 
 class AssistanceActivity : AppCompatActivity() {
