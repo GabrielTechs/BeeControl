@@ -70,6 +70,7 @@ class LoginActivity : AppCompatActivity()
                     null
                 }
                 .onExit {
+                    Toast.makeText(applicationContext, "Bye bye, come again!", Toast.LENGTH_LONG).show()
                     Log.d("app", "Bye bye, come again!")
                     null
                 }
