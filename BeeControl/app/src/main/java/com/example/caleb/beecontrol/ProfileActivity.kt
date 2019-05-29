@@ -15,6 +15,6 @@ class ProfileActivity : AppCompatActivity() {
         startActivity(Intent(this, EditprofileActivity::class.java))
     }
     fun back(view:View){
-        startActivity(Intent(this, Control::class.java))
+        startActivity(Intent(this, MenuActivity::class.java))
     }
 }

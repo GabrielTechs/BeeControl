@@ -12,7 +12,7 @@ class EmployeesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_employees)
     }
     fun back(view: View){
-        startActivity(Intent(this, Control::class.java))
+        startActivity(Intent(this, MenuActivity::class.java))
     }
     fun seemessages(view: View){
         var intent = Intent(this, SupportMessagesActivity::class.java)

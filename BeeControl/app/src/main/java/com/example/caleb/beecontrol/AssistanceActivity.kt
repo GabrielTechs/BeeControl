@@ -56,7 +56,7 @@ class AssistanceActivity : AppCompatActivity() {
     }
 
     fun back(view:View){
-        startActivity(Intent(this, Control::class.java))
+        startActivity(Intent(this, MenuActivity::class.java))
     }
     fun addassistance(view: View){
         var intent = Intent(this, NewassistanceActivity::class.java)

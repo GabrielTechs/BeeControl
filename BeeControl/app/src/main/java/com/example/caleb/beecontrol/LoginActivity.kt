@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity()
 
         btnLogin.setOnClickListener{
             //signIn()
-            var intent = Intent(this, Control::class.java)
+            var intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }
 
@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity()
                         // Sign in success, update UI with the signed-in user's information
                         progressBar.visibility = View.INVISIBLE
                         Log.d("SignInSuccess", "signInWithEmail:success")
-                        var intent = Intent(this, Control::class.java)
+                        var intent = Intent(this, MenuActivity::class.java)
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.
