@@ -3,13 +3,8 @@ package com.example.caleb.beecontrol
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_login.*
-import com.google.firebase.auth.AuthResult
-import com.google.android.gms.tasks.OnCompleteListener
-import android.util.Log
 import android.widget.*
 import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
 import com.estimote.proximity_sdk.api.ProximityObserverBuilder
