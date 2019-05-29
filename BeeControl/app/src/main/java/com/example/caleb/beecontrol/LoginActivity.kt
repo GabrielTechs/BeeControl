@@ -22,17 +22,6 @@ import com.estimote.mustard.rx_goodness.rx_requirements_wizard.Requirement
 import java.time.temporal.TemporalQueries.zone
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
 
-
-
-
-
-
-
-
-
-
-
-
 class LoginActivity : AppCompatActivity()
 {
 

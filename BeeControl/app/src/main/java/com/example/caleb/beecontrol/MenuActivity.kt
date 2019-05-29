@@ -58,10 +58,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    fun scann(view: View){
-
-    }
-
     override fun onStart() {
         super.onStart()
         val user = firebaseAuth.currentUser

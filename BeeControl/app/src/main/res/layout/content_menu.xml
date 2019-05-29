@@ -15,19 +15,6 @@
         android:orientation="vertical"
         android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/btnBeacon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/buttonsstylesnormal"
-            android:onClick="scann"
-            android:text="Scan"
-            android:textColor="#fff" />
-
         <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
