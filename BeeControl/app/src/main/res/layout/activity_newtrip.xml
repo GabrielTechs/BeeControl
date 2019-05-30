@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DCE1E9"
-    tools:context=".NewtripActivity">
+    tools:context=".NewTripActivity">
 
     <RelativeLayout
         android:id="@+id/header"

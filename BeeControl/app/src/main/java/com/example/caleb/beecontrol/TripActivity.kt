@@ -5,13 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
-import android.widget.Toast
-import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
-import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
-import com.estimote.proximity_sdk.api.ProximityObserverBuilder
-import com.estimote.proximity_sdk.api.ProximityZoneBuilder
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
@@ -46,7 +40,7 @@ class TripActivity : AppCompatActivity() {
         adapter!!.setOnItemClickListener { documentSnapshot, position ->
             val trip = documentSnapshot.toObject(Trip::class.java)
 
-            val intent = Intent(this, TripspecActivity::class.java)
+            val intent = Intent(this, TripDetailActivity::class.java)
 
             intent.putExtra("tripDriverName", trip!!.getTripDriverName())
             intent.putExtra("tripTitle", trip.getTripTitle())
@@ -62,7 +56,7 @@ class TripActivity : AppCompatActivity() {
         startActivity(Intent(this, MenuActivity::class.java))
     }
     fun addtrip(view: View){
-        val intent = Intent(this, NewtripActivity::class.java)
+        val intent = Intent(this, NewTripActivity::class.java)
         startActivity(intent)
     }
 

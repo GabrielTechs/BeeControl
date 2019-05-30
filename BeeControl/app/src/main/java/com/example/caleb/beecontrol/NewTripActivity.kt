@@ -14,7 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
-class NewtripActivity : AppCompatActivity() {
+class NewTripActivity : AppCompatActivity() {
 
     lateinit var txtTripDriverName: EditText
     lateinit var txtTripTitle: EditText

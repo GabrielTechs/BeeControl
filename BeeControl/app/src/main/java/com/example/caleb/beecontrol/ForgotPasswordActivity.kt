@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 
-class ForgotmypasswordActivity : AppCompatActivity()
+class ForgotPasswordActivity : AppCompatActivity()
 {
 
     lateinit var btnSendEmail: Button
@@ -18,7 +18,7 @@ class ForgotmypasswordActivity : AppCompatActivity()
         btnSendEmail = findViewById(R.id.btnSendEmail)
 
         btnSendEmail.setOnClickListener {
-            var intent = Intent(this, NewpasswordActivity::class.java)
+            var intent = Intent(this, NewPasswordActivity::class.java)
             startActivity(intent)
         }
     }

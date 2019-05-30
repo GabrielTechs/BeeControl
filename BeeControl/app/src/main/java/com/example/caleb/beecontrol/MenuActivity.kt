@@ -2,8 +2,6 @@ package com.example.caleb.beecontrol
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.RemoteException
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -11,7 +9,6 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
@@ -21,12 +18,6 @@ import com.estimote.proximity_sdk.api.ProximityZoneBuilder
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
-import org.altbeacon.beacon.*
-import org.altbeacon.beacon.BeaconParser
-import org.altbeacon.beacon.BeaconManager
-import kotlin.Unit
-import com.estimote.mustard.rx_goodness.rx_requirements_wizard.Requirement
-import java.time.temporal.TemporalQueries.zone
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
 
 
@@ -35,13 +26,57 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     protected val TAG = "MenuActivity"
     lateinit var firebaseAuth: FirebaseAuth
+    private var proximityObserver: ProximityObserver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         setSupportActionBar(toolbar)
 
-                firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
+
+        this.proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
+                .onError { throwable ->
+                    Log.e("app", "proximity observer error: $throwable")
+                    null
+                }
+                .withBalancedPowerMode()
+                .build()
+
+        val entryZone = ProximityZoneBuilder()
+                .forTag("mint")
+                .inNearRange()
+                .onEnter { context ->
+
+                    var beacon = context.attachments["zone"]
+                    Toast.makeText(applicationContext, "Bienvenido a la $beacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                    null
+
+
+
+                }
+                .onExit {
+                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                    null
+                }
+                .build()
+
+        val truckZone = ProximityZoneBuilder()
+                .forTag("coconut")
+                .inNearRange()
+                .onEnter { context ->
+
+                    var beacon = context.attachments["zone"]
+                    Toast.makeText(applicationContext, "Bienvenido a la $beacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                    null
+                }
+                .onExit {
+                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                    null
+                }
+                .build()
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -55,6 +90,26 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         account.text = firebaseAuth.currentUser?.email.toString()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        RequirementsWizardFactory
+                .createEstimoteRequirementsWizard()
+                .fulfillRequirements(this,
+                        // onRequirementsFulfilled
+                        {
+                            Log.d("app", "requirements fulfilled")
+                            proximityObserver!!.startObserving(entryZone, truckZone)
+                            null
+                        },
+                        // onRequirementsMissing
+                        { requirements ->
+                            Log.e("app", "requirements missing: $requirements")
+                            null
+                        }
+                        // onError
+                ) { throwable ->
+                    Log.e("app", "requirements error: $throwable")
+                    null
+                }
 
     }
 

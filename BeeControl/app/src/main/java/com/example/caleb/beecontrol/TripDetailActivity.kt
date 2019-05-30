@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.TextView
 
 
-class TripspecActivity : AppCompatActivity() {
+class TripDetailActivity : AppCompatActivity() {
 
     lateinit var txtTripDriverName: TextView
     lateinit var txtTripTitle: TextView

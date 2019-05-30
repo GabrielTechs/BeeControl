@@ -36,7 +36,7 @@ class AssistanceActivity : AppCompatActivity() {
         txtAssistanceDate = findViewById(R.id.txtAssistanceDate)
 
         btnAddAssistance.setOnClickListener {
-            val intent = Intent(this, NewassistanceActivity::class.java)
+            val intent = Intent(this, NewAssistanceActivity::class.java)
             startActivity(intent)
         }
         txtAssistanceDate.setOnClickListener{

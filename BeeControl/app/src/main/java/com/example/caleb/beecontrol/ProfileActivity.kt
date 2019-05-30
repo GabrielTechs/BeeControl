@@ -33,7 +33,7 @@ class ProfileActivity : AppCompatActivity() {
         
     }
     fun editProf(view: View){
-        startActivity(Intent(this, EditprofileActivity::class.java))
+        startActivity(Intent(this, EditProfileActivity::class.java))
     }
     fun back(view:View){
         startActivity(Intent(this, MenuActivity::class.java))

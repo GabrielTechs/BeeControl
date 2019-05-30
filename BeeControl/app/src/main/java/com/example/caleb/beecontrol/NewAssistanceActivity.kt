@@ -12,7 +12,7 @@ import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_newassistance.*
 
-class NewassistanceActivity : AppCompatActivity() {
+class NewAssistanceActivity : AppCompatActivity() {
 
     lateinit var txtEmployeeName: EditText
     lateinit var txtAssistanceDate: TextView
