@@ -49,13 +49,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .forTag("mint")
                 .inNearRange()
                 .onEnter { context ->
-
-                    var beacon = context.attachments["zone"]
-                    Toast.makeText(applicationContext, "Bienvenido a la $beacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                    var entryBeacon = context.attachments["zone"]
+                    Toast.makeText(applicationContext, "Bienvenido a la $entryBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
                     null
-
-
-
                 }
                 .onExit {
                     Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
@@ -67,9 +63,22 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .forTag("coconut")
                 .inNearRange()
                 .onEnter { context ->
+                    var truckBeacon = context.attachments["zone"]
+                    Toast.makeText(applicationContext, "Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                    null
+                }
+                .onExit {
+                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                    null
+                }
+                .build()
 
-                    var beacon = context.attachments["zone"]
-                    Toast.makeText(applicationContext, "Bienvenido a la $beacon de Supliyeso!", Toast.LENGTH_LONG).show()
+        val officeZone = ProximityZoneBuilder()
+                .forTag("ice")
+                .inNearRange()
+                .onEnter { context ->
+                    var officeBeacon = context.attachments["zone"]
+                    Toast.makeText(applicationContext, "Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
                     null
                 }
                 .onExit {
@@ -97,7 +106,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         // onRequirementsFulfilled
                         {
                             Log.d("app", "requirements fulfilled")
-                            proximityObserver!!.startObserving(entryZone, truckZone)
+                            proximityObserver!!.startObserving(entryZone, truckZone, officeZone)
                             null
                         },
                         // onRequirementsMissing
