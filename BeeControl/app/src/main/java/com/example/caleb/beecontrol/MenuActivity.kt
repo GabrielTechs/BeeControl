@@ -49,7 +49,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .forTag("mint")
                 .inNearRange()
                 .onEnter { context ->
-                    var entryBeacon = context.attachments["zone"]
+                    val entryBeacon = context.attachments["zone"]
                     Toast.makeText(applicationContext, "Bienvenido a la $entryBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
                     null
                 }
@@ -63,7 +63,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .forTag("coconut")
                 .inNearRange()
                 .onEnter { context ->
-                    var truckBeacon = context.attachments["zone"]
+                    val truckBeacon = context.attachments["zone"]
                     Toast.makeText(applicationContext, "Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
                     null
                 }
@@ -77,8 +77,22 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .forTag("ice")
                 .inNearRange()
                 .onEnter { context ->
-                    var officeBeacon = context.attachments["zone"]
+                    val officeBeacon = context.attachments["zone"]
                     Toast.makeText(applicationContext, "Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                    null
+                }
+                .onExit {
+                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                    null
+                }
+                .build()
+
+        val hrZone = ProximityZoneBuilder()
+                .forTag("blueberry")
+                .inNearRange()
+                .onEnter { context ->
+                    val hrBeacon = context.attachments["zone"]
+                    Toast.makeText(applicationContext, "Bienvenido a la $hrBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
                     null
                 }
                 .onExit {
