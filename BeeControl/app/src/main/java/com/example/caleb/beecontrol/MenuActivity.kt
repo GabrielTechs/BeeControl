@@ -1,5 +1,6 @@
 package com.example.caleb.beecontrol
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -19,15 +20,22 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
-
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     protected val TAG = "MenuActivity"
+    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     lateinit var firebaseAuth: FirebaseAuth
+    var userRef = db.collection("user")
+    private val assistanceRef = db.collection("Assistance")
     private var proximityObserver: ProximityObserver? = null
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -35,71 +43,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
-
-        this.proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
-                .onError { throwable ->
-                    Log.e("app", "proximity observer error: $throwable")
-                    null
-                }
-                .withBalancedPowerMode()
-                .build()
-
-        val entryZone = ProximityZoneBuilder()
-                .forTag("mint")
-                .inNearRange()
-                .onEnter { context ->
-                    val entryBeacon = context.attachments["zone"]
-                    Toast.makeText(applicationContext, "Bienvenido a la $entryBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .onExit {
-                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .build()
-
-        val truckZone = ProximityZoneBuilder()
-                .forTag("coconut")
-                .inNearRange()
-                .onEnter { context ->
-                    val truckBeacon = context.attachments["zone"]
-                    Toast.makeText(applicationContext, "Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .onExit {
-                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .build()
-
-        val officeZone = ProximityZoneBuilder()
-                .forTag("ice")
-                .inNearRange()
-                .onEnter { context ->
-                    val officeBeacon = context.attachments["zone"]
-                    Toast.makeText(applicationContext, "Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .onExit {
-                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .build()
-
-        val hrZone = ProximityZoneBuilder()
-                .forTag("blueberry")
-                .inNearRange()
-                .onEnter { context ->
-                    val hrBeacon = context.attachments["zone"]
-                    Toast.makeText(applicationContext, "Bienvenido a la $hrBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .onExit {
-                    Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
-                    null
-                }
-                .build()
+        val email = firebaseAuth.currentUser?.email.toString()
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -110,39 +54,157 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val account: TextView = headerLayout.findViewById(R.id.userEmail)
 
-        account.text = firebaseAuth.currentUser?.email.toString()
+        account.text = email
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        RequirementsWizardFactory
-                .createEstimoteRequirementsWizard()
-                .fulfillRequirements(this,
-                        // onRequirementsFulfilled
-                        {
-                            Log.d("app", "requirements fulfilled")
-                            proximityObserver!!.startObserving(entryZone, truckZone, officeZone)
-                            null
-                        },
-                        // onRequirementsMissing
-                        { requirements ->
-                            Log.e("app", "requirements missing: $requirements")
-                            null
-                        }
-                        // onError
-                ) { throwable ->
-                    Log.e("app", "requirements error: $throwable")
-                    null
-                }
+        if(proximityObserver == null){
+
+            val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
+
+            this.proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
+                    .onError { throwable ->
+                        Log.e("app", "proximity observer error: $throwable")
+                        null
+                    }
+                    .withBalancedPowerMode()
+                    .build()
+
+            val entryZone = ProximityZoneBuilder()
+                    .forTag("mint")
+                    .inNearRange()
+                    .onEnter { context ->
+                        val docRef = userRef.document(email)
+                        docRef.get()
+                                .addOnSuccessListener { document ->
+                                    if (document != null) {
+                                        val employeeName = document.toObject(Employee::class.java)?.name + " " +  document.toObject(Employee::class.java)?.lastName
+                                        var status = "Presente"
+                                        val c = Calendar.getInstance().time
+                                        val df = SimpleDateFormat("dd-MM-yyyy")
+                                        val tf = SimpleDateFormat("HH:mm")
+                                        val assistTime = tf.format(c).toString()
+                                        val assistDate = df.format(c).toString()
+
+                                        assistanceRef.get()
+                                                .addOnSuccessListener { result ->
+                                                    if(result != null){
+                                                        var assisted = false
+
+                                                        for (document in result) {
+                                                            document.toObject(Assistance::class.java)
+                                                            if(document["employeeName"] == employeeName && document["assistDate"] == assistDate){
+                                                                Toast.makeText(applicationContext, "Ya estas asistido!", Toast.LENGTH_LONG).show()
+                                                                assisted = true
+                                                            }
+                                                        }
+
+                                                        if(!assisted){
+
+                                                            if(assistTime > "08:00"){
+                                                                status = "Tarde"
+                                                            }
+
+                                                            assistanceRef.add(Assistance(employeeName, status, assistDate))
+                                                            Toast.makeText(applicationContext, "$employeeName agregado a la lista!", Toast.LENGTH_LONG).show()
+                                                        }
+                                                    }
+                                                    else{
+                                                        Toast.makeText(applicationContext, "No documents!", Toast.LENGTH_LONG).show()
+                                                    }
+                                                }
+                                                .addOnFailureListener { exception ->
+                                                    Log.d(TAG, "Error getting documents: ", exception)
+                                                }
+                                    }
+
+                                    else {
+                                        Log.d(TAG, "No such document")
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.d(TAG, "get failed with ", exception)
+                                }
+
+                        null
+                    }
+                    .onExit {
+                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        null
+                    }
+                    .build()
+
+            val truckZone = ProximityZoneBuilder()
+                    .forTag("coconut")
+                    .inNearRange()
+                    .onEnter { context ->
+                        val truckBeacon = context.attachments["zone"]
+                        Toast.makeText(applicationContext, "Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                        null
+                    }
+                    .onExit {
+                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        null
+                    }
+                    .build()
+
+            val officeZone = ProximityZoneBuilder()
+                    .forTag("ice")
+                    .inNearRange()
+                    .onEnter { context ->
+                        val officeBeacon = context.attachments["zone"]
+                        Toast.makeText(applicationContext, "Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                        null
+                    }
+                    .onExit {
+                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        null
+                    }
+                    .build()
+
+            val hrZone = ProximityZoneBuilder()
+                    .forTag("blueberry")
+                    .inNearRange()
+                    .onEnter { context ->
+                        val hrBeacon = context.attachments["zone"]
+                        Toast.makeText(applicationContext, "Bienvenido a la $hrBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                        null
+                    }
+                    .onExit {
+                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        null
+                    }
+                    .build()
+
+            RequirementsWizardFactory
+                    .createEstimoteRequirementsWizard()
+                    .fulfillRequirements(this,
+                            // onRequirementsFulfilled
+                            {
+                                Log.d("app", "requirements fulfilled")
+                                proximityObserver!!.startObserving(entryZone, truckZone, officeZone, hrZone)
+                                null
+                            },
+                            // onRequirementsMissing
+                            { requirements ->
+                                Log.e("app", "requirements missing: $requirements")
+                                null
+                            }
+                            // onError
+                    ) { throwable ->
+                        Log.e("app", "requirements error: $throwable")
+                        null
+                    }
+        }
 
     }
 
     override fun onStart() {
         super.onStart()
-        val user = firebaseAuth.currentUser
+    }
 
-        if(user != null){
-            Toast.makeText(applicationContext, user.email, Toast.LENGTH_SHORT).show()
-        }
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     override fun onBackPressed() {
@@ -192,6 +254,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.txtSalir ->
             {
                 startActivity(Intent(this, LoginActivity::class.java))
+                proximityObserver = null
             }
         }
 

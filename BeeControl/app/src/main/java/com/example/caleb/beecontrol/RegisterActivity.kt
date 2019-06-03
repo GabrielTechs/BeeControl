@@ -128,7 +128,7 @@ class RegisterActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val path = db.collection("EmployeeID").document("Counter")
 
-        //path.update("Id", FieldValue.increment(1))
+        //path.update("Id", FieldValue.increment(50))
     }
 
     fun back(view: View){

@@ -3,7 +3,6 @@ package com.example.caleb.beecontrol
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -63,8 +62,14 @@ class EmployeesActivity : AppCompatActivity() {
         super.onStop()
         adapter.stopListening()
     }
+
+    fun back(view: View){
+        val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
+    }
+
     fun seemessages(view: View){
-        var intent = Intent(this, SupportMessagesActivity::class.java)
+        val intent = Intent(this, SupportMessagesActivity::class.java)
         startActivity(intent)
     }
 }
