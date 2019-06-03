@@ -33,7 +33,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var firebaseAuth: FirebaseAuth
     var userRef = db.collection("user")
     private val assistanceRef = db.collection("Assistance")
-    private var proximityObserver: ProximityObserver? = null
+    private var proximityObserverHandler: ProximityObserver.Handler? = null
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,11 +58,11 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        if(proximityObserver == null){
+        if(proximityObserverHandler == null){
 
             val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
 
-            this.proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
+            val proximityObserver = ProximityObserverBuilder(applicationContext, cloudCredentials)
                     .onError { throwable ->
                         Log.e("app", "proximity observer error: $throwable")
                         null
@@ -182,7 +182,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             // onRequirementsFulfilled
                             {
                                 Log.d("app", "requirements fulfilled")
-                                proximityObserver!!.startObserving(entryZone, truckZone, officeZone, hrZone)
+                                proximityObserverHandler = proximityObserver.startObserving(entryZone, truckZone, officeZone, hrZone)
                                 null
                             },
                             // onRequirementsMissing
@@ -197,14 +197,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
         }
 
-    }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun onBackPressed() {
@@ -254,7 +246,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.txtSalir ->
             {
                 startActivity(Intent(this, LoginActivity::class.java))
-                proximityObserver = null
+                proximityObserverHandler?.stop()
             }
         }
 
