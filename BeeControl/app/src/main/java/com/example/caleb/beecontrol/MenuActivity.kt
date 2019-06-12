@@ -72,60 +72,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             val entryZone = ProximityZoneBuilder()
                     .forTag("mint")
-                    .inNearRange()
+                    .inCustomRange(1.0)
                     .onEnter { context ->
-                        val docRef = userRef.document(email)
-                        docRef.get()
-                                .addOnSuccessListener { document ->
-                                    if (document != null) {
-                                        val employeeName = document.toObject(Employee::class.java)?.name + " " +  document.toObject(Employee::class.java)?.lastName
-                                        var status = "Presente"
-                                        val c = Calendar.getInstance().time
-                                        val df = SimpleDateFormat("dd-MM-yyyy")
-                                        val tf = SimpleDateFormat("HH:mm")
-                                        val assistTime = tf.format(c).toString()
-                                        val assistDate = df.format(c).toString()
-
-                                        assistanceRef.get()
-                                                .addOnSuccessListener { result ->
-                                                    if(result != null){
-                                                        var assisted = false
-
-                                                        for (document in result) {
-                                                            document.toObject(Assistance::class.java)
-                                                            if(document["employeeName"] == employeeName && document["assistDate"] == assistDate){
-                                                                Toast.makeText(applicationContext, "Ya estas asistido!", Toast.LENGTH_LONG).show()
-                                                                assisted = true
-                                                            }
-                                                        }
-
-                                                        if(!assisted){
-
-                                                            if(assistTime > "08:00"){
-                                                                status = "Tarde"
-                                                            }
-
-                                                            assistanceRef.add(Assistance(employeeName, status, assistDate))
-                                                            Toast.makeText(applicationContext, "$employeeName agregado a la lista!", Toast.LENGTH_LONG).show()
-                                                        }
-                                                    }
-                                                    else{
-                                                        Toast.makeText(applicationContext, "No documents!", Toast.LENGTH_LONG).show()
-                                                    }
-                                                }
-                                                .addOnFailureListener { exception ->
-                                                    Log.d(TAG, "Error getting documents: ", exception)
-                                                }
-                                    }
-
-                                    else {
-                                        Log.d(TAG, "No such document")
-                                    }
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.d(TAG, "get failed with ", exception)
-                                }
-
+                        assistance(email)
                         null
                     }
                     .onExit {
@@ -199,6 +148,61 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    fun assistance(email: String){
+
+        val docRef = userRef.document(email)
+        docRef.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        val employeeName = document.toObject(Employee::class.java)?.name + " " +  document.toObject(Employee::class.java)?.lastName
+                        var status = "Presente"
+                        val c = Calendar.getInstance().time
+                        val df = SimpleDateFormat("dd-MM-yyyy")
+                        val tf = SimpleDateFormat("HH:mm")
+                        val assistTime = tf.format(c).toString()
+                        val assistDate = df.format(c).toString()
+
+                        assistanceRef.get()
+                                .addOnSuccessListener { result ->
+                                    if(result != null){
+                                        var assisted = false
+
+                                        for (document in result) {
+                                            document.toObject(Assistance::class.java)
+                                            if(document["employeeName"] == employeeName && document["assistDate"] == assistDate){
+                                                Toast.makeText(applicationContext, "Ya estas asistido!", Toast.LENGTH_LONG).show()
+                                                assisted = true
+                                            }
+                                        }
+
+                                        if(!assisted){
+
+                                            if(assistTime > "08:00"){
+                                                status = "Tarde"
+                                            }
+
+                                            assistanceRef.add(Assistance(employeeName, status, assistDate))
+                                            Toast.makeText(applicationContext, "$employeeName agregado a la lista!", Toast.LENGTH_LONG).show()
+                                        }
+                                    }
+                                    else{
+                                        Toast.makeText(applicationContext, "No documents!", Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    Log.d(TAG, "Error getting documents: ", exception)
+                                }
+                    }
+
+                    else {
+                        Log.d(TAG, "No such document")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                }
+    }
+
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -245,8 +249,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.txtSalir ->
             {
-                startActivity(Intent(this, LoginActivity::class.java))
                 proximityObserverHandler?.stop()
+                firebaseAuth.signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
             }
         }
 
