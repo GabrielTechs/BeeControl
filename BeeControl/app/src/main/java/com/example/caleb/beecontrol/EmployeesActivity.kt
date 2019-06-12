@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Toast
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -15,6 +17,7 @@ class EmployeesActivity : AppCompatActivity() {
 
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     var userRef: CollectionReference = db.collection("user")
+    var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     lateinit var adapter: EmployeeAdapter
 
@@ -69,7 +72,18 @@ class EmployeesActivity : AppCompatActivity() {
     }
 
     fun seemessages(view: View){
-        val intent = Intent(this, SupportMessagesActivity::class.java)
-        startActivity(intent)
+
+        val email = firebaseAuth.currentUser?.email.toString()
+        val docRef = userRef.document(email)
+        docRef.get().addOnSuccessListener { document ->
+            var admin = document.toObject(Employee::class.java)?.isAdmin
+            if(admin!!){
+                val intent = Intent(this, SupportMessagesActivity::class.java)
+                startActivity(intent)
+            }
+            else{
+                Toast.makeText(applicationContext, "No eres admin!", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }

@@ -13,11 +13,10 @@ public class Trip {
 
     }
 
-    Trip(String tripDate, String tripTitle, String tripDriverName, String tripPartingHour, String tripEntryHour, String tripDescription, int tripId){
+    Trip(String tripDate, String tripTitle, String tripDriverName, String tripEntryHour, String tripDescription, int tripId){
         this.tripDate = tripDate;
         this.tripTitle = tripTitle;
         this.tripDriverName = tripDriverName;
-        this.tripPartingHour = tripPartingHour;
         this.tripEntryHour = tripEntryHour;
         this.tripDescription = tripDescription;
         this.tripId = tripId;

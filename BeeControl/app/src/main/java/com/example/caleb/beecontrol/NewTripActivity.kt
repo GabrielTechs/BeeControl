@@ -20,7 +20,6 @@ class NewTripActivity : AppCompatActivity() {
     lateinit var txtTripTitle: EditText
     lateinit var txtTripDescription: EditText
     lateinit var txtTripDate: TextView
-    lateinit var txtTripPartingHour: EditText
     lateinit var btnCreateTrip: Button
     private val db = FirebaseFirestore.getInstance()
     private val tripCollectionRef = db.collection("Trips")
@@ -34,7 +33,6 @@ class NewTripActivity : AppCompatActivity() {
         txtTripTitle = findViewById(R.id.txtTripTitle)
         txtTripDescription = findViewById(R.id.txtTripDescription)
         txtTripDate = findViewById(R.id.txtTripDate)
-        txtTripPartingHour = findViewById(R.id.txtTripPartingHour)
         btnCreateTrip = findViewById(R.id.btnCreateTrip)
 
         txtTripDate.setOnClickListener{
@@ -63,15 +61,14 @@ class NewTripActivity : AppCompatActivity() {
         var tripDriverName: String = txtTripDriverName.text.toString()
         var tripDate: String = txtTripDate.text.toString()
         var tripDescription: String = txtTripDescription.text.toString()
-        var tripPartingHour: String = txtTripPartingHour.text.toString()
 
         if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripDate.isEmpty() ||
-                tripDriverName.isEmpty() || tripPartingHour.isEmpty()){
+                tripDriverName.isEmpty()){
             Toast.makeText(this, "Llene los campos restantes", Toast.LENGTH_SHORT).show()
             return
         }
 
-        tripCollectionRef.add(Trip(tripDate, tripTitle, tripDriverName, tripPartingHour, "", tripDescription, 10))
+        tripCollectionRef.add(Trip(tripDate, tripTitle, tripDriverName, "", tripDescription, 10))
 
         Toast.makeText(this, "Viaje agregado!", Toast.LENGTH_SHORT).show()
         var intent = Intent(this, TripActivity::class.java)
