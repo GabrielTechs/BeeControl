@@ -82,28 +82,6 @@
             android:padding="15dp"
             android:singleLine="true" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Fecha"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-black" />
-
-        <TextView
-            android:id="@+id/txtSupportDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
-            android:elevation="4dp"
-            android:gravity="start"
-            android:hint="@string/formato_fecha"
-            android:padding="15dp"
-            android:textColorHint="#363732"
-            android:typeface="serif" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
