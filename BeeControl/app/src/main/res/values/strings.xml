@@ -107,4 +107,20 @@
     <string name="viajes_de_camiones">Viajes de camiones</string>
     <string name="nombre_del_camionero">Nombre del camionero</string>
     <string name="empleados">Empleados</string>
+    <string name="viajes">Viajes</string>
+    <string name="nombre_completo">Nombre completo</string>
+    <string name="correo_electronico">Correo electronico</string>
+    <string name="asunto">Asunto</string>
+    <string name="enviar_mensaje">Enviar Mensaje</string>
+    <string name="registro_de_viajes">Registro de viajes</string>
+    <string name="nombre_de_la_carga">Nombre de la carga</string>
+    <string name="hora">Hora</string>
+    <string name="crear_viaje">Crear viaje</string>
+    <string name="nueva_asistencia">Nueva Asistencia</string>
+    <string name="condicion">Condicion</string>
+    <string name="guardar">Guardar</string>
+    <string name="nombre_empleado">Nombre empleado</string>
+    <string name="id_empleado">id empleado</string>
+    <string name="fecha">Fecha</string>
+    <string name="soporte">Soporte</string>
 </resources>

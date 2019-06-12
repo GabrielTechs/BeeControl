@@ -4,6 +4,7 @@
     <string-array name="assistance_array">
         <item>Ninguno</item>
         <item>Presente</item>
+        <item>Tarde</item>
         <item>Ausente</item>
     </string-array>
 
