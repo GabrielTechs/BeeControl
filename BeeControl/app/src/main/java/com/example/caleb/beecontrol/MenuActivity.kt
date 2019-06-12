@@ -45,8 +45,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val email = firebaseAuth.currentUser?.email.toString()
 
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -149,7 +148,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun assistance(email: String){
-
         val docRef = userRef.document(email)
         docRef.get()
                 .addOnSuccessListener { document ->
@@ -193,7 +191,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                     Log.d(TAG, "Error getting documents: ", exception)
                                 }
                     }
-
                     else {
                         Log.d(TAG, "No such document")
                     }

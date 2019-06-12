@@ -47,11 +47,6 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth =  FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        val settings = FirebaseFirestoreSettings.Builder()
-                .setTimestampsInSnapshotsEnabled(true)
-                .build()
-        db.firestoreSettings = settings
-
         btnRegister.setOnClickListener{
             createAccount()
         }
