@@ -5,23 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MenuActivity"
     tools:showIn="@layout/app_bar_menu">
 
-    <SearchView
-        android:layout_width="395dp"
-        android:layout_height="50dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:ignore="MissingConstraints" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent" >
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </SearchView>
-
-    <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/beaconf3"
@@ -30,4 +24,5 @@
         tools:ignore="MissingConstraints">
 
     </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -11,18 +11,21 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_assistance.*
 
 
 class AssistanceActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
     private val AssistancebookRef = db.collection("Assistance")
-
+    var userRef = db.collection("user")
     lateinit var txtAssistanceDate: TextView
-
+    lateinit var firebaseAuth: FirebaseAuth
     private var adapter: AssistanceAdapter? = null
 
 
@@ -32,7 +35,26 @@ class AssistanceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_assistance)
         setUpRecyclerView()
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        val email = firebaseAuth.currentUser?.email.toString()
+
         txtAssistanceDate = findViewById(R.id.txtAssistanceDate)
+
+        btnAddAssistance.setOnClickListener {
+            val docRef = userRef.document(email)
+            docRef.get()
+                    .addOnSuccessListener { document ->
+                        var admin = document.toObject(Employee::class.java)?.isAdmin
+                        if(admin!!){
+                            val intent = Intent(this, NewAssistanceActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else{
+                            Toast.makeText(applicationContext, "No eres admin!", Toast.LENGTH_LONG).show()
+                        }
+                    }
+        }
 
         txtAssistanceDate.setOnClickListener{
             datePicker()
@@ -58,10 +80,7 @@ class AssistanceActivity : AppCompatActivity() {
     fun back(view:View){
         startActivity(Intent(this, MenuActivity::class.java))
     }
-    fun addassistance(view: View){
-        var intent = Intent(this, NewassistanceActivity::class.java)
-        startActivity(intent)
-    }
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun datePicker() {

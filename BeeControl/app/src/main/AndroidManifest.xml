@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.caleb.beecontrol">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,26 +11,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".SupportMessagesActivity"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".SupportMessagesActivity"/>
         <activity android:name=".SupportActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".AssistanceActivity" />
-        <activity android:name=".NewassistanceActivity" />
+        <activity android:name=".NewAssistanceActivity" />
         <activity android:name=".EmployeesActivity" />
-        <activity android:name=".EditprofileActivity" />
+        <activity android:name=".EditProfileActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TripActivity" />
-        <activity android:name=".TripspecActivity"/>
-        <activity android:name=".NewpasswordActivity" />
-        <activity android:name=".ForgotmypasswordActivity" />
+        <activity android:name=".TripDetailActivity"/>
+        <activity android:name=".NewPasswordActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".MenuActivity"
             android:label="Control"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".NewtripActivity"
+            android:name=".NewTripActivity"
             android:label="@string/title_activity_assistance"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustPan"/>

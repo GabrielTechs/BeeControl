@@ -53,7 +53,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="76dp"
-                android:text="Nombre usuario"
                 android:textColor="#fff"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -68,6 +67,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtEmployeeName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -75,9 +75,10 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Nombre de empleado" />
+                android:text="Caleb" />
 
             <TextView
+                android:id="@+id/txtEmployeeLastName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -87,9 +88,10 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Apellido" />
+                android:text="Gomez" />
 
             <TextView
+                android:id="@+id/txtEmployeeRole"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -97,9 +99,10 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Puesto" />
+                android:text="Camionero" />
 
             <TextView
+                android:id="@+id/txtEmployeeEmail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -109,7 +112,7 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Correo electrónico" />
+                android:text="belaczemog@gmail.com" />
 
             <Button
                 android:id="@+id/btnRegister"

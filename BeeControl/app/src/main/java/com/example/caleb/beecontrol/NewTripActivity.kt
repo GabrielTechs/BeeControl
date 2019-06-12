@@ -14,7 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
-class NewtripActivity : AppCompatActivity() {
+class NewTripActivity : AppCompatActivity() {
 
     lateinit var txtTripDriverName: EditText
     lateinit var txtTripTitle: EditText
@@ -77,6 +77,7 @@ class NewtripActivity : AppCompatActivity() {
         var intent = Intent(this, TripActivity::class.java)
         startActivity(intent)
     }
+
     fun back(view: View){
         startActivity(Intent(this, TripActivity::class.java))
     }

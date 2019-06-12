@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#DCE1E9"
     android:clipToPadding="false"
-    tools:context=".NewtripActivity">
+    tools:context=".NewTripActivity">
 
     <RelativeLayout
         android:id="@+id/header"

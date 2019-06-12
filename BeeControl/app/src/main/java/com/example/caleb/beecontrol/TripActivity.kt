@@ -39,9 +39,8 @@ class TripActivity : AppCompatActivity() {
 
         adapter!!.setOnItemClickListener { documentSnapshot, position ->
             val trip = documentSnapshot.toObject(Trip::class.java)
-            val path = documentSnapshot.reference.path
 
-            val intent = Intent(this, TripspecActivity::class.java)
+            val intent = Intent(this, TripDetailActivity::class.java)
 
             intent.putExtra("tripDriverName", trip!!.getTripDriverName())
             intent.putExtra("tripTitle", trip.getTripTitle())
@@ -57,7 +56,7 @@ class TripActivity : AppCompatActivity() {
         startActivity(Intent(this, MenuActivity::class.java))
     }
     fun addtrip(view: View){
-        var intent = Intent(this, NewtripActivity::class.java)
+        val intent = Intent(this, NewTripActivity::class.java)
         startActivity(intent)
     }
 
