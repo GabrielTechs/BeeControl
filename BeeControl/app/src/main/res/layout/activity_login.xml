@@ -38,73 +38,54 @@
             android:indeterminateDrawable="@drawable/cpb1"
             android:visibility="invisible"/>
 
-
         <EditText
             android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_person_black_24dp"
             android:drawablePadding="10dp"
-            android:gravity="left"
             android:hint="USUARIO"
-            android:background="@drawable/edittextstylebox"
+            android:backgroundTint="#FFF"
             android:singleLine="true"
             android:textColor="#fff"
-            android:textColorHint="#fff" />
+            android:textColorHint="@drawable/selecthide"/>
 
         <EditText
             android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/edittextstylebox"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:drawablePadding="10dp"
-            android:gravity="left"
             android:hint="CONTRASEÑA"
             android:inputType="textPassword"
             android:singleLine="true"
+            android:backgroundTint="#fff"
             android:textColor="#fff"
-            android:textColorHint="#fff" />
-        
-        <TextView
-            android:id="@+id/txtForgotPass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:onClick="forgotPass"
-            android:text="Olvidaste tu contraseña?"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-smallcaps" />
+            android:textColorHint="@drawable/selecthide"/>
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/buttonsstylesnormal"
             android:drawableRight="@drawable/ic_send_black_24dp"
             android:fontFamily="sans-serif"
             android:text="Accede"
+            android:textSize="18sp"
             android:textColor="#fff" />
 
         <TextView
-            android:id="@+id/txtRegister"
+            android:id="@+id/txtForgotPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:layout_marginTop="15dp"
+            android:layout_margin="10dp"
+            android:padding="10dp"
             android:gravity="center"
-            android:text="No tienes una cuenta? Registrate"
+            android:onClick="forgotPass"
+            android:text="Olvidaste tu contraseña?"
             android:textColor="#fff"
             android:textSize="18sp"
             app:fontFamily="sans-serif-smallcaps" />

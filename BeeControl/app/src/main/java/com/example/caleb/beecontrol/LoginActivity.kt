@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity()
     lateinit var txtEmail: EditText
     lateinit var txtPassword: EditText
     lateinit var btnLogin: Button
-    lateinit var txtRegister: TextView
+    //lateinit var txtRegister: TextView
     lateinit var progressBar: ProgressBar
     //private var proximityObserver: ProximityObserver? = null
 
@@ -30,18 +30,18 @@ class LoginActivity : AppCompatActivity()
         txtEmail = findViewById(R.id.txtEmail)
         txtPassword = findViewById(R.id.txtPassword)
         btnLogin = findViewById(R.id.btnLogin)
-        txtRegister = findViewById(R.id.txtRegister)
+        //txtRegister = findViewById(R.id.txtRegister)
         progressBar = findViewById(R.id.progressBar)
         firebaseAuth =  FirebaseAuth.getInstance()
 
         btnLogin.setOnClickListener{
             signIn()
         }
-
+/*
         txtRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 
     fun signIn() {

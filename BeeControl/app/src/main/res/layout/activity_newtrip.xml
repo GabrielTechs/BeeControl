@@ -113,28 +113,6 @@
             app:fontFamily="sans-serif-black" />
 
         <EditText
-            android:id="@+id/txtTripPartingHour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:drawableRight="@drawable/ic_access_time_black_24dp"
-            android:elevation="4dp"
-            android:ems="10"
-            android:hint="@string/formato_hora"
-            android:inputType="datetime"
-            android:padding="15dp"
-            android:textColorHint="#363732">
-        </EditText>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Asunto"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-black" />
-
-        <EditText
             android:id="@+id/txtTripDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
