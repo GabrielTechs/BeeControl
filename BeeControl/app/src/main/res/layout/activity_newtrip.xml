@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Registro de viajes"
+            android:text="@string/registro_de_viajes"
             android:textColor="#fff"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:drawableRight="@drawable/ic_person_btnblue_24dp"
+            android:drawableEnd="@drawable/ic_person_btnblue_24dp"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Nombre de la carga"
+            android:text="@string/nombre_de_la_carga"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:drawableRight="@drawable/ic_local_shipping_black_24dp"
+            android:drawableEnd="@drawable/ic_local_shipping_black_24dp"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Fecha"
+            android:text="@string/fecha"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
+            android:drawableEnd="@drawable/ic_insert_invitation_black_24dp"
             android:elevation="4dp"
             android:gravity="start"
             android:hint="@string/formato_fecha"
@@ -108,29 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Hora"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-black" />
-
-        <EditText
-            android:id="@+id/txtTripPartingHour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:drawableRight="@drawable/ic_access_time_black_24dp"
-            android:elevation="4dp"
-            android:ems="10"
-            android:hint="@string/formato_hora"
-            android:inputType="datetime"
-            android:padding="15dp"
-            android:textColorHint="#363732">
-        </EditText>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Asunto"
+            android:text="@string/hora"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -154,7 +132,7 @@
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:background="@drawable/buttonsstylesnormal"
-            android:text="Crear viaje"
+            android:text="@string/crear_viaje"
             android:textColor="#fff" />
 
     </LinearLayout>

@@ -36,6 +36,7 @@ class ProfileActivity : AppCompatActivity() {
         startActivity(Intent(this, EditProfileActivity::class.java))
     }
     fun back(view:View){
-        startActivity(Intent(this, MenuActivity::class.java))
+        //startActivity(Intent(this, MenuActivity::class.java))
+        onBackPressed()
     }
 }

@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Soporte"
+            android:text="@string/soporte"
             android:textColor="#fff"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Nombre completo"
+            android:text="@string/nombre_completo"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:drawableRight="@drawable/ic_person_btnblue_24dp"
+            android:drawableEnd="@drawable/ic_person_btnblue_24dp"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Correo electronico"
+            android:text="@string/correo_electronico"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -77,38 +77,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:drawableRight="@drawable/ic_mail_outline_mainblue_24dp"
+            android:drawableEnd="@drawable/ic_mail_outline_mainblue_24dp"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Fecha"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif-black" />
-
-        <TextView
-            android:id="@+id/txtSupportDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:drawableRight="@drawable/ic_insert_invitation_black_24dp"
-            android:elevation="4dp"
-            android:gravity="start"
-            android:hint="@string/formato_fecha"
-            android:padding="15dp"
-            android:textColorHint="#363732"
-            android:typeface="serif" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Asunto"
+            android:text="@string/asunto"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -133,7 +111,7 @@
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:background="@drawable/buttonsstylesnormal"
-            android:text="Enviar Mensaje"
+            android:text="@string/enviar_mensaje"
             android:textColor="#fff" />
 
     </LinearLayout>

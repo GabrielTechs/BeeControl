@@ -16,7 +16,8 @@ class SupportActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_support)
-
+    }
+/*
         txtSupportDate.setOnClickListener{
             datePicker()
         }
@@ -33,7 +34,7 @@ class SupportActivity : AppCompatActivity() {
         }, year, month + 1, day)
         dpd.show()
     }
-
+*/
     fun back(view: View){
         startActivity(Intent(this, MenuActivity::class.java))
     }
