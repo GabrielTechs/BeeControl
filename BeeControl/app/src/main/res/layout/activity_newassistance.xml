@@ -68,6 +68,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="@string/correo_electronico"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/txtEmployeeEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:drawableEnd="@drawable/ic_mail_outline_mainblue_24dp"
+            android:elevation="4dp"
+            android:padding="15dp"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/fecha"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
