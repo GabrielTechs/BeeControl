@@ -123,4 +123,13 @@
     <string name="id_empleado">id empleado</string>
     <string name="fecha">Fecha</string>
     <string name="soporte">Soporte</string>
+    <string name="agregar_viaje">Agregar viaje</string>
+    <string name="agregar_asistencia">Agregar asistencia</string>
+    <string name="opciones_de_administrador">Opciones de administrador</string>
+    <string name="salir">Salir</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="otras_opciones">Otras opciones</string>
+    <string name="configuraci_n">Configuración</string>
+    <string name="recursos_humanos">Recursos Humanos</string>
+    <string name="mensajes">Mensajes</string>
 </resources>

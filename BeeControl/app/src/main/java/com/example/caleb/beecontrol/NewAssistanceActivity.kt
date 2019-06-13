@@ -41,7 +41,8 @@ class NewAssistanceActivity : AppCompatActivity() {
     }
 
     fun back(view: View){
-        startActivity(Intent(this, AssistanceActivity::class.java))
+        //startActivity(Intent(this, AssistanceActivity::class.java))
+        onBackPressed()
     }
 
     @RequiresApi(Build.VERSION_CODES.N)

@@ -12,6 +12,7 @@ class SupportMessagesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_support_messages)
     }
     fun back(view: View){
-        startActivity(Intent(this, EmployeesActivity::class.java))
+        //startActivity(Intent(this, EmployeesActivity::class.java))
+        onBackPressed()
     }
 }

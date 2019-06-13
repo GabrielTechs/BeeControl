@@ -6,21 +6,26 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.Toast
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class TripActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
+    lateinit var firebaseAuth: FirebaseAuth
+    var userRef = db.collection("user")
     private val tripbookRef = db.collection("Trips")
-
     private var adapter: TripAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trip)
         setUpRecyclerView()
+
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     private fun setUpRecyclerView() {
@@ -52,12 +57,26 @@ class TripActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    fun back(view:View){
+
+    fun back(view: View) {
         startActivity(Intent(this, MenuActivity::class.java))
     }
-    fun addtrip(view: View){
-        val intent = Intent(this, NewTripActivity::class.java)
-        startActivity(intent)
+
+    fun addtrip(view: View) {
+
+        val email = firebaseAuth.currentUser?.email.toString()
+        val docRef = userRef.document(email)
+        docRef.get().addOnSuccessListener { document ->
+            var admin = document.toObject(Employee::class.java)?.isAdmin
+            if (admin!!) {
+                val intent = Intent(this, NewTripActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(applicationContext, "No eres admin!", Toast.LENGTH_LONG).show()
+            }
+        }
+        //val intent = Intent(this, NewTripActivity::class.java)
+        //startActivity(intent)
     }
 
     override fun onStart() {

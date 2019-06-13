@@ -7,33 +7,56 @@
         <item
             android:id="@+id/txtControla"
             android:icon="@drawable/ic_directions_bus_black_24dp"
-            android:title="Viajes" />
+            android:title="@string/viajes" />
         <item
             android:id="@+id/txtAsistencia"
             android:icon="@drawable/ic_supervisor_account_black_24dp"
-            android:title="Asistencia" />
+            android:title="@string/Asistencia" />
         <item
             android:id="@+id/txtRecursosH"
             android:icon="@drawable/ic_wc_black_24dp"
-            android:title="Recursos Humanos" />
+            android:title="@string/recursos_humanos" />
         <item
             android:id="@+id/txtConfi"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Configuración" />
+            android:title="@string/configuraci_n" />
     </group>
 
-    <item android:title="Otras opciones">
+    <item android:title="@string/otras_opciones">
         <menu>
             <item android:id="@+id/txtAyuda"
                 android:icon="@drawable/ic_help_black_24dp"
-                android:title="Ayuda">
+                android:title="@string/ayuda">
 
             </item>
             <item
                 android:id="@+id/txtSalir"
                 android:icon="@drawable/ic_transfer_within_a_station_black_24dp"
-                android:title="Salir" />
+                android:title="@string/salir" />
         </menu>
     </item>
+
+<!--
+    <item
+        android:id="@+id/Adminbuttons"
+        android:title="@string/opciones_de_administrador">
+        <menu>
+            <item android:id="@+id/txtAddAssistance"
+                android:icon="@drawable/ic_person_add_menu_24dp"
+                android:title="@string/agregar_asistencia">
+
+            </item>
+            <item
+                android:id="@+id/txtAddTrip"
+                android:icon="@drawable/ic_playlist_add_menu_24dp"
+                android:title="@string/agregar_viaje" />
+            <item
+                android:id="@+id/txtSupport"
+                android:icon="@drawable/ic_recent_actors_menu_24dp"
+                android:title="@string/mensajes" />
+
+        </menu>
+    </item>
+-->
 
 </menu>

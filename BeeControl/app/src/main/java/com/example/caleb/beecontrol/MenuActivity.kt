@@ -144,7 +144,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         null
                     }
         }
-
     }
 
     fun assistance(email: String){
