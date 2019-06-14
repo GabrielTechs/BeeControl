@@ -47,12 +47,13 @@ class TripActivity : AppCompatActivity() {
 
             val intent = Intent(this, TripDetailActivity::class.java)
 
-            intent.putExtra("tripDriverName", trip!!.getTripDriverName())
-            intent.putExtra("tripTitle", trip.getTripTitle())
-            intent.putExtra("tripDate", trip.getTripDate())
-            intent.putExtra("tripPartingHour", trip.getTripPartingHour())
-            intent.putExtra("tripEntryHour", trip.getTripEntryHour())
-            intent.putExtra("tripDescription", trip.getTripDescription())
+            intent.putExtra("tripDriverName", trip!!.tripDriverName)
+            intent.putExtra("tripTitle", trip.tripTitle)
+            intent.putExtra("tripDate", trip.tripDate)
+            intent.putExtra("tripCreatedHour", trip.tripCreatedHour)
+            intent.putExtra("tripPartingHour", trip.tripPartingHour)
+            intent.putExtra("tripEntryHour", trip.tripEntryHour)
+            intent.putExtra("tripDescription", trip.tripDescription)
 
             startActivity(intent)
         }

@@ -1,6 +1,5 @@
 package com.example.caleb.beecontrol
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,7 +11,6 @@ class SupportMessagesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_support_messages)
     }
     fun back(view: View){
-        //startActivity(Intent(this, EmployeesActivity::class.java))
         onBackPressed()
     }
 }

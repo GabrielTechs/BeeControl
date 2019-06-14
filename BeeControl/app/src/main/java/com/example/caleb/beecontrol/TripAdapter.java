@@ -24,6 +24,8 @@ public class TripAdapter extends FirestoreRecyclerAdapter<Trip, TripAdapter.Trip
         holder.txtTripDate.setText(model.getTripDate());
         holder.txtTripDriverName.setText((model.getTripDriverName()));
         holder.txtTripTitle.setText(model.getTripTitle());
+        holder.txtTripCreatedHour.setText(model.getTripCreatedHour());
+        holder.txtTripEntryHour.setText(model.getTripEntryHour());
         holder.txtTripPartingHour.setText(model.getTripPartingHour());
         holder.txtTripId.setText(String.valueOf(model.getTripId()));
 
@@ -42,6 +44,8 @@ public class TripAdapter extends FirestoreRecyclerAdapter<Trip, TripAdapter.Trip
         TextView txtTripDriverName;
         TextView txtTripTitle;
         TextView txtTripDate;
+        TextView txtTripCreatedHour;
+        TextView txtTripEntryHour;
         TextView txtTripPartingHour;
         TextView txtTripId;
 
@@ -50,6 +54,8 @@ public class TripAdapter extends FirestoreRecyclerAdapter<Trip, TripAdapter.Trip
             txtTripDriverName = itemView.findViewById(R.id.txtTripDriverName);
             txtTripTitle = itemView.findViewById(R.id.txtTripTitle);
             txtTripDate = itemView.findViewById(R.id.txtTripDate);
+            txtTripCreatedHour = itemView.findViewById(R.id.txtTripCreatedHour);
+            txtTripEntryHour = itemView.findViewById(R.id.txtTripEntryHour);
             txtTripPartingHour = itemView.findViewById(R.id.txtTripPartingHour);
             txtTripId = itemView.findViewById(R.id.txtTripId);
 
