@@ -60,6 +60,7 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             android:drawableEnd="@drawable/ic_person_btnblue_24dp"
+            android:textCursorDrawable="@drawable/color_cursos_mblue"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />
@@ -78,6 +79,7 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             android:drawableEnd="@drawable/ic_mail_outline_mainblue_24dp"
+            android:textCursorDrawable="@drawable/color_cursos_mblue"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />
@@ -95,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittextstyle"
+            android:textCursorDrawable="@drawable/color_cursos_mblue"
             android:elevation="4dp"
             android:gravity="top|start"
             android:inputType="textMultiLine"
