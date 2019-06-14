@@ -58,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
+            android:textCursorDrawable="@drawable/color_cursos_mblue"
             android:drawableEnd="@drawable/ic_person_btnblue_24dp"
             android:elevation="4dp"
             android:padding="15dp"
@@ -76,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
+            android:textCursorDrawable="@drawable/color_cursos_mblue"
             android:drawableEnd="@drawable/ic_local_shipping_black_24dp"
             android:elevation="4dp"
             android:padding="15dp"
@@ -86,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/hora"
+            android:text="@string/asunto"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -94,13 +96,14 @@
             android:id="@+id/txtTripDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textCursorDrawable="@drawable/color_cursos_mblue"
             android:background="@drawable/edittextstyle"
             android:elevation="4dp"
             android:inputType="textMultiLine"
             android:lines="6"
             android:maxLines="4"
             android:minLines="4"
-            android:gravity="top|left"
+            android:gravity="top|start"
             android:scrollbars="vertical"/>
 
         <Button

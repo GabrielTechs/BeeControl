@@ -43,11 +43,11 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawableStart="@drawable/ic_person_black_24dp"
             android:drawablePadding="10dp"
-            android:hint="USUARIO"
+            android:hint="@string/usuario"
             android:backgroundTint="#FFF"
-            android:singleLine="true"
+            android:textCursorDrawable="@null"
             android:textColor="#fff"
             android:textColorHint="@drawable/selecthide"/>
 
@@ -55,12 +55,13 @@
             android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawableStart="@drawable/ic_lock_black_24dp"
             android:drawablePadding="10dp"
-            android:hint="CONTRASEÑA"
+            android:hint="@string/contrase_a"
             android:inputType="textPassword"
             android:singleLine="true"
             android:backgroundTint="#fff"
+            android:textCursorDrawable="@null"
             android:textColor="#fff"
             android:textColorHint="@drawable/selecthide"/>
 

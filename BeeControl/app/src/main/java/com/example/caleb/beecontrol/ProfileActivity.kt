@@ -48,7 +48,7 @@ class ProfileActivity : AppCompatActivity() {
         docRef.get().addOnSuccessListener { document ->
             var admin = document.toObject(Employee::class.java)?.isAdmin
             if(admin!!){
-                val intent = Intent(this, SupportMessagesActivity::class.java)
+                val intent = Intent(this, EditProfileActivity::class.java)
                 startActivity(intent)
             }
             else{

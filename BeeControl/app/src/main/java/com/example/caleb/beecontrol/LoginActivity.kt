@@ -73,7 +73,8 @@ class LoginActivity : AppCompatActivity()
                         progressBar.visibility = View.INVISIBLE
                         Log.w("SignInFailed", "signInWithEmail:failure", task.exception)
                         Toast.makeText(applicationContext, "Error al iniciar sesion.",
-                                Toast.LENGTH_SHORT).show()
+                                Toast.LENGTH_SHORT)
+
                     }
                 })
         }

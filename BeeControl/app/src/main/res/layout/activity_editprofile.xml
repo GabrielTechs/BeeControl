@@ -81,8 +81,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="#fff"
+                android:textCursorDrawable="@drawable/color_cursos_mblue"
                 android:elevation="4dp"
-                android:hint="Nombre de empleado"
+                android:hint="@string/nombre_de_empleado"
                 android:padding="20dp"
                 android:singleLine="true"
                 android:text="Caleb" />
@@ -94,8 +95,9 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
                 android:background="#fff"
+                android:textCursorDrawable="@drawable/color_cursos_mblue"
                 android:elevation="4dp"
-                android:hint="Apellido"
+                android:hint="@string/apellido"
                 android:padding="20dp"
                 android:singleLine="true"
                 android:text="Gomez" />
@@ -105,8 +107,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="#fff"
+                android:textCursorDrawable="@drawable/color_cursos_mblue"
                 android:elevation="4dp"
-                android:hint="Puesto"
+                android:hint="@string/puesto"
                 android:padding="20dp"
                 android:singleLine="true" />
 
@@ -117,8 +120,9 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
                 android:background="#fff"
+                android:textCursorDrawable="@drawable/color_cursos_mblue"
                 android:elevation="4dp"
-                android:hint="Correo electrónico"
+                android:hint="@string/correo_electronico"
                 android:padding="20dp"
                 android:singleLine="true"
                 android:text="belaczemog@gmail.com" />
