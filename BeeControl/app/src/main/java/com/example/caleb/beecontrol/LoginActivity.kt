@@ -101,9 +101,10 @@ class LoginActivity : AppCompatActivity()
         toast.setGravity(Gravity.TOP,0,250)
         val view = toast.view
         val text = view.findViewById(android.R.id.message) as TextView
-        view.setBackgroundResource(R.drawable.login_toast)
+        //view.setBackgroundResource(R.drawable.login_toast)
+        view.setBackgroundColor(Color.TRANSPARENT)
         text.gravity = CENTER
-        text.setBackgroundColor(Color.WHITE)
+        text.setBackgroundColor(Color.TRANSPARENT)
         text.setTextColor(Color.RED)
         text.textSize = 20F
         toast.show()

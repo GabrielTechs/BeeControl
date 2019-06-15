@@ -7,7 +7,7 @@
         <item
             android:id="@+id/txtControla"
             android:icon="@drawable/ic_directions_bus_black_24dp"
-            android:title="@string/viajes" />
+            android:title="@string/viajes"/>
         <item
             android:id="@+id/txtAsistencia"
             android:icon="@drawable/ic_supervisor_account_black_24dp"
@@ -38,8 +38,9 @@
 
 
 <!--
+<group android:checkableBehavior="single"
+    android:id="@+id/admingrp">
     <item
-        android:id="@+id/Adminbuttons"
         android:title="@string/opciones_de_administrador">
         <menu>
             <item android:id="@+id/txtAddAssistance"
@@ -58,6 +59,6 @@
 
         </menu>
     </item>
+</group>
 -->
-
 </menu>
