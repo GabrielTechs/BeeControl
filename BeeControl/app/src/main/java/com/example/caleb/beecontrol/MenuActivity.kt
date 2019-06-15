@@ -1,13 +1,16 @@
 package com.example.caleb.beecontrol
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -76,7 +79,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         null
                     }
                     .onExit {
-                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
                         null
                     }
                     .build()
@@ -86,10 +89,10 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .inNearRange()
                     .onEnter { context ->
                         val truckBeacon = context.attachments["zone"]
-                        Toast.makeText(applicationContext, "Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                        toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
                     }
                     .onExit {
-                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
                     }
                     .build()
 
@@ -98,10 +101,10 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .inNearRange()
                     .onEnter { context ->
                         val officeBeacon = context.attachments["zone"]
-                        Toast.makeText(applicationContext, "Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                        toast("Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG)
                     }
                     .onExit {
-                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
                     }
                     .build()
 
@@ -110,10 +113,10 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .inNearRange()
                     .onEnter { context ->
                         val hrBeacon = context.attachments["zone"]
-                        Toast.makeText(applicationContext, "Bienvenido a la $hrBeacon de Supliyeso!", Toast.LENGTH_LONG).show()
+                        toast("Bienvenido a la $hrBeacon de Supliyeso!", Toast.LENGTH_LONG)
                     }
                     .onExit {
-                        Toast.makeText(applicationContext, "Vuelva pronto!", Toast.LENGTH_LONG).show()
+                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
                     }
                     .build()
 
@@ -157,7 +160,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                         for (document in result) {
                                             document.toObject(Assistance::class.java)
                                             if(document["employeeName"] == employeeName && document["assistDate"] == assistDate){
-                                                Toast.makeText(applicationContext, "Ya estas asistido!", Toast.LENGTH_LONG).show()
+                                                toast("Ya estás asistido!", Toast.LENGTH_LONG)
                                                 assisted = true
                                             }
                                         }
@@ -169,11 +172,11 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                             }
 
                                             assistanceRef.add(Assistance(employeeName, status, assistDate))
-                                            Toast.makeText(applicationContext, "$employeeName agregado a la lista!", Toast.LENGTH_LONG).show()
+                                            toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                         }
                                     }
                                     else{
-                                        Toast.makeText(applicationContext, "No documents!", Toast.LENGTH_LONG).show()
+                                        toast("No documents!", Toast.LENGTH_LONG)
                                     }
                                 }
                                 .addOnFailureListener { exception ->
@@ -243,5 +246,17 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        val toast = Toast.makeText(this, message, duration)
+        toast.setGravity(Gravity.TOP,0,200)
+        val view = toast.view
+        val text = view.findViewById(android.R.id.message) as TextView
+        view.setBackgroundResource(R.drawable.login_toast)
+        text.gravity = Gravity.CENTER
+        text.setBackgroundColor(Color.WHITE)
+        text.setTextColor(Color.BLUE)
+        text.textSize = 20F
+        toast.show()
     }
 }

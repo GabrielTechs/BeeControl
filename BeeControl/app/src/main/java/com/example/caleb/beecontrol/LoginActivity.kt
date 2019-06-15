@@ -1,15 +1,28 @@
 package com.example.caleb.beecontrol
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.Gravity
+import android.view.Gravity.CENTER
 import android.view.View
+import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
+import android.widget.TextView
+import android.widget.Toast
+import android.view.LayoutInflater
+
+
+
+
 
 class LoginActivity : AppCompatActivity()
 {
@@ -44,16 +57,17 @@ class LoginActivity : AppCompatActivity()
         }*/
     }
 
+    @SuppressLint("ResourceAsColor")
     fun signIn() {
         val email = txtEmail.text.toString()
         val password = txtPassword.text.toString()
 
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(applicationContext, "Introdusca su email", Toast.LENGTH_LONG).show()
+            toast("Introduzca su correo electrónico", Toast.LENGTH_LONG)
             return
         }
         if(TextUtils.isEmpty(password)){
-            Toast.makeText(applicationContext, "Introdusca su contraseña", Toast.LENGTH_LONG).show()
+            toast("Introduzca su contraseña", Toast.LENGTH_LONG)
             return
         }
 
@@ -72,9 +86,7 @@ class LoginActivity : AppCompatActivity()
                         // If sign in fails, display a message to the user.
                         progressBar.visibility = View.INVISIBLE
                         Log.w("SignInFailed", "signInWithEmail:failure", task.exception)
-                        Toast.makeText(applicationContext, "Error al iniciar sesion.",
-                                Toast.LENGTH_SHORT)
-
+                        toast("Error al iniciar sesión", Toast.LENGTH_LONG)
                     }
                 })
         }
@@ -84,5 +96,16 @@ class LoginActivity : AppCompatActivity()
     {
         startActivity(Intent(this, ForgotPasswordActivity::class.java))
     }
-
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        val toast = Toast.makeText(this, message, duration)
+        toast.setGravity(Gravity.TOP,0,250)
+        val view = toast.view
+        val text = view.findViewById(android.R.id.message) as TextView
+        view.setBackgroundResource(R.drawable.login_toast)
+        text.gravity = CENTER
+        text.setBackgroundColor(Color.WHITE)
+        text.setTextColor(Color.RED)
+        text.textSize = 20F
+        toast.show()
+    }
 }

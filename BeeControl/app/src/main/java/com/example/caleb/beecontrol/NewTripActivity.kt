@@ -1,12 +1,15 @@
 package com.example.caleb.beecontrol
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -53,7 +56,7 @@ class NewTripActivity : AppCompatActivity() {
         val tripCreatedHour = tf.format(c).toString()
 
         if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripDriverName.isEmpty()){
-            Toast.makeText(this, "Llene los campos restantes", Toast.LENGTH_SHORT).show()
+            toast("Llene los campos restantes", Toast.LENGTH_SHORT)
             return
         }
 
@@ -63,7 +66,7 @@ class NewTripActivity : AppCompatActivity() {
             tripIdIncrement()
         }
 
-        Toast.makeText(this, "Viaje agregado!", Toast.LENGTH_SHORT).show()
+        toast("Viaje agregado!", Toast.LENGTH_SHORT)
         val intent = Intent(this, TripActivity::class.java)
         startActivity(intent)
     }
@@ -78,5 +81,18 @@ class NewTripActivity : AppCompatActivity() {
 
     fun back(view: View){
         startActivity(Intent(this, TripActivity::class.java))
+    }
+
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        val toast = Toast.makeText(this, message, duration)
+        toast.setGravity(Gravity.TOP,0,200)
+        val view = toast.view
+        val text = view.findViewById(android.R.id.message) as TextView
+        view.setBackgroundResource(R.drawable.login_toast)
+        text.gravity = Gravity.CENTER
+        text.setBackgroundColor(Color.WHITE)
+        text.setTextColor(Color.BLUE)
+        text.textSize = 20F
+        toast.show()
     }
 }

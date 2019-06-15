@@ -1,18 +1,18 @@
 package com.example.caleb.beecontrol
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.AuthResult
 import com.google.android.gms.tasks.OnCompleteListener
 import android.util.Log
+import android.view.Gravity
+import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.model.value.FieldValue
 
@@ -61,27 +61,27 @@ class RegisterActivity : AppCompatActivity() {
 
 
         if(TextUtils.isEmpty(name)){
-            Toast.makeText(applicationContext, "Introdusca su primer nombre", Toast.LENGTH_LONG).show()
+            toast("Introdusca su primer nombre", Toast.LENGTH_LONG)
             return
         }
         if(TextUtils.isEmpty(lastName)){
-            Toast.makeText(applicationContext, "Introdusca su apellido", Toast.LENGTH_LONG).show()
+            toast("Introduzca su apellido", Toast.LENGTH_LONG)
             return
         }
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(applicationContext, "Introdusca su email", Toast.LENGTH_LONG).show()
+            toast("Introduzca su correo electrónico", Toast.LENGTH_LONG)
             return
         }
         if(TextUtils.isEmpty(password)){
-            Toast.makeText(applicationContext, "Introdusca su contraseña", Toast.LENGTH_LONG).show()
+            toast("Introduzca su contraseña", Toast.LENGTH_LONG)
             return
         }
         if(TextUtils.isEmpty(confPass)){
-            Toast.makeText(applicationContext, "Introdusca la confimacion de contraseña", Toast.LENGTH_LONG).show()
+            toast("Introduzca la confimación de contraseña", Toast.LENGTH_LONG)
             return
         }
         if(password != confPass){
-            Toast.makeText(applicationContext, "La contraseña no coincide", Toast.LENGTH_LONG).show()
+            toast("La contraseña no coincide", Toast.LENGTH_LONG)
             return
         }
 
@@ -132,5 +132,18 @@ class RegisterActivity : AppCompatActivity() {
 
     fun back(view: View){
         startActivity(Intent(this, LoginActivity::class.java))
+    }
+
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        val toast = Toast.makeText(this, message, duration)
+        toast.setGravity(Gravity.TOP,0,200)
+        val view = toast.view
+        val text = view.findViewById(android.R.id.message) as TextView
+        view.setBackgroundResource(R.drawable.login_toast)
+        text.gravity = Gravity.CENTER
+        text.setBackgroundColor(Color.WHITE)
+        text.setTextColor(Color.BLUE)
+        text.textSize = 20F
+        toast.show()
     }
 }
