@@ -14,8 +14,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.android.gms.tasks.OnCompleteListener
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
-import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.model.value.FieldValue
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -27,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtConfPassword: EditText
     lateinit var btnRegister: Button
     lateinit var progressBar: ProgressBar
-
+    private val path = db.collection("EmployeeID").document("Counter")
     lateinit var firebaseAuth: FirebaseAuth
     lateinit var db: FirebaseFirestore
 
@@ -94,20 +93,24 @@ class RegisterActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         progressBar.visibility = View.INVISIBLE
-                        val user = HashMap<String, Any>()
-                        user["name"] = name
-                        user["lastName"] = lastName
-                        user["email"] = email
-                        user["role"] = "Empleado"
-
-                        db.collection("user").document(email)
-                                .set(user)
-                                .addOnSuccessListener { Log.d("RegisterActivity", "DocumentSnapshot successfully written!") }
-                                .addOnFailureListener { e -> Log.w("RegisterActivity", "Error writing document", e) }
-                        Log.d("RegisterSuccess", "createUserWithEmail:success")
-                        Toast.makeText(applicationContext, "Usuario registrado corractamente!", Toast.LENGTH_SHORT).show()
-                        var intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
+                        path.get().addOnSuccessListener { document ->
+                            val id = document["Id"].toString().toInt()
+                            val user = HashMap<String, Any>()
+                            user["name"] = name
+                            user["lastName"] = lastName
+                            user["email"] = email
+                            user["isAdmin"] = false
+                            user["Id"] = id
+                            db.collection("user").document(email)
+                                    .set(user)
+                                    .addOnSuccessListener { Log.d("RegisterActivity", "DocumentSnapshot successfully written!") }
+                                    .addOnFailureListener { e -> Log.w("RegisterActivity", "Error writing document", e) }
+                            Log.d("RegisterSuccess", "createUserWithEmail:success")
+                            Toast.makeText(applicationContext, "Usuario registrado corractamente!", Toast.LENGTH_SHORT).show()
+                            incrementUserId()
+                            var intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                        }
                     } else {
                         // If sign in fails, display a message to the user.
                         progressBar.visibility = View.INVISIBLE
@@ -119,11 +122,12 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    fun incrementId(view: View) {
-        val db = FirebaseFirestore.getInstance()
-        val path = db.collection("EmployeeID").document("Counter")
-
-        //path.update("Id", FieldValue.increment(50))
+    fun incrementUserId() {
+        path.get().addOnSuccessListener { document ->
+            var count = document["Id"]
+            count = count.toString().toInt() + 1
+            path.update("Id", count)
+        }
     }
 
     fun back(view: View){

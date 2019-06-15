@@ -13,15 +13,17 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import java.text.SimpleDateFormat
 
 class NewTripActivity : AppCompatActivity() {
 
     lateinit var txtTripDriverName: EditText
     lateinit var txtTripTitle: EditText
     lateinit var txtTripDescription: EditText
-    lateinit var txtTripDate: TextView
     lateinit var btnCreateTrip: Button
     private val db = FirebaseFirestore.getInstance()
+    private val path = db.collection("TripID").document("Counter")
     private val tripCollectionRef = db.collection("Trips")
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -32,47 +34,46 @@ class NewTripActivity : AppCompatActivity() {
         txtTripDriverName = findViewById(R.id.txtTripDriverName)
         txtTripTitle = findViewById(R.id.txtTripTitle)
         txtTripDescription = findViewById(R.id.txtTripDescription)
-        txtTripDate = findViewById(R.id.txtTripDate)
         btnCreateTrip = findViewById(R.id.btnCreateTrip)
 
-        txtTripDate.setOnClickListener{
-            datePicker()
-        }
 
         btnCreateTrip.setOnClickListener {
             createTrip()
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    fun datePicker() {
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-            txtTripDate.text = "$mDay/$mMonth/$mYear"
-        }, year, month + 1, day)
-        dpd.show()
-    }
-
     fun createTrip(){
-        var tripTitle: String = txtTripTitle.text.toString()
-        var tripDriverName: String = txtTripDriverName.text.toString()
-        var tripDate: String = txtTripDate.text.toString()
-        var tripDescription: String = txtTripDescription.text.toString()
+        val tripTitle: String = txtTripTitle.text.toString()
+        val tripDriverName: String = txtTripDriverName.text.toString()
+        val tripDescription: String = txtTripDescription.text.toString()
+        val c = java.util.Calendar.getInstance().time
+        val df = SimpleDateFormat("dd-MM-yyyy")
+        val tf = SimpleDateFormat("HH:mm")
+        val tripDate =  df.format(c).toString()
+        val tripCreatedHour = tf.format(c).toString()
 
-        if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripDate.isEmpty() ||
-                tripDriverName.isEmpty()){
+        if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripDriverName.isEmpty()){
             Toast.makeText(this, "Llene los campos restantes", Toast.LENGTH_SHORT).show()
             return
         }
 
-        tripCollectionRef.add(Trip(tripDate, tripTitle, tripDriverName, "", tripDescription, 10))
+        path.get().addOnSuccessListener { document ->
+            val id = document["Id"].toString().toInt()
+            tripCollectionRef.add(Trip(tripDate, tripTitle, tripDriverName, tripCreatedHour, tripDescription, id))
+            tripIdIncrement()
+        }
 
         Toast.makeText(this, "Viaje agregado!", Toast.LENGTH_SHORT).show()
-        var intent = Intent(this, TripActivity::class.java)
+        val intent = Intent(this, TripActivity::class.java)
         startActivity(intent)
+    }
+
+    fun tripIdIncrement() {
+        path.get().addOnSuccessListener { document ->
+            var count = document["Id"]
+            count = count.toString().toInt() + 1
+            path.update("Id", count)
+        }
     }
 
     fun back(view: View){

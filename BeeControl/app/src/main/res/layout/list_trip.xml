@@ -56,7 +56,7 @@
             android:typeface="serif" />
 
         <TextView
-            android:id="@+id/txtTripArriveHour"
+            android:id="@+id/txtTripEntryHour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -76,7 +76,7 @@
             android:typeface="serif" />
 
         <TextView
-            android:id="@+id/txtTripSettedHour"
+            android:id="@+id/txtTripCreatedHour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtTripDate"

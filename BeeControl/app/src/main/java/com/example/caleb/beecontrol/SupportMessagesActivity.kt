@@ -1,6 +1,5 @@
 package com.example.caleb.beecontrol
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -45,7 +44,6 @@ class SupportMessagesActivity : AppCompatActivity() {
 
 
     fun back(view: View){
-        //startActivity(Intent(this, EmployeesActivity::class.java))
         onBackPressed()
     }
 }

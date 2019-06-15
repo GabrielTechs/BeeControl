@@ -112,7 +112,7 @@
             app:fontFamily="sans-serif-black" />
 
         <TextView
-            android:id="@+id/txtTripSettedHour"
+            android:id="@+id/txtTripCreatedHour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/InBoxColorSize"
