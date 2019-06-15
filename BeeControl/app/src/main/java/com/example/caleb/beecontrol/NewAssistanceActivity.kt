@@ -83,10 +83,10 @@ class NewAssistanceActivity : AppCompatActivity() {
 
                 }
 
-        if(!emailExists){
+        /*if(!emailExists){
             toast("El email no existe", Toast.LENGTH_SHORT)
             return
-        }
+        }*/
 
         if (employeeName.trim().isEmpty() || assistDate.trim().isEmpty() || employeeEmail.trim().isEmpty()) {
             toast("Llene los campos restantes", Toast.LENGTH_SHORT)
