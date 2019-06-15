@@ -98,7 +98,7 @@ class LoginActivity : AppCompatActivity()
     }
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         val toast = Toast.makeText(this, message, duration)
-        toast.setGravity(Gravity.TOP,0,200)
+        toast.setGravity(Gravity.TOP,0,250)
         val view = toast.view
         val text = view.findViewById(android.R.id.message) as TextView
         view.setBackgroundResource(R.drawable.login_toast)
