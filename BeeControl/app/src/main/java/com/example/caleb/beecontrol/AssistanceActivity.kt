@@ -62,6 +62,18 @@ class AssistanceActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun datePicker() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+            txtAssistanceDate.text = "$mDay/$mMonth/$mYear"
+        }, year, month + 1, day)
+        dpd.show()
+    }
+
     private fun setUpRecyclerView() {
         val query = AssistancebookRef.orderBy("status", Query.Direction.ASCENDING)
 
@@ -82,17 +94,7 @@ class AssistanceActivity : AppCompatActivity() {
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    fun datePicker() {
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-            txtAssistanceDate.text = "$mDay/$mMonth/$mYear"
-        }, year, month + 1, day)
-        dpd.show()
-    }
+
 
 
     override fun onStart() {
