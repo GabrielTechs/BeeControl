@@ -3,6 +3,7 @@ package com.example.caleb.beecontrol;
 public class Assistance {
 
     public String employeeName;
+    public String employeeEmail;
     public String status;
     public String assistDate;
 
@@ -10,8 +11,9 @@ public class Assistance {
 
     }
 
-    Assistance(String employeeName, String status, String assistDate){
+    Assistance(String employeeName, String employeeEmail,String status, String assistDate){
         this.employeeName = employeeName;
+        this.employeeEmail = employeeEmail;
         this.status = status;
         this.assistDate = assistDate;
     }
@@ -19,6 +21,8 @@ public class Assistance {
     public String getEmployeeName() {
         return employeeName;
     }
+
+    public String getEmployeeEmail() { return employeeEmail;}
 
     public String getStatus() {
         return status;

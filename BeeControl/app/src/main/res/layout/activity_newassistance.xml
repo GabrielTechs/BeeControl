@@ -73,7 +73,7 @@
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
-        <TextView
+        <EditText
             android:id="@+id/txtEmployeeEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

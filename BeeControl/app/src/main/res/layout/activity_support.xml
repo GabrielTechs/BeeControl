@@ -108,7 +108,7 @@
             android:textAppearance="@style/InBoxColorSize" />
 
         <Button
-            android:id="@+id/btnCreateSupport"
+            android:id="@+id/btnCreateSupportMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

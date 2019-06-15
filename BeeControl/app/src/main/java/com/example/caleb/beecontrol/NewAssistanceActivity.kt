@@ -18,10 +18,12 @@ import kotlinx.android.synthetic.main.activity_newassistance.*
 class NewAssistanceActivity : AppCompatActivity() {
 
     lateinit var txtEmployeeName: EditText
+    lateinit var txtEmployeeEmail: EditText
     lateinit var txtAssistanceDate: TextView
     lateinit var spinStatus: Spinner
     lateinit var btnSaveAssistance: Button
     private val db = FirebaseFirestore.getInstance()
+    private val userRef = db.collection("user")
     private val assistanceCollectionRef = db.collection("Assistance")
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -30,6 +32,7 @@ class NewAssistanceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_newassistance)
 
         txtEmployeeName = findViewById(R.id.txtEmployeeName)
+        txtEmployeeEmail = findViewById(R.id.txtEmployeeEmail)
         txtAssistanceDate = findViewById(R.id.txtAssistDate)
         spinStatus = findViewById(R.id.AssistStatus)
         btnSaveAssistance = findViewById(R.id.btnSaveAssistance)
@@ -43,7 +46,7 @@ class NewAssistanceActivity : AppCompatActivity() {
         }
     }
 
-    fun back(view: View){
+    fun back(view: View) {
         startActivity(Intent(this, AssistanceActivity::class.java))
     }
 
@@ -60,17 +63,37 @@ class NewAssistanceActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun saveAssistance(){
-        val employeeName: String = txtEmployeeName.text.toString()
-        val assistDate: String = txtAssistanceDate.text.toString()
-        val status: String = spinStatus.selectedItem.toString()
+    fun saveAssistance() {
+        val employeeName = txtEmployeeName.text.toString()
+        val employeeEmail = txtEmployeeEmail.text.toString()
+        val assistDate = txtAssistanceDate.text.toString()
+        val status = spinStatus.selectedItem.toString()
+        var emailExists = false
 
-        if(employeeName.trim().isEmpty() || assistDate.trim().isEmpty()){
+        userRef
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        if(employeeEmail == document["email"].toString()){
+                            emailExists = true
+                        }
+                    }
+                }
+                .addOnFailureListener { exception ->
+
+                }
+
+        if(!emailExists){
+            toast("El email no existe", Toast.LENGTH_SHORT)
+            return
+        }
+
+        if (employeeName.trim().isEmpty() || assistDate.trim().isEmpty() || employeeEmail.trim().isEmpty()) {
             toast("Llene los campos restantes", Toast.LENGTH_SHORT)
             return
         }
 
-        assistanceCollectionRef.add(Assistance(employeeName, status, assistDate))
+        assistanceCollectionRef.add(Assistance(employeeName, employeeEmail, status, assistDate))
 
         toast("Assistencia guardada!", Toast.LENGTH_SHORT)
         val intent = Intent(this, AssistanceActivity::class.java)
@@ -79,7 +102,7 @@ class NewAssistanceActivity : AppCompatActivity() {
 
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         val toast = Toast.makeText(this, message, duration)
-        toast.setGravity(Gravity.TOP,0,200)
+        toast.setGravity(Gravity.TOP, 0, 200)
         val view = toast.view
         val text = view.findViewById(android.R.id.message) as TextView
         view.setBackgroundResource(R.drawable.login_toast)
