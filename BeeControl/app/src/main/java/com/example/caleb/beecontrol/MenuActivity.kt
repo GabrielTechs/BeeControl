@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
@@ -150,7 +151,14 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         null
                     }
         }
-        invalidateOptionsMenu()
+
+        val docRef = userRef.document(email)
+        docRef.get().addOnSuccessListener { document ->
+            var admin = document.toObject(Employee::class.java)?.isAdmin
+            if (admin!!) {
+                showAdmingrp()
+            }
+        }
     }
 
     fun assistance(email: String) {
@@ -203,7 +211,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
-
     }
 
     override fun onBackPressed() {
@@ -218,19 +225,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Inflate the menu; this adds items to the action bar if it is present.
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
-
-        //val admins = menu.getItem(1) as MenuItem
-        //admins.isVisible = false
-
-        /*val email = firebaseAuth.currentUser?.email.toString()
-
-        val docRef = userRef.document(email)
-        docRef.get().addOnSuccessListener { document ->
-            var admin = document.toObject(Employee::class.java)?.isAdmin
-            if (admin!!) {
-                admins.isVisible = false
-            }
-        }*/
         return true
     }
 
@@ -254,9 +248,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.txtAsistencia -> {
                 startActivity(Intent(this, AssistanceActivity::class.java))
             }
-            R.id.txtRecursosH -> {
-                startActivity(Intent(this, EmployeesActivity::class.java))
-            }
             R.id.txtConfi -> {
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
@@ -268,10 +259,28 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 firebaseAuth.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
             }
+            //Grupo de Administrador.
+            R.id.txtRecursosH -> {
+                startActivity(Intent(this, EmployeesActivity::class.java))
+            }
+            R.id.txtAddAssistance -> {
+                startActivity(Intent(this, NewAssistanceActivity::class.java))
+            }
+            R.id.txtAddTrip -> {
+                startActivity(Intent(this, NewTripActivity::class.java))
+            }
+            R.id.txtSupport -> {
+                startActivity(Intent(this, SupportMessagesActivity::class.java))
+            }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun showAdmingrp() {
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val navgroup = navigationView.menu
+        navgroup.setGroupVisible(R.id.admingrp, true)
     }
 
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {

@@ -13,13 +13,35 @@
             android:icon="@drawable/ic_supervisor_account_black_24dp"
             android:title="@string/Asistencia" />
         <item
-            android:id="@+id/txtRecursosH"
-            android:icon="@drawable/ic_wc_black_24dp"
-            android:title="@string/recursos_humanos" />
-        <item
             android:id="@+id/txtConfi"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/configuraci_n" />
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/admingrp"
+        android:visible="false">
+        <item
+            android:title="@string/opciones_de_administrador">
+            <menu>
+                <item
+                    android:id="@+id/txtRecursosH"
+                    android:icon="@drawable/ic_wc_black_24dp"
+                    android:title="@string/recursos_humanos" />
+                <item
+                    android:id="@+id/txtAddAssistance"
+                    android:icon="@drawable/ic_person_add_menu_24dp"
+                    android:title="@string/agregar_asistencia"/>
+                <item
+                    android:id="@+id/txtAddTrip"
+                    android:icon="@drawable/ic_playlist_add_menu_24dp"
+                    android:title="@string/agregar_viaje" />
+                <item
+                    android:id="@+id/txtSupport"
+                    android:icon="@drawable/ic_recent_actors_menu_24dp"
+                    android:title="@string/mensajes" />
+            </menu>
+        </item>
     </group>
 
     <item android:title="@string/otras_opciones">
@@ -36,29 +58,4 @@
         </menu>
     </item>
 
-
-<!--
-<group android:checkableBehavior="single"
-    android:id="@+id/admingrp">
-    <item
-        android:title="@string/opciones_de_administrador">
-        <menu>
-            <item android:id="@+id/txtAddAssistance"
-                android:icon="@drawable/ic_person_add_menu_24dp"
-                android:title="@string/agregar_asistencia">
-
-            </item>
-            <item
-                android:id="@+id/txtAddTrip"
-                android:icon="@drawable/ic_playlist_add_menu_24dp"
-                android:title="@string/agregar_viaje" />
-            <item
-                android:id="@+id/txtSupport"
-                android:icon="@drawable/ic_recent_actors_menu_24dp"
-                android:title="@string/mensajes" />
-
-        </menu>
-    </item>
-</group>
--->
 </menu>

@@ -4,8 +4,13 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.drawable.DrawableCompat
+import android.support.v7.content.res.AppCompatResources
 import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
@@ -48,6 +53,12 @@ class LoginActivity : AppCompatActivity()
         firebaseAuth =  FirebaseAuth.getInstance()
 
         btnLogin.setOnClickListener{
+            findViewById<TextView>(R.id.txtEmailEmpty).visibility = View.GONE
+            val editTextEmail = findViewById<EditText>(R.id.txtEmail)
+            editTextEmail.background.mutate().setColorFilter(resources.getColor(android.R.color.white), PorterDuff.Mode.SRC_ATOP)
+            findViewById<TextView>(R.id.txtPasswordEmpty).visibility = View.GONE
+            val editTextPassw = findViewById<EditText>(R.id.txtPassword)
+            editTextPassw.background.mutate().setColorFilter(resources.getColor(android.R.color.white), PorterDuff.Mode.SRC_ATOP)
             signIn()
         }
 /*
@@ -62,12 +73,28 @@ class LoginActivity : AppCompatActivity()
         val email = txtEmail.text.toString()
         val password = txtPassword.text.toString()
 
-        if(TextUtils.isEmpty(email)){
-            toast("Introduzca su correo electrónico", Toast.LENGTH_LONG)
+        if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password)){
+            findViewById<TextView>(R.id.txtEmailEmpty).visibility = View.VISIBLE
+            val editTextEmail = findViewById<EditText>(R.id.txtEmail)
+            editTextEmail.background.mutate().setColorFilter(resources.getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP)
+            findViewById<TextView>(R.id.txtPasswordEmpty).visibility = View.VISIBLE
+            val editTextPassw = findViewById<EditText>(R.id.txtPassword)
+            editTextPassw.background.mutate().setColorFilter(resources.getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP)
+            return
+        }
+
+            if(TextUtils.isEmpty(email)){
+            //toast("Introduzca su correo electrónico", Toast.LENGTH_LONG)
+            findViewById<TextView>(R.id.txtEmailEmpty).visibility = View.VISIBLE
+            val editText = findViewById<EditText>(R.id.txtEmail)
+            editText.background.mutate().setColorFilter(resources.getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP)
             return
         }
         if(TextUtils.isEmpty(password)){
-            toast("Introduzca su contraseña", Toast.LENGTH_LONG)
+            //toast("Introduzca su contraseña", Toast.LENGTH_LONG)
+            findViewById<TextView>(R.id.txtPasswordEmpty).visibility = View.VISIBLE
+            val editText = findViewById<EditText>(R.id.txtPassword)
+            editText.background.mutate().setColorFilter(resources.getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP)
             return
         }
 
