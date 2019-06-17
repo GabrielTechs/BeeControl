@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="@color/mainblue"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/PopupOverlay" >
         <TextView
@@ -28,8 +28,7 @@
             android:text="BeeControl"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:typeface="serif" />
+            android:textStyle="bold"/>
     </android.support.v7.widget.Toolbar>
 
 

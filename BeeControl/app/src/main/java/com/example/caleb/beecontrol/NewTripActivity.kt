@@ -80,7 +80,8 @@ class NewTripActivity : AppCompatActivity() {
     }
 
     fun back(view: View){
-        startActivity(Intent(this, TripActivity::class.java))
+        //startActivity(Intent(this, TripActivity::class.java))
+        onBackPressed()
     }
 
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {

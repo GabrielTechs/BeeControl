@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_assistance.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,6 +38,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var userRef = db.collection("user")
     private val assistanceRef = db.collection("Assistance")
     private var proximityObserverHandler: ProximityObserver.Handler? = null
+    //val email = firebaseAuth.currentUser?.email.toString()
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +62,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        if(proximityObserverHandler == null){
+        if (proximityObserverHandler == null) {
 
             val cloudCredentials = EstimoteCloudCredentials("beecontrol-afk", "0e4a52ed6b84786e84c489e8019a9a56")
 
@@ -137,6 +140,14 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         Log.e("app", "requirements error: $throwable")
                     }
         }
+
+        val docRef = userRef.document(email)
+        docRef.get().addOnSuccessListener { document ->
+            var admin = document.toObject(Employee::class.java)?.isAdmin
+            if (admin!!) {
+                showAdmingrp()
+            }
+        }
     }
 
     fun assistance(email: String){
@@ -144,7 +155,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         docRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        val employeeName = document.toObject(Employee::class.java)?.name + " " +  document.toObject(Employee::class.java)?.lastName
+                        val employeeName = document.toObject(Employee::class.java)?.name + " " + document.toObject(Employee::class.java)?.lastName
                         var status = "Presente"
                         val c = Calendar.getInstance().time
                         val df = SimpleDateFormat("dd-MM-yyyy")
@@ -154,28 +165,27 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                         assistanceRef.get()
                                 .addOnSuccessListener { result ->
-                                    if(result != null){
+                                    if (result != null) {
                                         var assisted = false
 
                                         for (document in result) {
                                             document.toObject(Assistance::class.java)
-                                            if(document["employeeName"] == employeeName && document["assistDate"] == assistDate){
+                                            if (document["employeeName"] == employeeName && document["assistDate"] == assistDate) {
                                                 toast("Ya estás asistido!", Toast.LENGTH_LONG)
                                                 assisted = true
                                             }
                                         }
 
-                                        if(!assisted){
+                                        if (!assisted) {
 
-                                            if(assistTime > "08:00"){
+                                            if (assistTime > "08:00") {
                                                 status = "Tarde"
                                             }
 
                                             assistanceRef.add(Assistance(employeeName, email, status, assistDate))
                                             toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                         }
-                                    }
-                                    else{
+                                    } else {
                                         toast("No documents!", Toast.LENGTH_LONG)
                                     }
                                 }
@@ -202,7 +212,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu, menu)
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
         return true
     }
 
@@ -219,37 +230,51 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.txtControla-> {
+            R.id.txtControla -> {
                 // Handle the camera action
                 startActivity(Intent(this, TripActivity::class.java))
             }
             R.id.txtAsistencia -> {
                 startActivity(Intent(this, AssistanceActivity::class.java))
             }
-            R.id.txtRecursosH -> {
-                startActivity(Intent(this, EmployeesActivity::class.java))
-            }
-            R.id.txtConfi-> {
+            R.id.txtConfi -> {
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
-            R.id.txtAyuda ->
-            {
+            R.id.txtAyuda -> {
                 startActivity(Intent(this, SupportActivity::class.java))
             }
-            R.id.txtSalir ->
-            {
+            R.id.txtSalir -> {
                 proximityObserverHandler?.stop()
                 firebaseAuth.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
             }
+            //Grupo de Administrador.
+            R.id.txtRecursosH -> {
+                startActivity(Intent(this, EmployeesActivity::class.java))
+            }
+            R.id.txtAddAssistance -> {
+                startActivity(Intent(this, NewAssistanceActivity::class.java))
+            }
+            R.id.txtAddTrip -> {
+                startActivity(Intent(this, NewTripActivity::class.java))
+            }
+            R.id.txtSupport -> {
+                startActivity(Intent(this, SupportMessagesActivity::class.java))
+            }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    private fun showAdmingrp() {
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val navgroup = navigationView.menu
+        navgroup.setGroupVisible(R.id.admingrp, true)
+    }
+
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         val toast = Toast.makeText(this, message, duration)
-        toast.setGravity(Gravity.TOP,0,200)
+        toast.setGravity(Gravity.TOP, 0, 200)
         val view = toast.view
         val text = view.findViewById(android.R.id.message) as TextView
         view.setBackgroundResource(R.drawable.login_toast)

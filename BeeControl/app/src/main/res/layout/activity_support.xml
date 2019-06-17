@@ -34,8 +34,7 @@
             android:text="@string/soporte"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:typeface="serif" />
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 

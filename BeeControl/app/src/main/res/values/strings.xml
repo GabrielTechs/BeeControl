@@ -117,7 +117,7 @@
     <string name="hora">Hora</string>
     <string name="crear_viaje">Crear viaje</string>
     <string name="nueva_asistencia">Nueva Asistencia</string>
-    <string name="condicion">Condicion</string>
+    <string name="condicion">Condición</string>
     <string name="guardar">Guardar</string>
     <string name="nombre_empleado">Nombre empleado</string>
     <string name="id_empleado">id empleado</string>
@@ -143,4 +143,8 @@
     <string name="confirmar_contrase_a">Confirmar contraseña</string>
     <string name="nombre">Nombre</string>
     <string name="confirmar">Confirmar</string>
+    <string name="introduzca_su_correo_electr_nico">Introduzca su correo electrónico</string>
+    <string name="introduzca_su_contrase_a">Introduzca su contraseña</string>
+    <string name="contrase_a_incorrecta">contraseña incorrecta</string>
+    <string name="empleado">Empleado</string>
 </resources>

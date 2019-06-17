@@ -32,8 +32,7 @@
             android:text="Solicitudes de Soporte"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:typeface="serif" />
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 
