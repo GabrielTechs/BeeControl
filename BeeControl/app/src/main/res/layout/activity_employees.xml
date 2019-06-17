@@ -24,7 +24,6 @@
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:textColor="#fff"
             android:onClick="back"/>
-        <!--android:drawableLeft="@drawable/ic_send_black_24dp"-->
         <TextView
             android:id="@+id/txtempleados"
             android:layout_width="match_parent"
@@ -33,8 +32,7 @@
             android:text="@string/empleados"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:typeface="serif" />
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/supportmessages"
             android:onClick="seemessages"

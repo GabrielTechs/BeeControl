@@ -45,8 +45,7 @@
             android:text="@string/Asistencia"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:typeface="serif" />
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <LinearLayout

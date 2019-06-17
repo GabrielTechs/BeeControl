@@ -102,8 +102,9 @@
             android:gravity="start"
             android:hint="@string/formato_fecha"
             android:padding="15dp"
-            android:textColorHint="#363732"
-            android:typeface="serif" />
+            android:textColorHint="@color/maindark"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/textView"
