@@ -160,7 +160,7 @@
             android:elevation="4dp"
             android:gravity="center"
             android:padding="15dp"
-            android:text="@string/fecha"
+            android:text="@string/fecha_hora"
             android:textAlignment="center"
             android:textColor="#363732"
             android:textStyle="bold"
