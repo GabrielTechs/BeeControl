@@ -147,4 +147,5 @@
     <string name="introduzca_su_contrase_a">Introduzca su contraseña</string>
     <string name="contrase_a_incorrecta">contraseña incorrecta</string>
     <string name="empleado">Empleado</string>
+    <string name="fecha_hora">Fecha/Hora</string>
 </resources>
