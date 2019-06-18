@@ -100,6 +100,7 @@ class RegisterActivity : AppCompatActivity() {
                             user["lastName"] = lastName
                             user["email"] = email
                             user["isAdmin"] = false
+                            user["onTrip"] = false
                             user["Id"] = id
                             db.collection("user").document(email)
                                     .set(user)

@@ -12,6 +12,6 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_editprofile)
     }
     fun back(view: View){
-        startActivity(Intent(this, ProfileActivity::class.java))
+        startActivity(Intent(this, MenuActivity::class.java))
     }
 }
