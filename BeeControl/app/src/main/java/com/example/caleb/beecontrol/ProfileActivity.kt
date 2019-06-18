@@ -16,6 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 class ProfileActivity : AppCompatActivity() {
 
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    var firebaseAuth = FirebaseAuth.getInstance()
+    var userRef = db.collection("user")
+    val email = firebaseAuth.currentUser?.email.toString()
 
     lateinit var txtEmployeeName: TextView
     lateinit var txtEmployeeLastName: TextView
@@ -39,14 +42,25 @@ class ProfileActivity : AppCompatActivity() {
         txtEmployeeRole.text = employee.getString("role")
         txtEmployeeEmail.text = employee.getString("email")
         }
+        else{
+            var user = userRef.document(email)
+
+            user.get().addOnSuccessListener { document ->
+                txtEmployeeName.text = document["name"].toString()
+                txtEmployeeLastName.text = document["lastName"].toString()
+                txtEmployeeEmail.text = document["email"].toString()
+                if(document["isAdmin"] == true){
+                    txtEmployeeRole.text = "Adminitrador"
+                }
+                else {
+                    txtEmployeeRole.text = "Empleado"
+                }
+            }
+        }
         
     }
     fun editProf(view: View){
 
-        var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-        var userRef = db.collection("user")
-
-        val email = firebaseAuth.currentUser?.email.toString()
         val docRef = userRef.document(email)
         docRef.get().addOnSuccessListener { document ->
             var admin = document.toObject(Employee::class.java)?.isAdmin

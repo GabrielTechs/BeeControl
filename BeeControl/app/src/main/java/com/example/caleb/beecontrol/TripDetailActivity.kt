@@ -12,6 +12,7 @@ class TripDetailActivity : AppCompatActivity() {
     lateinit var txtTripDriverName: TextView
     lateinit var txtTripTitle: TextView
     lateinit var txtTripDate: TextView
+    lateinit var txtTripCreatedHour: TextView
     lateinit var txtTripPartingHour: TextView
     lateinit var txtTripEntryHour: TextView
     lateinit var txtTripDescription: TextView
@@ -23,6 +24,7 @@ class TripDetailActivity : AppCompatActivity() {
         txtTripDriverName = findViewById(R.id.txtTripDriverName)
         txtTripTitle = findViewById(R.id.txtTripTitle)
         txtTripDate = findViewById(R.id.txtTripDate)
+        txtTripCreatedHour = findViewById(R.id.txtTripCreatedHour)
         txtTripPartingHour = findViewById(R.id.txtTripPartingHour)
         txtTripEntryHour = findViewById(R.id.txtTripEntryHour)
         txtTripDescription = findViewById(R.id.txtTripDescription)
@@ -32,6 +34,7 @@ class TripDetailActivity : AppCompatActivity() {
         txtTripDriverName.text = trip.getString("tripDriverName")
         txtTripTitle.text = trip.getString("tripTitle")
         txtTripDate.text = trip.getString("tripDate")
+        txtTripCreatedHour.text = trip.getString("tripCreatedHour")
         txtTripPartingHour.text = trip.getString("tripPartingHour")
         txtTripEntryHour.text = trip.getString("tripEntryHour")
         txtTripDescription.text = trip.getString("tripDescription")

@@ -24,7 +24,6 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_assistance.*
 import java.text.SimpleDateFormat
@@ -52,8 +51,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val email = firebaseAuth.currentUser?.email.toString()
 
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -96,11 +94,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .onEnter { context ->
                         val truckBeacon = context.attachments["zone"]
                         toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
-                        null
                     }
                     .onExit {
                         toast("Vuelva pronto!", Toast.LENGTH_LONG)
-                        null
                     }
                     .build()
 
@@ -110,11 +106,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .onEnter { context ->
                         val officeBeacon = context.attachments["zone"]
                         toast("Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG)
-                        null
                     }
                     .onExit {
                         toast("Vuelva pronto!", Toast.LENGTH_LONG)
-                        null
                     }
                     .build()
 
@@ -124,11 +118,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .onEnter { context ->
                         val hrBeacon = context.attachments["zone"]
                         toast("Bienvenido a la $hrBeacon de Supliyeso!", Toast.LENGTH_LONG)
-                        null
                     }
                     .onExit {
                         toast("Vuelva pronto!", Toast.LENGTH_LONG)
-                        null
                     }
                     .build()
 
@@ -139,17 +131,14 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             {
                                 Log.d("app", "requirements fulfilled")
                                 proximityObserverHandler = proximityObserver.startObserving(entryZone, truckZone, officeZone, hrZone)
-                                null
                             },
                             // onRequirementsMissing
                             { requirements ->
                                 Log.e("app", "requirements missing: $requirements")
-                                null
                             }
                             // onError
                     ) { throwable ->
                         Log.e("app", "requirements error: $throwable")
-                        null
                     }
         }
 
@@ -162,8 +151,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun assistance(email: String) {
-
+    fun assistance(email: String){
         val docRef = userRef.document(email)
         docRef.get()
                 .addOnSuccessListener { document ->
@@ -195,7 +183,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                 status = "Tarde"
                                             }
 
-                                            assistanceRef.add(Assistance(employeeName, status, assistDate))
+                                            assistanceRef.add(Assistance(employeeName, email, status, assistDate))
                                             toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                         }
                                     } else {
@@ -205,7 +193,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                 .addOnFailureListener { exception ->
                                     Log.d(TAG, "Error getting documents: ", exception)
                                 }
-                    } else {
+                    }
+                    else {
                         Log.d(TAG, "No such document")
                     }
                 }
