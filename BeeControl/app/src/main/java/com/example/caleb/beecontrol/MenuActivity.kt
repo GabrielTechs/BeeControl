@@ -183,7 +183,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                 status = "Tarde"
                                             }
 
-                                            assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                            assistanceRef.add(Assistance(employeeName, email, status, assistDate, assistTime))
                                             toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                         }
                                     } else {

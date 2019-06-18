@@ -20,7 +20,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-
+import java.text.SimpleDateFormat
 
 
 class NewAssistanceActivity : AppCompatActivity() {
@@ -113,6 +113,9 @@ class NewAssistanceActivity : AppCompatActivity() {
         val employeeEmail = txtEmployeeEmail.text.toString()
         val employeeName = spinEmployeeName.selectedItem.toString()
         val assistDate = txtAssistanceDate.text.toString()
+        val c = java.util.Calendar.getInstance().time
+        val tf = SimpleDateFormat("HH:mm")
+        val assistCreatedHour = tf.format(c).toString()
         val status = spinStatus.selectedItem.toString()
 
         if (employeeName.trim().isEmpty() || assistDate.trim().isEmpty() || employeeEmail.trim().isEmpty()) {
@@ -126,7 +129,6 @@ class NewAssistanceActivity : AppCompatActivity() {
                         var assisted = false
 
                         for (document in result) {
-                            document.toObject(Assistance::class.java)
                             if (document["employeeName"] == employeeName && document["assistDate"] == assistDate) {
                                 toast("Ya estás asistido!", Toast.LENGTH_LONG)
                                 assisted = true
@@ -135,7 +137,7 @@ class NewAssistanceActivity : AppCompatActivity() {
 
                         if (!assisted) {
 
-                            assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate))
+                            assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate, assistCreatedHour))
                             toast("Empleado agregado a la lista!", Toast.LENGTH_LONG)
 
                             val intent = Intent(this, AssistanceActivity::class.java)
