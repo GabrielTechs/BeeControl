@@ -91,7 +91,7 @@ class NewTripActivity : AppCompatActivity() {
         val text = view.findViewById(android.R.id.message) as TextView
         view.setBackgroundResource(R.drawable.login_toast)
         text.gravity = Gravity.CENTER
-        text.setBackgroundColor(Color.WHITE)
+        text.setBackgroundColor(Color.TRANSPARENT)
         text.setTextColor(Color.BLUE)
         text.textSize = 20F
         toast.show()

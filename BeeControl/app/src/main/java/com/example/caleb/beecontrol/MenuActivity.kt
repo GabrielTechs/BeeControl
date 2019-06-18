@@ -40,6 +40,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var proximityObserverHandler: ProximityObserver.Handler? = null
     //val email = firebaseAuth.currentUser?.email.toString()
 
+
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -202,6 +203,22 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
     }
 
+/*    fun ontripexit(email: String){
+        val account = userRef.document(email)
+        account.get().addOnSuccessListener { result ->
+
+            if(result["onTrip"] == true){
+                val c = Calendar.getInstance().time
+                val tf = SimpleDateFormat("HH:mm")
+                val exitTime = tf.format(c).toString()
+                assistanceRef.get()
+                        .addOnSuccessListener { result ->
+
+                        }
+            }
+        }
+    }*/
+
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -274,13 +291,13 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         val toast = Toast.makeText(this, message, duration)
-        toast.setGravity(Gravity.TOP, 0, 200)
+        toast.setGravity(Gravity.TOP, 0, 250)
         val view = toast.view
         val text = view.findViewById(android.R.id.message) as TextView
         view.setBackgroundResource(R.drawable.login_toast)
         text.gravity = Gravity.CENTER
-        text.setBackgroundColor(Color.WHITE)
-        text.setTextColor(Color.BLUE)
+        text.setBackgroundColor(Color.TRANSPARENT)
+        text.setTextColor(Color.BLACK)
         text.textSize = 20F
         toast.show()
     }
