@@ -5,6 +5,7 @@ public class Trip {
     private String tripTitle;
     private String tripDriverName;
     private String tripCreatedHour;
+    private String tripDriverEmail;
     private String tripPartingHour;
     private String tripEntryHour;
     private String tripDescription;
@@ -14,11 +15,12 @@ public class Trip {
 
     }
 
-    Trip(String tripDate, String tripTitle, String tripDriverName, String tripCreatedHour,  String tripDescription, int tripId){
+    Trip(String tripDate, String tripTitle, String tripDriverName, String tripDriverEmail, String tripCreatedHour,  String tripDescription, int tripId){
         this.tripDate = tripDate;
         this.tripTitle = tripTitle;
         this.tripCreatedHour = tripCreatedHour;
         this.tripDriverName = tripDriverName;
+        this.tripDriverEmail = tripDriverEmail;
         this.tripDescription = tripDescription;
         this.tripId = tripId;
     }
@@ -36,6 +38,8 @@ public class Trip {
     }
 
     public String getTripCreatedHour(){ return tripCreatedHour;}
+
+    public String getTripDriverEmail() {return tripDriverEmail;}
 
     public int getTripId() {
         return tripId;

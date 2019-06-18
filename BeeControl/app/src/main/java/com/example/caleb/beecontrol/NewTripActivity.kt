@@ -11,43 +11,83 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.view.Gravity
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.SetOptions
 import java.text.SimpleDateFormat
 
 class NewTripActivity : AppCompatActivity() {
 
-    lateinit var txtTripDriverName: EditText
+    lateinit var spinTripEmployeeName: Spinner
     lateinit var txtTripTitle: EditText
+    lateinit var txtTripEmployeeEmail: TextView
     lateinit var txtTripDescription: EditText
     lateinit var btnCreateTrip: Button
     private val db = FirebaseFirestore.getInstance()
     private val path = db.collection("TripID").document("Counter")
     private val tripCollectionRef = db.collection("Trips")
+    private val userRef = db.collection("user")
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_newtrip)
 
-        txtTripDriverName = findViewById(R.id.txtTripDriverName)
+        spinTripEmployeeName = findViewById(R.id.spinTripEmployeeName)
+        txtTripEmployeeEmail = findViewById(R.id.txtTripEmployeeEmail)
         txtTripTitle = findViewById(R.id.txtTripTitle)
         txtTripDescription = findViewById(R.id.txtTripDescription)
         btnCreateTrip = findViewById(R.id.btnCreateTrip)
 
 
+        val subjects: ArrayList<String> = ArrayList()
+        val adapter = ArrayAdapter<String>(applicationContext, android.R.layout.simple_spinner_item, subjects)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinTripEmployeeName.adapter = adapter
+        userRef.get().addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
+            if (task.isSuccessful) {
+                for (document in task.result!!) {
+                    val subject = document["name"].toString() + " " + document["lastName"].toString()
+                    subjects.add(subject)
+                }
+                adapter.notifyDataSetChanged()
+            }
+        })
+
         btnCreateTrip.setOnClickListener {
             createTrip()
+        }
+
+        spinTripEmployeeName.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                userRef
+                        .get()
+                        .addOnSuccessListener { result ->
+                            for (document in result) {
+                                var name = document["name"].toString() + " " + document["lastName"].toString()
+                                if(spinTripEmployeeName.selectedItem.toString() == name){
+
+                                    txtTripEmployeeEmail.text = document["email"].toString()
+                                }
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+
+                        }
+            }
         }
     }
 
     fun createTrip(){
         val tripTitle: String = txtTripTitle.text.toString()
-        val tripDriverName: String = txtTripDriverName.text.toString()
+        val tripEmployeeName: String = spinTripEmployeeName.selectedItem.toString()
+        val tripEmployeeEmail = txtTripEmployeeEmail.text.toString()
         val tripDescription: String = txtTripDescription.text.toString()
         val c = java.util.Calendar.getInstance().time
         val df = SimpleDateFormat("dd-MM-yyyy")
@@ -55,14 +95,14 @@ class NewTripActivity : AppCompatActivity() {
         val tripDate =  df.format(c).toString()
         val tripCreatedHour = tf.format(c).toString()
 
-        if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripDriverName.isEmpty()){
+        if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripEmployeeName.isEmpty()){
             toast("Llene los campos restantes", Toast.LENGTH_SHORT)
             return
         }
 
         path.get().addOnSuccessListener { document ->
             val id = document["Id"].toString().toInt()
-            tripCollectionRef.add(Trip(tripDate, tripTitle, tripDriverName, tripCreatedHour, tripDescription, id))
+            tripCollectionRef.add(Trip(tripDate, tripTitle, tripEmployeeName, tripEmployeeEmail, tripCreatedHour, tripDescription, id))
             tripIdIncrement()
         }
 

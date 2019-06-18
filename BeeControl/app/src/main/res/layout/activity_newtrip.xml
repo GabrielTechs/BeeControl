@@ -49,17 +49,49 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/nombre_del_camionero"
+            android:layout_marginTop="10dp"
+            android:text="@string/nombre_completo"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
-        <EditText
-            android:id="@+id/txtTripDriverName"
+        <LinearLayout
+
+            android:id="@+id/employeeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spinTripEmployeeName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorPrimary"
+                android:clickable="false"
+                android:gravity="start"
+                android:padding="10dp"
+                android:textColorHint="#363732"
+                android:typeface="serif" />
+        </LinearLayout>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/correo_electronico"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/txtTripEmployeeEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
             android:textCursorDrawable="@drawable/color_cursos_mblue"
-            android:drawableEnd="@drawable/ic_person_btnblue_24dp"
+            android:drawableEnd="@drawable/ic_local_shipping_black_24dp"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />

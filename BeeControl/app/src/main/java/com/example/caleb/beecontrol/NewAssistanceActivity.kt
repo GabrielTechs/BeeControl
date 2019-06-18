@@ -135,7 +135,6 @@ class NewAssistanceActivity : AppCompatActivity() {
 
                         if (!assisted) {
 
-
                             assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate))
                             toast("Empleado agregado a la lista!", Toast.LENGTH_LONG)
 
