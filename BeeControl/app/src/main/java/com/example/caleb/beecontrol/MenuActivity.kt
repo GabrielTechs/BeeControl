@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -26,8 +27,11 @@ import kotlinx.android.synthetic.main.app_bar_menu.*
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_assistance.*
+import kotlinx.android.synthetic.main.list_trip.*
 import java.text.SimpleDateFormat
 import java.util.*
+
+
 
 
 class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -39,6 +43,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val assistanceRef = db.collection("Assistance")
     private var proximityObserverHandler: ProximityObserver.Handler? = null
     //val email = firebaseAuth.currentUser?.email.toString()
+    var tripRef = db.collection("Trips")
 
 
     @SuppressLint("SimpleDateFormat")
@@ -96,7 +101,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
                     }
                     .onExit {
-                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
+                        ontripexit(email)
+                        //toast("Vuelva pronto!", Toast.LENGTH_LONG)
                     }
                     .build()
 
@@ -151,7 +157,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun assistance(email: String){
+    fun assistance(email: String) {
         val docRef = userRef.document(email)
         docRef.get()
                 .addOnSuccessListener { document ->
@@ -193,8 +199,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                 .addOnFailureListener { exception ->
                                     Log.d(TAG, "Error getting documents: ", exception)
                                 }
-                    }
-                    else {
+                    } else {
                         Log.d(TAG, "No such document")
                     }
                 }
@@ -203,21 +208,33 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
     }
 
-/*    fun ontripexit(email: String){
+    fun ontripexit(email: String) {
         val account = userRef.document(email)
-        account.get().addOnSuccessListener { result ->
+        account.get()
+                .addOnSuccessListener { resultuser ->
 
-            if(result["onTrip"] == true){
-                val c = Calendar.getInstance().time
-                val tf = SimpleDateFormat("HH:mm")
-                val exitTime = tf.format(c).toString()
-                assistanceRef.get()
-                        .addOnSuccessListener { result ->
+                    if (resultuser["onTrip"] == true) {
 
-                        }
-            }
-        }
-    }*/
+                        val c = Calendar.getInstance().time
+                        val tf = SimpleDateFormat("HH:mm")
+                        val exitTime = tf.format(c).toString()
+
+                        tripRef.get()
+                                .addOnSuccessListener { resulttrip ->
+
+                                    for (document in resulttrip) {
+                                        if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null) {
+
+                                        }
+                                    }
+
+                                }
+
+                    }else{
+                        //assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                    }
+                }
+    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {

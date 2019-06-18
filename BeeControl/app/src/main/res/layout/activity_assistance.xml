@@ -118,7 +118,7 @@
         <TextView
             android:id="@+id/usuario"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="33"
@@ -128,14 +128,14 @@
             android:padding="15dp"
             android:text="@string/empleado"
             android:textAlignment="center"
-            android:textColor="#363732"
+            android:textColor="@color/maindark"
             android:textStyle="bold"
             android:typeface="serif" />
 
         <TextView
             android:id="@+id/condicion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="33"
@@ -145,14 +145,14 @@
             android:padding="15dp"
             android:text="@string/condicion"
             android:textAlignment="center"
-            android:textColor="#363732"
+            android:textColor="@color/maindark"
             android:textStyle="bold"
             android:typeface="serif" />
 
         <TextView
             android:id="@+id/fecha"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="33"
@@ -162,7 +162,7 @@
             android:padding="15dp"
             android:text="@string/fecha_hora"
             android:textAlignment="center"
-            android:textColor="#363732"
+            android:textColor="@color/maindark"
             android:textStyle="bold"
             android:typeface="serif" />
     </LinearLayout>
