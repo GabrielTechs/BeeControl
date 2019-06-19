@@ -73,7 +73,7 @@
                 android:clickable="false"
                 android:gravity="start"
                 android:padding="10dp"
-                android:textColorHint="#363732"
+                android:textColorHint="@color/maindark"
                 android:typeface="serif" />
         </LinearLayout>
 
@@ -92,7 +92,7 @@
             android:background="#fff"
             android:textColor="@color/colorPrimaryDark"
             android:textCursorDrawable="@drawable/color_cursos_mblue"
-            android:drawableEnd="@drawable/ic_local_shipping_black_24dp"
+            android:drawableEnd="@drawable/ic_mail_outline_mainblue_24dp"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />
