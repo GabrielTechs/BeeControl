@@ -224,13 +224,14 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                                     for (document in resulttrip) {
                                         if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null) {
-
+                                            tripRef.document(document.id).update("tripPartingHour", exitTime)
                                         }
                                     }
 
                                 }
 
-                    }else{
+                    }
+                    else{
                         //assistanceRef.add(Assistance(employeeName, email, status, assistDate))
                     }
                 }
