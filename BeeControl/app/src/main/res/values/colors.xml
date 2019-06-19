@@ -3,5 +3,14 @@
     <color name="colorPrimary">#449DD1</color>
     <color name="colorPrimaryDark">#091113</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="blue"> #449DD1</color>
+    <color name="mainblue"> #449DD1</color>
+    <color name="mainwhite"> #DCE1E9</color>
+    <color name="maindark"> #363732</color>
+    <color name="bluesec"> #53D8FB</color>
+    <color name="bluethird"> #81D6E3</color>
+    <color name="bluelightmain">#E6F6FF</color>
+    <color name="darkbl"> #303436</color>
+    <color name="bluedark"> #1B3E52</color>
+    <color name="black"> #050C0F</color>
+    <color name="red"> #FF0F00</color>
 </resources>

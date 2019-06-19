@@ -2,7 +2,8 @@ package com.example.caleb.beecontrol;
 
 public class Support {
     public String employeeName;
-    public String id;
+    public int id;
+    public String employeeEmail;
     public String supportDate;
     public String subject;
 
@@ -10,8 +11,9 @@ public class Support {
 
     }
 
-    Support (String employeeName, String id, String supportDate, String subject){
+    Support (String employeeName, String employeeEmail, int id, String supportDate, String subject){
         this.employeeName = employeeName;
+        this.employeeEmail = employeeEmail;
         this.id = id;
         this.supportDate = supportDate;
         this.subject = subject;
@@ -21,9 +23,11 @@ public class Support {
         return employeeName;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
+
+    public String getEmployeeEmail() { return employeeEmail;}
 
     public String getSupportDate() {
         return supportDate;

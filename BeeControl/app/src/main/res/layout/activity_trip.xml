@@ -42,8 +42,7 @@
             android:text="@string/viajes"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:typeface="serif" />
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 

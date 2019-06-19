@@ -1,8 +1,11 @@
 package com.example.caleb.beecontrol
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 class ProfileActivity : AppCompatActivity() {
 
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    var firebaseAuth = FirebaseAuth.getInstance()
+    var userRef = db.collection("user")
+    val email = firebaseAuth.currentUser?.email.toString()
 
     lateinit var txtEmployeeName: TextView
     lateinit var txtEmployeeLastName: TextView
@@ -36,28 +42,52 @@ class ProfileActivity : AppCompatActivity() {
         txtEmployeeRole.text = employee.getString("role")
         txtEmployeeEmail.text = employee.getString("email")
         }
+        else{
+            var user = userRef.document(email)
+
+            user.get().addOnSuccessListener { document ->
+                txtEmployeeName.text = document["name"].toString()
+                txtEmployeeLastName.text = document["lastName"].toString()
+                txtEmployeeEmail.text = document["email"].toString()
+                if(document["isAdmin"] == true){
+                    txtEmployeeRole.text = "Adminitrador"
+                }
+                else {
+                    txtEmployeeRole.text = "Empleado"
+                }
+            }
+        }
         
     }
     fun editProf(view: View){
 
-        var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-        var userRef = db.collection("user")
-
-        val email = firebaseAuth.currentUser?.email.toString()
         val docRef = userRef.document(email)
         docRef.get().addOnSuccessListener { document ->
             var admin = document.toObject(Employee::class.java)?.isAdmin
             if(admin!!){
-                val intent = Intent(this, SupportMessagesActivity::class.java)
+                val intent = Intent(this, EditProfileActivity::class.java)
                 startActivity(intent)
             }
             else{
-                Toast.makeText(applicationContext, "No eres admin!", Toast.LENGTH_LONG).show()
+                toast("No eres admin!", Toast.LENGTH_LONG)
             }
         }
     }
     fun back(view:View){
         //startActivity(Intent(this, MenuActivity::class.java))
         onBackPressed()
+    }
+
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+        val toast = Toast.makeText(this, message, duration)
+        toast.setGravity(Gravity.TOP,0,200)
+        val view = toast.view
+        val text = view.findViewById(android.R.id.message) as TextView
+        view.setBackgroundResource(R.drawable.login_toast)
+        text.gravity = Gravity.CENTER
+        text.setBackgroundColor(Color.TRANSPARENT)
+        text.setTextColor(Color.BLUE)
+        text.textSize = 20F
+        toast.show()
     }
 }

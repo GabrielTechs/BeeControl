@@ -28,7 +28,6 @@
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".MenuActivity"
-            android:label="Control"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".NewTripActivity"
@@ -42,6 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
