@@ -13,10 +13,7 @@ class SupportMessagesActivity : AppCompatActivity() {
 
     private var adapter: SupportAdapter? = null
     private val db = FirebaseFirestore.getInstance()
-    private val SupportMReF = db.collection("SupportM")
-    var userRef = db.collection("user")
-   /** lateinit var txtAssistanceDate: TextView
-    lateinit var firebaseAuth: FirebaseAuth **/
+    private val supportMRef = db.collection("SupportM")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

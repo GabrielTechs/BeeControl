@@ -22,7 +22,6 @@ public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assistance, Assi
     protected void onBindViewHolder(@NonNull AssistanceHolder holder, int position, @NonNull Assistance model) {
         holder.txtEmployeeName.setText(model.getEmployeeName());
         holder.txtStatus.setText(model.getStatus());
-        holder.txtAssistHour.setText(model.getAssistHour());
         holder.txtAssistDate.setText(model.getAssistDate());
     }
 
@@ -37,7 +36,6 @@ public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assistance, Assi
     class AssistanceHolder extends RecyclerView.ViewHolder{
 
         TextView txtEmployeeName;
-        TextView txtAssistHour;
         TextView txtStatus;
         TextView txtAssistDate;
 
@@ -46,7 +44,6 @@ public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assistance, Assi
             txtEmployeeName = itemView.findViewById(R.id.usuario);
             txtStatus = itemView.findViewById(R.id.condicion);
             txtAssistDate = itemView.findViewById(R.id.fecha);
-            txtAssistHour = itemView.findViewById(R.id.hour);
         }
     }
 
