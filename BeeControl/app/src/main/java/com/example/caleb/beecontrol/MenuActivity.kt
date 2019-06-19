@@ -32,6 +32,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+
+
 class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     protected val TAG = "MenuActivity"
@@ -168,7 +170,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         val assistTime = tf.format(c).toString()
                         val assistDate = df.format(c).toString()
 
-
                         assistanceRef.get()
                                 .addOnSuccessListener { result ->
                                     if (result != null) {
@@ -211,46 +212,28 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val account = userRef.document(email)
         account.get()
                 .addOnSuccessListener { resultuser ->
-                    if (resultuser != null) {
 
-                        val employeeName = resultuser.toObject(Employee::class.java)?.name + " " + resultuser.toObject(Employee::class.java)?.lastName
+                    if (resultuser["onTrip"] == true) {
+
                         val c = Calendar.getInstance().time
-                        val df = SimpleDateFormat("dd-MM-yyyy")
-                        val assistDate = df.format(c).toString()
                         val tf = SimpleDateFormat("HH:mm")
                         val exitTime = tf.format(c).toString()
-                        var status = "Ausente"
 
-                        if (resultuser["onTrip"] == true) {
+                        tripRef.get()
+                                .addOnSuccessListener { resulttrip ->
 
-                            tripRef.get()
-                                    .addOnSuccessListener { resulttrip ->
-                                        if (resulttrip != null) {
-
-                                            for (document in resulttrip) {
-                                                if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null && document["tripDate"] == assistDate) {
-                                                    tripRef.document(document.id).update("tripPartingHour", exitTime)
-                                                }
-                                            }
-
+                                    for (document in resulttrip) {
+                                        if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null) {
+                                            tripRef.document(document.id).update("tripPartingHour", exitTime)
                                         }
                                     }
-                                    .addOnFailureListener { exception ->
-                                        Log.d(TAG, "Error getting trip documents.", exception)
-                                    }
-                        } else {
-                            assistanceRef.get()
-                                    .addOnSuccessListener { resultassis ->
-                                        if (resultassis != null) {
-                                            var exitchecker = false
 
                                 }
 
-                    }else{
+                    }
+                    else{
                         //assistanceRef.add(Assistance(employeeName, email, status, assistDate))
                     }
-                }.addOnFailureListener { exception ->
-                    Log.d(TAG, "Error getting account documents.", exception)
                 }
     }
 

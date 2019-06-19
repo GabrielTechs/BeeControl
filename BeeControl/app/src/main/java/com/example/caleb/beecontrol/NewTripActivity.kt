@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.SetOptions
-import kotlinx.android.synthetic.main.activity_assistance.*
 import java.text.SimpleDateFormat
 
 class NewTripActivity : AppCompatActivity() {
@@ -41,6 +40,7 @@ class NewTripActivity : AppCompatActivity() {
         txtTripTitle = findViewById(R.id.txtTripTitle)
         txtTripDescription = findViewById(R.id.txtTripDescription)
         btnCreateTrip = findViewById(R.id.btnCreateTrip)
+
 
         val subjects: ArrayList<String> = ArrayList()
         val adapter = ArrayAdapter<String>(applicationContext, android.R.layout.simple_spinner_item, subjects)
@@ -71,7 +71,7 @@ class NewTripActivity : AppCompatActivity() {
                         .addOnSuccessListener { result ->
                             for (document in result) {
                                 var name = document["name"].toString() + " " + document["lastName"].toString()
-                                if (spinTripEmployeeName.selectedItem.toString() == name) {
+                                if(spinTripEmployeeName.selectedItem.toString() == name){
 
                                     txtTripEmployeeEmail.text = document["email"].toString()
                                 }
@@ -84,7 +84,7 @@ class NewTripActivity : AppCompatActivity() {
         }
     }
 
-    fun createTrip() {
+    fun createTrip(){
         val tripTitle: String = txtTripTitle.text.toString()
         val tripEmployeeName: String = spinTripEmployeeName.selectedItem.toString()
         val tripEmployeeEmail = txtTripEmployeeEmail.text.toString()
@@ -92,10 +92,10 @@ class NewTripActivity : AppCompatActivity() {
         val c = java.util.Calendar.getInstance().time
         val df = SimpleDateFormat("dd-MM-yyyy")
         val tf = SimpleDateFormat("HH:mm")
-        val tripDate = df.format(c).toString()
+        val tripDate =  df.format(c).toString()
         val tripCreatedHour = tf.format(c).toString()
 
-        if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripEmployeeName.isEmpty()) {
+        if (tripTitle.trim().isEmpty() || tripDescription.trim().isEmpty() || tripEmployeeName.isEmpty()){
             toast("Llene los campos restantes", Toast.LENGTH_SHORT)
             return
         }
@@ -119,14 +119,14 @@ class NewTripActivity : AppCompatActivity() {
         }
     }
 
-    fun back(view: View) {
+    fun back(view: View){
         //startActivity(Intent(this, TripActivity::class.java))
         onBackPressed()
     }
 
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         val toast = Toast.makeText(this, message, duration)
-        toast.setGravity(Gravity.TOP, 0, 200)
+        toast.setGravity(Gravity.TOP,0,200)
         val view = toast.view
         val text = view.findViewById(android.R.id.message) as TextView
         view.setBackgroundResource(R.drawable.login_toast)

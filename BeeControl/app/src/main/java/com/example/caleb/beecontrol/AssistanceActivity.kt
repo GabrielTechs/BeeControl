@@ -72,12 +72,7 @@ class AssistanceActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-            var realmonth = mMonth+1
-            if (realmonth > 9){
-                txtAssistanceDate.text = "$mDay-$realmonth-$mYear"
-            }else{
-                txtAssistanceDate.text = "$mDay-0$realmonth-$mYear"
-            }
+            txtAssistanceDate.text = "$mDay/$mMonth/$mYear"
         }, year, month + 1, day)
         dpd.show()
     }
