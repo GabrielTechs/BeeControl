@@ -6,25 +6,21 @@ public class Assistance {
     public String employeeEmail;
     public String status;
     public String assistDate;
-    public String assistHour;
 
     Assistance(){
 
     }
 
-    Assistance(String employeeName, String employeeEmail,String status, String assistDate, String assistHour){
+    Assistance(String employeeName, String employeeEmail,String status, String assistDate){
         this.employeeName = employeeName;
         this.employeeEmail = employeeEmail;
         this.status = status;
         this.assistDate = assistDate;
-        this.assistHour = assistHour;
     }
 
     public String getEmployeeName() {
         return employeeName;
     }
-
-    public String getAssistHour() {return assistHour;}
 
     public String getEmployeeEmail() { return employeeEmail;}
 
