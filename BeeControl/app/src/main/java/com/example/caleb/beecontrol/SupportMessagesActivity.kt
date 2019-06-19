@@ -13,12 +13,12 @@ import com.google.firebase.firestore.Query
 
 class SupportMessagesActivity : AppCompatActivity() {
 
-    private var adapter: AssistanceAdapter? = null
+    private var adapter: SupportAdapter? = null
     private val db = FirebaseFirestore.getInstance()
     private val SupportMReF = db.collection("SupportM")
     var userRef = db.collection("user")
-    lateinit var txtAssistanceDate: TextView
-    lateinit var firebaseAuth: FirebaseAuth
+   /** lateinit var txtAssistanceDate: TextView
+    lateinit var firebaseAuth: FirebaseAuth **/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +29,11 @@ class SupportMessagesActivity : AppCompatActivity() {
     private fun setUpRecyclerView() {
         val query = SupportMReF.orderBy("status", Query.Direction.ASCENDING)
 
-        val options = FirestoreRecyclerOptions.Builder<Assistance>()
-                .setQuery(query, Assistance::class.java)
+        val options = FirestoreRecyclerOptions.Builder<Support>()
+                .setQuery(query, Support::class.java)
                 .build()
 
-        adapter = AssistanceAdapter(options)
+        adapter = SupportAdapter(options)
 
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewSupportMessages)
         recyclerview.setHasFixedSize(true)
