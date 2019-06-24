@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -26,6 +27,7 @@ import kotlinx.android.synthetic.main.app_bar_menu.*
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_assistance.*
+import kotlinx.android.synthetic.main.list_trip.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,6 +41,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val assistanceRef = db.collection("Assistance")
     private var proximityObserverHandler: ProximityObserver.Handler? = null
     //val email = firebaseAuth.currentUser?.email.toString()
+    var tripRef = db.collection("Trips")
 
 
     @SuppressLint("SimpleDateFormat")
@@ -84,6 +87,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
                     .onExit {
                         toast("Vuelva pronto!", Toast.LENGTH_LONG)
+                        onTripExit(email)
                         null
                     }
                     .build()
@@ -96,7 +100,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
                     }
                     .onExit {
-                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
+                        onTripExit(email)
+                        //toast("Vuelva pronto!", Toast.LENGTH_LONG)
                     }
                     .build()
 
@@ -151,7 +156,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun assistance(email: String){
+    fun assistance(email: String) {
         val docRef = userRef.document(email)
         docRef.get()
                 .addOnSuccessListener { document ->
@@ -163,6 +168,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         val tf = SimpleDateFormat("HH:mm")
                         val assistTime = tf.format(c).toString()
                         val assistDate = df.format(c).toString()
+
 
                         assistanceRef.get()
                                 .addOnSuccessListener { result ->
@@ -183,7 +189,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                 status = "Tarde"
                                             }
 
-                                            assistanceRef.add(Assistance(employeeName, email, status, assistDate, assistTime))
+                                            assistanceRef.add(Assistance(employeeName, email, status, assistDate))
                                             toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                         }
                                     } else {
@@ -193,8 +199,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                 .addOnFailureListener { exception ->
                                     Log.d(TAG, "Error getting documents: ", exception)
                                 }
-                    }
-                    else {
+                    } else {
                         Log.d(TAG, "No such document")
                     }
                 }
@@ -203,21 +208,67 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
     }
 
-/*    fun ontripexit(email: String){
+    fun onTripExit(email: String) {
         val account = userRef.document(email)
-        account.get().addOnSuccessListener { result ->
+        account.get()
+                .addOnSuccessListener { resultuser ->
+                    if (resultuser != null) {
 
-            if(result["onTrip"] == true){
-                val c = Calendar.getInstance().time
-                val tf = SimpleDateFormat("HH:mm")
-                val exitTime = tf.format(c).toString()
-                assistanceRef.get()
-                        .addOnSuccessListener { result ->
+                        val employeeName = resultuser.toObject(Employee::class.java)?.name + " " + resultuser.toObject(Employee::class.java)?.lastName
+                        val c = Calendar.getInstance().time
+                        val df = SimpleDateFormat("dd-MM-yyyy")
+                        val assistDate = df.format(c).toString()
+                        val tf = SimpleDateFormat("HH:mm")
+                        val exitTime = tf.format(c).toString()
+                        var status = "Ausente"
 
+                        if (resultuser["onTrip"] == true) {
+
+                            tripRef.get()
+                                    .addOnSuccessListener { resulttrip ->
+                                        if (resulttrip != null) {
+
+                                            for (document in resulttrip) {
+                                                if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null && document["tripDate"] == assistDate) {
+                                                    tripRef.document(document.id).update("tripPartingHour", exitTime)
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.d(TAG, "Error getting trip documents.", exception)
+                                    }
+                        } else {
+                            assistanceRef.get()
+                                    .addOnSuccessListener { resultassis ->
+                                        if (resultassis != null) {
+                                            var exitchecker = false
+
+                                            for (document in resultassis) {
+                                                if (document["employeeEmail"] == email && document["assistDate"] == assistDate && document["status"] == status) {
+                                                    toast("Aqui cambiar la hora del ausente anterior.")
+                                                    exitchecker = true
+                                                }
+                                            }
+                                            if(!exitchecker){
+                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                            }
+                                            if(exitTime > "17:00"){
+                                                //Se pueden poner aqui condiciones de horas extra.
+                                                toast("Tenga buen resto del dia")
+                                            }
+                                        }
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.d(TAG, "Error getting assistance documents.", exception)
+                                    }
                         }
-            }
-        }
-    }*/
+                    }
+                }.addOnFailureListener { exception ->
+                    Log.d(TAG, "Error getting account documents.", exception)
+                }
+    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
