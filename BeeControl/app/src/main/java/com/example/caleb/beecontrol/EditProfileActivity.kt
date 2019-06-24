@@ -31,20 +31,19 @@ class EditProfileActivity : AppCompatActivity()
         cargarImagen()
     }
 
-    /*Para importar imagene de cualquier app*/
     fun cargarImagen() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/"
         startActivityForResult(intent, 10)
 
     }
-    /*Esta parte es para seleccionar las imagenes desde la galería,*/
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
     {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK)
         {
-            var path: Uri = data?.data!!
+            val path: Uri = data?.data!!
             image.setImageURI(path)
         }
     }
