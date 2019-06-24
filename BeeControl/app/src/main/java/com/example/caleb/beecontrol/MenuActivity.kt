@@ -228,7 +228,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                         if (resulttrip != null) {
 
                                             for (document in resulttrip) {
-                                                if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null) {
+                                                if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null && document["tripDate"] == assistDate) {
                                                     tripRef.document(document.id).update("tripPartingHour", exitTime)
                                                 }
                                             }
