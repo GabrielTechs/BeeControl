@@ -87,6 +87,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
                     .onExit {
                         toast("Vuelva pronto!", Toast.LENGTH_LONG)
+                        onTripExit(email)
                         null
                     }
                     .build()
@@ -99,7 +100,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
                     }
                     .onExit {
-                        ontripexit(email)
+                        onTripExit(email)
                         //toast("Vuelva pronto!", Toast.LENGTH_LONG)
                     }
                     .build()
@@ -207,7 +208,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
     }
 
-    fun ontripexit(email: String) {
+    fun onTripExit(email: String) {
         val account = userRef.document(email)
         account.get()
                 .addOnSuccessListener { resultuser ->
