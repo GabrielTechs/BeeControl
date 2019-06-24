@@ -28,7 +28,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/txtFperfil"
+            android:id="@+id/imgProfilePic"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_below="@+id/header"
@@ -49,13 +49,13 @@
             android:paddingBottom="24dp">
 
             <Button
-                android:id="@+id/txtBPerfil"
+                android:id="@+id/btnChangePic"
                 android:layout_width="140dp"
                 android:layout_height="20dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:background="#fff"
-                android:onClick="onclick"
+                android:onClick="changePicture"
                 android:gravity="center"
                 android:layout_gravity = "right"
                 android:text="Cambiar foto"

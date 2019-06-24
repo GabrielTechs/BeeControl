@@ -8,12 +8,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.list_employees.*
 
 
 class EditProfileActivity : AppCompatActivity()
 {
-    var imagen = null
+    lateinit var image: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -24,19 +23,19 @@ class EditProfileActivity : AppCompatActivity()
     fun back(view: View)
     {
         startActivity(Intent(this, MenuActivity::class.java))
-        imagen = findViewById(R.id.txtFperfil)
+        image = findViewById(R.id.imgProfilePic)
     }
 
-    fun onClick(view: View): Unit
+    fun changePicture(view: View)
     {
-        cargarImagen();
+        cargarImagen()
     }
 
     /*Para importar imagene de cualquier app*/
     fun cargarImagen() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/"
-        startActivityForResult(intent.createChooser(intent, "Seleccione la aplicacion"), 10)
+        startActivityForResult(intent, 10)
 
     }
     /*Esta parte es para seleccionar las imagenes desde la galería,*/
@@ -45,13 +44,10 @@ class EditProfileActivity : AppCompatActivity()
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK)
         {
-
-            Uri path = data.getData();
-            imagen.setImageURI(path);
+            var path: Uri = data?.data!!
+            image.setImageURI(path)
         }
     }
 }
 
-private fun Intent.createChooser(intent: Intent, s: String): Intent? {
 
-}
