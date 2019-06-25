@@ -20,7 +20,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-
+import java.text.SimpleDateFormat
 
 
 class NewAssistanceActivity : AppCompatActivity() {
@@ -140,7 +140,11 @@ class NewAssistanceActivity : AppCompatActivity() {
 
                         if (!assisted) {
 
-                            assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate))
+                            val c = java.util.Calendar.getInstance().time
+                            val tf = SimpleDateFormat("HH:mm")
+                            val assistTime = tf.format(c).toString()
+
+                            assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate, assistTime))
                             toast("Empleado agregado a la lista!", Toast.LENGTH_LONG)
 
                             val intent = Intent(this, AssistanceActivity::class.java)
