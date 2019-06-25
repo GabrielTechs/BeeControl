@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             android:textCursorDrawable="@drawable/color_cursos_mblue"
-            android:drawableEnd="@drawable/ic_trip_run_mainblue_24dp"
+            android:drawableEnd="@drawable/ic_local_shipping_black_24dp"
             android:elevation="4dp"
             android:padding="15dp"
             android:singleLine="true" />

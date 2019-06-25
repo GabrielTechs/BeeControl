@@ -26,7 +26,7 @@
             android:scaleType="centerCrop"
             android:background="@mipmap/ic_launcher"/>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -38,8 +38,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
                 android:text="@string/nombre_empleado"
                 android:textColor="#363732"
                 android:textSize="18sp"
@@ -49,7 +47,6 @@
                 android:id="@+id/txtEmployeeId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtEmployeeFullName"
                 android:textColor="#363732"
                 android:layout_marginStart="10dp"
                 android:text="@string/id_empleado"
