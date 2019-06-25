@@ -36,6 +36,7 @@ public class EmployeeAdapter extends FirestoreRecyclerAdapter<Employee, Employee
 
         TextView txtEmployeeFullName;
         TextView txtEmployeeId;
+        TextView txtEmployeeStatus;
 
         public EmployeeHolder(@NonNull View itemView) {
             super(itemView);

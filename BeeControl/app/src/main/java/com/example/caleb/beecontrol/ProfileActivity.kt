@@ -19,6 +19,7 @@ class ProfileActivity : AppCompatActivity() {
     var firebaseAuth = FirebaseAuth.getInstance()
     var userRef = db.collection("user")
     val email = firebaseAuth.currentUser?.email.toString()
+    val user = userRef.document(email)
 
     lateinit var txtEmployeeName: TextView
     lateinit var txtEmployeeLastName: TextView
@@ -39,11 +40,17 @@ class ProfileActivity : AppCompatActivity() {
         if(employee != null){
         txtEmployeeName.text = employee.getString("name")
         txtEmployeeLastName.text = employee.getString("lastName")
-        txtEmployeeRole.text = employee.getString("role")
+        user.get().addOnSuccessListener { document ->
+            if(document["isAdmin"] == true){
+                txtEmployeeRole.text = "Adminitrador"
+            }
+            else {
+                txtEmployeeRole.text = "Empleado"
+            }
+        }
         txtEmployeeEmail.text = employee.getString("email")
         }
         else{
-            var user = userRef.document(email)
 
             user.get().addOnSuccessListener { document ->
                 txtEmployeeName.text = document["name"].toString()

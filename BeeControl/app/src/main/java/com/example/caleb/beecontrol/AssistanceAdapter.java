@@ -23,6 +23,7 @@ public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assistance, Assi
         holder.txtEmployeeName.setText(model.getEmployeeName());
         holder.txtStatus.setText(model.getStatus());
         holder.txtAssistDate.setText(model.getAssistDate());
+        holder.txtAssistTime.setText(model.getAssistTime());
     }
 
     @NonNull
@@ -38,12 +39,14 @@ public class AssistanceAdapter extends FirestoreRecyclerAdapter<Assistance, Assi
         TextView txtEmployeeName;
         TextView txtStatus;
         TextView txtAssistDate;
+        TextView txtAssistTime;
 
         public AssistanceHolder(@NonNull View itemView) {
             super(itemView);
             txtEmployeeName = itemView.findViewById(R.id.usuario);
             txtStatus = itemView.findViewById(R.id.condicion);
             txtAssistDate = itemView.findViewById(R.id.fecha);
+            txtAssistTime = itemView.findViewById(R.id.hour);
         }
     }
 

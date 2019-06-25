@@ -53,7 +53,6 @@ class EmployeesActivity : AppCompatActivity() {
 
             intent.putExtra("name", employee!!.getName())
             intent.putExtra("lastName", employee.getLastName())
-            intent.putExtra("role", employee.getRole())
             intent.putExtra("email", employee.getEmail())
 
             startActivity(intent)
