@@ -7,11 +7,11 @@ public class Support {
     public String supportDate;
     public String subject;
 
-    Support(){
+    public Support(){
 
     }
 
-    Support (String employeeName, String employeeEmail, int id, String supportDate, String subject){
+    public Support (String employeeName, String employeeEmail, int id, String supportDate, String subject){
         this.employeeName = employeeName;
         this.employeeEmail = employeeEmail;
         this.id = id;
