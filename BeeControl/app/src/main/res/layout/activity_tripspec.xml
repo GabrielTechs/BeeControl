@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Nombre del camionero"
+            android:text="@string/nombre_de_empleado"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Nombre de la carga"
+            android:text="Detalle del viaje"
             android:textSize="18sp"
             app:fontFamily="sans-serif-black" />
 
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/InBoxColorSize"
             android:background="@drawable/edittextstyle"
-            android:drawableRight="@drawable/ic_local_shipping_black_24dp"
+            android:drawableRight="@drawable/ic_trip_run_mainblue_24dp"
             android:elevation="4dp"
             android:singleLine="true" />
 
