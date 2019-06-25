@@ -30,6 +30,7 @@ import kotlinx.android.synthetic.main.activity_assistance.*
 import kotlinx.android.synthetic.main.list_trip.*
 import java.text.SimpleDateFormat
 import java.util.*
+import android.os.Handler
 
 
 class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +43,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var proximityObserverHandler: ProximityObserver.Handler? = null
     //val email = firebaseAuth.currentUser?.email.toString()
     var tripRef = db.collection("Trips")
-
+    private lateinit var exitHandler: Handler
+    private lateinit var mRunnable: Runnable
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +55,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         firebaseAuth = FirebaseAuth.getInstance()
 
         val email = firebaseAuth.currentUser?.email.toString()
+        val accountRef = userRef.document(email)
+
+        exitHandler = Handler()
 
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
@@ -82,10 +87,12 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .forTag("mint")
                     .inCustomRange(1.0)
                     .onEnter { context ->
-                        assistance(email)
+                        accountRef.update("exitChecker", false)
+                        onentrychecker(email)
                         null
                     }
                     .onExit {
+                        accountRef.update("exitChecker", true)
                         toast("Vuelva pronto!", Toast.LENGTH_LONG)
                         null
                     }
@@ -95,12 +102,15 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .forTag("coconut")
                     .inNearRange()
                     .onEnter { context ->
-                        val truckBeacon = context.attachments["zone"]
-                        toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
+                        accountRef.update("exitChecker", false)
+                        //val truckBeacon = context.attachments["zone"]
+                        //toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
+                        onentrychecker(email)
                     }
                     .onExit {
-                        ontripexit(email)
-                        //toast("Vuelva pronto!", Toast.LENGTH_LONG)
+                        accountRef.update("exitChecker", true)
+                        toast("Si no esta en un viaje se le colocará una ausencia en 10 segundos")
+                        onexitchecker(email)
                     }
                     .build()
 
@@ -155,7 +165,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun assistance(email: String) {
+    fun onentrychecker(email: String) {
         val docRef = userRef.document(email)
         docRef.get()
                 .addOnSuccessListener { document ->
@@ -168,36 +178,51 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         val assistTime = tf.format(c).toString()
                         val assistDate = df.format(c).toString()
 
-
-                        assistanceRef.get()
-                                .addOnSuccessListener { result ->
-                                    if (result != null) {
-                                        var assisted = false
-
-                                        for (document in result) {
-                                            document.toObject(Assistance::class.java)
-                                            if (document["employeeName"] == employeeName && document["assistDate"] == assistDate) {
-                                                toast("Ya estás asistido!", Toast.LENGTH_LONG)
-                                                assisted = true
+                        if (document["onTrip"] == true) {
+                            docRef.update("onTrip", false)
+                            tripRef.get()
+                                    .addOnSuccessListener { resulttrip ->
+                                        if (resulttrip != null) {
+                                            for (document in resulttrip) {
+                                                if (document["tripDriverEmail"] == email && document["tripEntryHour"] == null && document["tripDate"] == assistDate) {
+                                                    tripRef.document(document.id).update("tripEntryHour", assistTime)
+                                                }
                                             }
                                         }
-
-                                        if (!assisted) {
-
-                                            if (assistTime > "08:00") {
-                                                status = "Tarde"
-                                            }
-
-                                            assistanceRef.add(Assistance(employeeName, email, status, assistDate))
-                                            toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
-                                        }
-                                    } else {
-                                        toast("No documents!", Toast.LENGTH_LONG)
                                     }
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.d(TAG, "Error getting documents: ", exception)
-                                }
+                                    .addOnFailureListener { exception ->
+                                        Log.d(TAG, "Error getting trip documents.", exception)
+                                    }
+                        } else {
+                            assistanceRef.get()
+                                    .addOnSuccessListener { result ->
+                                        if (result != null) {
+                                            var assisted = false
+
+                                            for (document in result) {
+                                                document.toObject(Assistance::class.java)
+                                                if (document["employeeName"] == employeeName && document["assistDate"] == assistDate) {
+                                                    toast("Debe dirigirse a recursos humanos para una nueva asistencia.", Toast.LENGTH_LONG)
+                                                    assisted = true
+                                                }
+                                            }
+
+                                            if (!assisted) {
+
+                                                if (assistTime >= "08:00") {
+                                                    status = "Tarde"
+                                                }
+                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                                toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
+                                            }
+                                        } else {
+                                            toast("No documents!", Toast.LENGTH_LONG)
+                                        }
+                                    }
+                                    .addOnFailureListener { exception ->
+                                        Log.d(TAG, "Error getting documents: ", exception)
+                                    }
+                        }
                     } else {
                         Log.d(TAG, "No such document")
                     }
@@ -205,11 +230,12 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
+
     }
 
-    fun ontripexit(email: String) {
-        val account = userRef.document(email)
-        account.get()
+    fun onexitchecker(email: String) {
+        val accountRef = userRef.document(email)
+        accountRef.get()
                 .addOnSuccessListener { resultuser ->
                     if (resultuser != null) {
 
@@ -222,7 +248,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         var status = "Ausente"
 
                         if (resultuser["onTrip"] == true) {
-
                             tripRef.get()
                                     .addOnSuccessListener { resulttrip ->
                                         if (resulttrip != null) {
@@ -242,21 +267,34 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             assistanceRef.get()
                                     .addOnSuccessListener { resultassis ->
                                         if (resultassis != null) {
-                                            var exitchecker = false
+                                            exitHandler.postDelayed({
+                                                accountRef.get()
+                                                        .addOnSuccessListener { resultuser ->
 
-                                            for (document in resultassis) {
-                                                if (document["employeeEmail"] == email && document["assistDate"] == assistDate && document["status"] == status) {
-                                                    toast("Aqui cambiar la hora del ausente anterior.")
-                                                    exitchecker = true
-                                                }
-                                            }
-                                            if(!exitchecker){
-                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate))
-                                            }
-                                            if(exitTime > "17:00"){
-                                                //Se pueden poner aqui condiciones de horas extra.
-                                                toast("Tenga buen resto del dia")
-                                            }
+                                                            if (resultuser["exitChecker"] == true) {
+                                                                var exitchecker = false
+
+                                                                for (document in resultassis) {
+                                                                    if (document["employeeEmail"] == email && document["assistDate"] == assistDate && document["status"] == status) {
+                                                                        toast("Debe dirigirse a recursos humanos para una nueva ausencia.")
+                                                                        exitchecker = true
+                                                                    }
+                                                                }
+                                                                if (!exitchecker && exitTime <= "17:00") {
+                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                                                }
+                                                                if (!exitchecker && exitTime > "17:00") {
+                                                                    //Se pueden poner aqui condiciones de horas extra.
+                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                                                    toast("Tenga buen resto del dia")
+                                                                }
+                                                            } else {
+                                                                toast("Gracia por regresar")
+                                                            }
+                                                        }.addOnFailureListener { exception ->
+                                                            Log.d(TAG, "Error getting account documents.", exception)
+                                                        }
+                                            }, 10000)
                                         }
                                     }
                                     .addOnFailureListener { exception ->
