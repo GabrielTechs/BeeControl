@@ -23,6 +23,7 @@ public class EmployeeAdapter extends FirestoreRecyclerAdapter<Employee, Employee
     protected void onBindViewHolder(@NonNull EmployeeHolder holder, int position, @NonNull Employee model) {
         holder.txtEmployeeFullName.setText(new StringBuilder().append(model.getName()).append(" ").append(model.getLastName()).toString());
         holder.txtEmployeeId.setText(model.getEmail());
+        holder.txtEmployeeStatus.setText(model.getStatus());
     }
 
     @NonNull
@@ -42,6 +43,7 @@ public class EmployeeAdapter extends FirestoreRecyclerAdapter<Employee, Employee
             super(itemView);
             txtEmployeeFullName = itemView.findViewById(R.id.txtEmployeeFullName);
             txtEmployeeId = itemView.findViewById(R.id.txtEmployeeId);
+            txtEmployeeStatus= itemView.findViewWithTag(R.id.txtEmployeeStatus);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
