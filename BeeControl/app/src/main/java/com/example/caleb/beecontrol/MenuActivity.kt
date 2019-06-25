@@ -94,7 +94,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .onExit {
                         accountRef.update("exitChecker", true)
                         toast("Vuelva pronto!", Toast.LENGTH_LONG)
-                        onTripExit(email)
                         null
                     }
                     .build()
@@ -213,12 +212,11 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                 if (assistTime >= "08:00") {
                                                     status = "Tarde"
                                                 }
-                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate, assistTime))
                                                 toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                             }
-
-                                            assistanceRef.add(Assistance(employeeName, email, status, assistDate))
-                                            toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
+                                        } else {
+                                            toast("No documents!", Toast.LENGTH_LONG)
                                         }
                                     }
                                     .addOnFailureListener { exception ->
@@ -235,9 +233,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    fun ontripexit(email: String) {
-        val account = userRef.document(email)
-        account.get()
+    fun onexitchecker(email: String) {
+        val accountRef = userRef.document(email)
+        accountRef.get()
                 .addOnSuccessListener { resultuser ->
                     if (resultuser != null) {
 
@@ -273,19 +271,30 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                 accountRef.get()
                                                         .addOnSuccessListener { resultuser ->
 
-                                            for (document in resultassis) {
-                                                if (document["employeeEmail"] == email && document["assistDate"] == assistDate && document["status"] == status) {
-                                                    toast("Aqui cambiar la hora del ausente anterior.")
-                                                    exitchecker = true
-                                                }
-                                            }
-                                            if(!exitchecker){
-                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate))
-                                            }
-                                            if(exitTime > "17:00"){
-                                                //Se pueden poner aqui condiciones de horas extra.
-                                                toast("Tenga buen resto del dia")
-                                            }
+                                                            if (resultuser["exitChecker"] == true) {
+                                                                var exitchecker = false
+
+                                                                for (document in resultassis) {
+                                                                    if (document["employeeEmail"] == email && document["assistDate"] == assistDate && document["status"] == status) {
+                                                                        toast("Debe dirigirse a recursos humanos para una nueva ausencia.")
+                                                                        exitchecker = true
+                                                                    }
+                                                                }
+                                                                if (!exitchecker && exitTime <= "17:00") {
+                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate, exitTime))
+                                                                }
+                                                                if (!exitchecker && exitTime > "17:00") {
+                                                                    //Se pueden poner aqui condiciones de horas extra.
+                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate, exitTime))
+                                                                    toast("Tenga buen resto del dia")
+                                                                }
+                                                            } else {
+                                                                toast("Gracia por regresar")
+                                                            }
+                                                        }.addOnFailureListener { exception ->
+                                                            Log.d(TAG, "Error getting account documents.", exception)
+                                                        }
+                                            }, 10000)
                                         }
                                     }
                                     .addOnFailureListener { exception ->
