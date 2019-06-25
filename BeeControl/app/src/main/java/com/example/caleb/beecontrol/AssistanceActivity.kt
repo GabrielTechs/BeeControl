@@ -31,12 +31,15 @@ class AssistanceActivity : AppCompatActivity() {
     lateinit var firebaseAuth: FirebaseAuth
     private var adapter: AssistanceAdapter? = null
 
+    val query = AssistancebookRef.orderBy("assistDate", Query.Direction.DESCENDING)
+
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assistance)
-        setUpRecyclerView()
+        setUpRecyclerView(query)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
@@ -62,7 +65,6 @@ class AssistanceActivity : AppCompatActivity() {
         txtAssistanceDate.setOnClickListener{
             datePicker()
         }
-
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -78,12 +80,15 @@ class AssistanceActivity : AppCompatActivity() {
             }else{
                 txtAssistanceDate.text = "$mDay-0$realmonth-$mYear"
             }
+            val qdate = txtAssistanceDate.text.toString()
+            val querydate = AssistancebookRef.whereEqualTo("assistDate", qdate).orderBy("assistDate", Query.Direction.DESCENDING)
+            setUpRecyclerView(querydate)
         }, year, month + 1, day)
         dpd.show()
     }
 
-    private fun setUpRecyclerView() {
-        val query = AssistancebookRef.orderBy("status", Query.Direction.ASCENDING)
+    private fun setUpRecyclerView(query: Query) {
+        //val query = AssistancebookRef.orderBy("assistDate", Query.Direction.DESCENDING)
 
         val options = FirestoreRecyclerOptions.Builder<Assistance>()
                 .setQuery(query, Assistance::class.java)
@@ -101,19 +106,15 @@ class AssistanceActivity : AppCompatActivity() {
         startActivity(Intent(this, MenuActivity::class.java))
     }
 
-
-
-
-
     override fun onStart() {
         super.onStart()
         adapter!!.startListening()
     }
-
     override fun onStop() {
         super.onStop()
         adapter!!.stopListening()
     }
+
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         val toast = Toast.makeText(this, message, duration)
         toast.setGravity(Gravity.TOP,0,200)
