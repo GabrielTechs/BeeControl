@@ -2,12 +2,13 @@ package com.example.caleb.beecontrol
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
+import android.graphics.drawable.BitmapDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_editprofile.*
 
 
 class EditProfileActivity : AppCompatActivity()
@@ -18,34 +19,38 @@ class EditProfileActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editprofile)
+        image = findViewById(R.id.imgProfilePic)
 
+        btnChangePic.setOnClickListener {
+            cargarImagen()
+        }
     }
+
     fun back(view: View)
     {
         startActivity(Intent(this, MenuActivity::class.java))
-        image = findViewById(R.id.imgProfilePic)
     }
 
-    fun changePicture(view: View)
-    {
-        cargarImagen()
-    }
-
-    /*Para importar imagene de cualquier app*/
     fun cargarImagen() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        intent.type = "image/"
-        startActivityForResult(intent, 10)
-
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, 0)
     }
-    /*Esta parte es para seleccionar las imagenes desde la galería,*/
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
     {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK)
+        if(requestCode == 0 && resultCode == Activity.RESULT_OK && data != null)
         {
-            var path: Uri = data?.data!!
-            image.setImageURI(path)
+            val path = data.data
+
+            val bitMap = MediaStore.Images.Media.getBitmap(contentResolver, path)
+
+            val bitMapDrawable = BitmapDrawable(bitMap)
+
+            image.setImageDrawable(bitMapDrawable)
+
+            //image.setImageURI(path)
         }
     }
 }
