@@ -8,6 +8,7 @@ import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -32,8 +33,6 @@ class AssistanceActivity : AppCompatActivity() {
     private var adapter: AssistanceAdapter? = null
 
     val query = AssistancebookRef.orderBy("assistDate", Query.Direction.DESCENDING)
-
-
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,9 +60,13 @@ class AssistanceActivity : AppCompatActivity() {
                         }
                     }
         }
-
         txtAssistanceDate.setOnClickListener{
             datePicker()
+        }
+        val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.pullToRefresh)
+        pullToRefresh.setOnRefreshListener {
+            recreate()
+            pullToRefresh.isRefreshing = false
         }
     }
 
@@ -81,8 +84,10 @@ class AssistanceActivity : AppCompatActivity() {
                 txtAssistanceDate.text = "$mDay-0$realmonth-$mYear"
             }
             val qdate = txtAssistanceDate.text.toString()
-            val querydate = AssistancebookRef.whereEqualTo("assistDate", qdate).orderBy("assistDate", Query.Direction.DESCENDING)
+            val querydate = AssistancebookRef.whereEqualTo("assistDate", qdate)
+                    .orderBy("assistDate", Query.Direction.DESCENDING)
             setUpRecyclerView(querydate)
+            adapter?.startListening()
         }, year, month + 1, day)
         dpd.show()
     }

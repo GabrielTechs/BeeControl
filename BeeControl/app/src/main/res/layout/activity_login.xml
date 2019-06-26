@@ -95,7 +95,7 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txtPasswordWrong"
+            android:id="@+id/txtPasswordError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/contrase_a_incorrecta"
