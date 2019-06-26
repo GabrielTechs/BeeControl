@@ -14,8 +14,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -39,6 +38,24 @@ class AssistanceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assistance)
         setUpRecyclerView(query)
+
+        spinnerCondition.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var condition = parent?.getItemAtPosition(position).toString()
+                if(condition != "Ninguno") {
+                    val queryspin = AssistancebookRef.whereEqualTo("status", condition)
+                            .orderBy("assistDate", Query.Direction.DESCENDING)
+                    setUpRecyclerView(queryspin)
+                    adapter?.startListening()
+                }else{
+                    setUpRecyclerView(query)
+                    adapter?.startListening()
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
 
         firebaseAuth = FirebaseAuth.getInstance()
 

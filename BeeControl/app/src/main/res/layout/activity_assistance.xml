@@ -81,7 +81,7 @@
             android:orientation="vertical">
 
             <Spinner
-                android:id="@+id/Condition"
+                android:id="@+id/spinnerCondition"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
