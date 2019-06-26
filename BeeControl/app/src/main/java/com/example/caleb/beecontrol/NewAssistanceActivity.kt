@@ -125,38 +125,15 @@ class NewAssistanceActivity : AppCompatActivity() {
             return
         }
 
-        assistanceRef.get()
-                .addOnSuccessListener { result ->
-                    if (result != null) {
-                        var assisted = false
+        val c = java.util.Calendar.getInstance().time
+        val tf = SimpleDateFormat("HH:mm")
+        val assistTime = tf.format(c).toString()
 
-                        for (document in result) {
-                            document.toObject(Assistance::class.java)
-                            if (document["employeeName"] == employeeName && document["assistDate"] == assistDate) {
-                                toast("Ya estás asistido!", Toast.LENGTH_LONG)
-                                assisted = true
-                            }
-                        }
+        assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate, assistTime))
+        toast("Empleado agregado a la lista!", Toast.LENGTH_LONG)
 
-                        if (!assisted) {
-
-                            val c = java.util.Calendar.getInstance().time
-                            val tf = SimpleDateFormat("HH:mm")
-                            val assistTime = tf.format(c).toString()
-
-                            assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate, assistTime))
-                            toast("Empleado agregado a la lista!", Toast.LENGTH_LONG)
-
-                            val intent = Intent(this, AssistanceActivity::class.java)
-                            startActivity(intent)
-                        }
-                    } else {
-                        toast("No hay asistencias!", Toast.LENGTH_LONG)
-                    }
-                }
-                .addOnFailureListener { exception ->
-
-                }
+        val intent = Intent(this, AssistanceActivity::class.java)
+        startActivity(intent)
     }
 
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
