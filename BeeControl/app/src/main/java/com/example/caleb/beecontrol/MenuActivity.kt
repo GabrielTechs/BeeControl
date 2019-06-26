@@ -79,6 +79,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         query = query.whereEqualTo("employeeEmail", email)
         setUpRecyclerView(query)
+        adapter?.startListening()
 
         exitHandler = Handler()
 
