@@ -31,6 +31,12 @@ import kotlinx.android.synthetic.main.list_trip.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.os.Handler
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.Query
 
 
 class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -39,12 +45,17 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     lateinit var firebaseAuth: FirebaseAuth
     var userRef = db.collection("user")
+
     private val assistanceRef = db.collection("Assistance")
     private var proximityObserverHandler: ProximityObserver.Handler? = null
-    //val email = firebaseAuth.currentUser?.email.toString()
+    lateinit var email: String
+    lateinit var accountRef :DocumentReference
     var tripRef = db.collection("Trips")
     private lateinit var exitHandler: Handler
     private lateinit var mRunnable: Runnable
+    private var adapter: AssistanceAdapter? = null
+
+    var query = assistanceRef.orderBy("assistDate", Query.Direction.DESCENDING)
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,8 +65,21 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        val email = firebaseAuth.currentUser?.email.toString()
-        val accountRef = userRef.document(email)
+        email = firebaseAuth.currentUser?.email.toString()
+        accountRef = userRef.document(email)
+
+        accountRef.get().addOnSuccessListener { document ->
+            val employee = document.toObject(Employee::class.java)
+            val admin = employee?.isAdmin
+
+            if (admin!!) {
+                showAdmingrp()
+            }
+        }
+
+        query = query.whereEqualTo("employeeEmail", email)
+        setUpRecyclerView(query)
+        adapter?.startListening()
 
         exitHandler = Handler()
 
@@ -156,13 +180,32 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
         }
 
-        val docRef = userRef.document(email)
-        docRef.get().addOnSuccessListener { document ->
-            var admin = document.toObject(Employee::class.java)?.isAdmin
-            if (admin!!) {
-                showAdmingrp()
-            }
-        }
+
+    }
+
+
+    private fun setUpRecyclerView(query: Query) {
+        //val query = AssistancebookRef.orderBy("assistDate", Query.Direction.DESCENDING)
+
+        val options = FirestoreRecyclerOptions.Builder<Assistance>()
+                .setQuery(query, Assistance::class.java)
+                .build()
+
+        adapter = AssistanceAdapter(options)
+
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerViewMenu)
+        recyclerview.setHasFixedSize(true)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.adapter = adapter
+    }
+
+    override fun onStart() {
+        super.onStart()
+        adapter!!.startListening()
+    }
+    override fun onStop() {
+        super.onStop()
+        adapter!!.stopListening()
     }
 
     fun onentrychecker(email: String) {
@@ -212,7 +255,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                 if (assistTime >= "08:00") {
                                                     status = "Tarde"
                                                 }
-                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                                assistanceRef.add(Assistance(employeeName, email, status, assistDate, assistTime))
                                                 toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                             }
                                         } else {
@@ -281,11 +324,11 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                                     }
                                                                 }
                                                                 if (!exitchecker && exitTime <= "17:00") {
-                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate, exitTime))
                                                                 }
                                                                 if (!exitchecker && exitTime > "17:00") {
                                                                     //Se pueden poner aqui condiciones de horas extra.
-                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate))
+                                                                    assistanceRef.add(Assistance(employeeName, email, status, assistDate, exitTime))
                                                                     toast("Tenga buen resto del dia")
                                                                 }
                                                             } else {

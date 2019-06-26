@@ -7,7 +7,7 @@
     android:elevation="4dp"
     >
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -17,7 +17,7 @@
             android:id="@+id/txtSupportMessageDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtSupportMessageName"
+            android:layout_below="@id/txtSupportMessageEmployee"
             android:text="@string/formato_fecha"
             android:textSize="15sp"
             android:typeface="serif" />
@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:text="000000"
             android:textColor="#000"
             android:textStyle="bold"
@@ -36,7 +35,7 @@
             android:typeface="serif" />
 
         <TextView
-            android:id="@+id/txtSupportMessageName"
+            android:id="@+id/txtSupportMessageEmployee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"

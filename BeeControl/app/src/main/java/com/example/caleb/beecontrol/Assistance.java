@@ -2,20 +2,22 @@ package com.example.caleb.beecontrol;
 
 public class Assistance {
 
-    public String employeeName;
-    public String employeeEmail;
-    public String status;
-    public String assistDate;
+    private String employeeName;
+    private String employeeEmail;
+    private String status;
+    private String assistDate;
+    private String assistTime;
 
     Assistance(){
 
     }
 
-    Assistance(String employeeName, String employeeEmail,String status, String assistDate){
+    Assistance(String employeeName, String employeeEmail,String status, String assistDate, String assistTime){
         this.employeeName = employeeName;
         this.employeeEmail = employeeEmail;
         this.status = status;
         this.assistDate = assistDate;
+        this.assistTime = assistTime;
     }
 
     public String getEmployeeName() {
@@ -30,5 +32,9 @@ public class Assistance {
 
     public String getAssistDate() {
         return assistDate;
+    }
+
+    public String getAssistTime() {
+        return assistTime;
     }
 }

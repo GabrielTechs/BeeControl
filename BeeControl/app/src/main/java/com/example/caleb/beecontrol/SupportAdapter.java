@@ -21,8 +21,8 @@ public class SupportAdapter extends FirestoreRecyclerAdapter<Support, SupportAda
 
     @Override
     protected void onBindViewHolder(@NonNull SupportHolder holder, int position, @NonNull Support model) {
-        holder.txtEmployeeName.setText(model.getEmployeeName());
-        holder.txtSupportMessageId.setText(model.getId());
+        holder.txtSupportMessageEmployee.setText(model.getEmployeeName());
+        holder.txtSupportMessageId.setText(String.valueOf(model.getId()));
         holder.txtSupportMessageDate.setText(model.getSupportDate());
         holder. txtSupportMessage.setText((model.getSubject()));
 
@@ -38,14 +38,14 @@ public class SupportAdapter extends FirestoreRecyclerAdapter<Support, SupportAda
 
     class SupportHolder extends RecyclerView.ViewHolder{
 
-        TextView txtEmployeeName;
+        TextView txtSupportMessageEmployee;
         TextView txtSupportMessageId;
         TextView txtSupportMessageDate;
         TextView txtSupportMessage;
 
         public SupportHolder(@NonNull View itemView) {
             super(itemView);
-            txtEmployeeName = itemView.findViewById(R.id.txtSupportMessageName);
+            txtSupportMessageEmployee = itemView.findViewById(R.id.txtSupportMessageEmployee);
             txtSupportMessageId = itemView.findViewById(R.id.txtSupportMessageId);
             txtSupportMessageDate = itemView.findViewById(R.id.txtSupportMessageDate);
             txtSupportMessage = itemView.findViewById(R.id.txtSupportMessage);

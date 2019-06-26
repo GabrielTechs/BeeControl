@@ -11,18 +11,19 @@ import com.google.firebase.firestore.Query
 
 class SupportMessagesActivity : AppCompatActivity() {
 
-    private var adapter: SupportAdapter? = null
+    private lateinit var adapter: SupportAdapter
     private val db = FirebaseFirestore.getInstance()
     private val supportMRef = db.collection("SupportM")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_support_messages)
+
         setUpRecyclerView()
     }
 
     private fun setUpRecyclerView() {
-        val query = supportMRef.orderBy("Id", Query.Direction.ASCENDING)
+        val query = supportMRef.orderBy("id", Query.Direction.ASCENDING)
 
         val options = FirestoreRecyclerOptions.Builder<Support>()
                 .setQuery(query, Support::class.java)
@@ -37,7 +38,17 @@ class SupportMessagesActivity : AppCompatActivity() {
 
     }
 
-    fun back(view: View){
+    override fun onStart() {
+        super.onStart()
+        adapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.stopListening()
+    }
+
+    fun back(view: View) {
         onBackPressed()
     }
 }

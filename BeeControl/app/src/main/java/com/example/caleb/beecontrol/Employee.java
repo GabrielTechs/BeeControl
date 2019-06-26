@@ -5,8 +5,7 @@ public class Employee {
     public String name;
     public String lastName;
     public String email;
-    public String role;
-    public boolean noCell;
+    public String status;
     public boolean isAdmin;
     public boolean onTrip;
 
@@ -14,12 +13,10 @@ public class Employee {
 
     }
 
-    Employee(String name, String lastName, String email, String role, boolean noCell, boolean isAdmin, boolean onTrip){
+    Employee(String name, String lastName, String email, boolean isAdmin, boolean onTrip){
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this.role = role;
-        this.noCell = noCell;
         this.isAdmin = isAdmin;
         this.onTrip = onTrip;
     }
@@ -36,12 +33,8 @@ public class Employee {
         return email;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public boolean isNoCell() {
-        return noCell;
+    public String getStatus() {
+        return status;
     }
 
     public boolean isAdmin() {return isAdmin;}

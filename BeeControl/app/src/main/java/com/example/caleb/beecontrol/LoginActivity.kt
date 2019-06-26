@@ -70,6 +70,7 @@ class LoginActivity : AppCompatActivity()
 
     @SuppressLint("ResourceAsColor")
     fun signIn() {
+
         val email = txtEmail.text.toString()
         val password = txtPassword.text.toString()
 
@@ -83,7 +84,7 @@ class LoginActivity : AppCompatActivity()
             return
         }
 
-            if(TextUtils.isEmpty(email)){
+        if(TextUtils.isEmpty(email)){
             //toast("Introduzca su correo electrónico", Toast.LENGTH_LONG)
             findViewById<TextView>(R.id.txtEmailEmpty).visibility = View.VISIBLE
             val editText = findViewById<EditText>(R.id.txtEmail)

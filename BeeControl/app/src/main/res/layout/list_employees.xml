@@ -57,7 +57,7 @@
                 android:textStyle="italic"/>
 
             <TextView
-                android:id="@+id/txtEmployeeState"
+                android:id="@+id/txtEmployeeStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtEmployeeFullName"
