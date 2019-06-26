@@ -113,7 +113,13 @@ class LoginActivity : AppCompatActivity()
                         // If sign in fails, display a message to the user.
                         progressBar.visibility = View.INVISIBLE
                         Log.w("SignInFailed", "signInWithEmail:failure", task.exception)
-                        toast("Error al iniciar sesión", Toast.LENGTH_LONG)
+                        //toast("Error al iniciar sesión", Toast.LENGTH_LONG)
+                        findViewById<TextView>(R.id.txtEmailError).visibility = View.VISIBLE
+                        val editEmailText = findViewById<EditText>(R.id.txtEmail)
+                        editEmailText.background.mutate().setColorFilter(resources.getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP)
+                        findViewById<TextView>(R.id.txtPasswordError).visibility = View.VISIBLE
+                        val editPasswordText = findViewById<EditText>(R.id.txtPassword)
+                        editPasswordText.background.mutate().setColorFilter(resources.getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP)
                     }
                 })
         }
@@ -123,7 +129,7 @@ class LoginActivity : AppCompatActivity()
     {
         startActivity(Intent(this, ForgotPasswordActivity::class.java))
     }
-    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_LONG) {
         val toast = Toast.makeText(this, message, duration)
         toast.setGravity(Gravity.TOP,0,250)
         val view = toast.view
