@@ -57,16 +57,17 @@
         android:orientation="vertical"
         >
 
-        <SearchView
+        <android.support.v7.widget.SearchView
             android:id="@+id/tripsearch"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:elevation="4dp"
             android:layout_margin="5dp"
+            android:padding="5dp"
             android:background="@drawable/edittextstyle"
             >
-        </SearchView>
+        </android.support.v7.widget.SearchView>
         <TextView
             android:id="@+id/txtTripDate"
             android:layout_width="match_parent"

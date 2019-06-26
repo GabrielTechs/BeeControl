@@ -12,6 +12,7 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
@@ -31,6 +32,7 @@ class TripActivity : AppCompatActivity() {
     private val tripbookRef = db.collection("Trips")
     private var adapter: TripAdapter? = null
     lateinit var txtTripDate: TextView
+    lateinit var tripsearch: SearchView
 
     val query = tripbookRef.whereGreaterThan("tripId", 0)
 
@@ -84,6 +86,24 @@ class TripActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+/*    fun searchview(){
+        tripsearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                val querysearch = tripbookRef
+                        .whereGreaterThan("tripId", 0)
+                        .whereEqualTo("tripDriverName".toLowerCase(), query.toLowerCase())
+                setUpRecyclerView(querysearch)
+                adapter?.startListening()
+                return false
+            }
+        })
+    }*/
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun datePicker() {
