@@ -107,23 +107,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .withBalancedPowerMode()
                     .build()
 
-            val entryZone = ProximityZoneBuilder()
-                    .forTag("mint")
-                    .inCustomRange(1.0)
-                    .onEnter { context ->
-                        accountRef.update("exitChecker", false)
-                        onentrychecker(email)
-                        null
-                    }
-                    .onExit {
-                        accountRef.update("exitChecker", true)
-                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
-                        null
-                    }
-                    .build()
 
-            val truckZone = ProximityZoneBuilder()
-                    .forTag("coconut")
+            val workZone = ProximityZoneBuilder()
+                    .forTag("zone")
                     .inNearRange()
                     .onEnter { context ->
                         accountRef.update("exitChecker", false)
@@ -138,29 +124,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
                     .build()
 
-            val officeZone = ProximityZoneBuilder()
-                    .forTag("ice")
-                    .inNearRange()
-                    .onEnter { context ->
-                        val officeBeacon = context.attachments["zone"]
-                        toast("Bienvenido a la $officeBeacon de Supliyeso!", Toast.LENGTH_LONG)
-                    }
-                    .onExit {
-                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
-                    }
-                    .build()
-
-            val hrZone = ProximityZoneBuilder()
-                    .forTag("blueberry")
-                    .inNearRange()
-                    .onEnter { context ->
-                        val hrBeacon = context.attachments["zone"]
-                        toast("Bienvenido a la $hrBeacon de Supliyeso!", Toast.LENGTH_LONG)
-                    }
-                    .onExit {
-                        toast("Vuelva pronto!", Toast.LENGTH_LONG)
-                    }
-                    .build()
 
             RequirementsWizardFactory
                     .createEstimoteRequirementsWizard()
@@ -168,7 +131,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             // onRequirementsFulfilled
                             {
                                 Log.d("app", "requirements fulfilled")
-                                proximityObserverHandler = proximityObserver.startObserving(entryZone, truckZone, officeZone, hrZone)
+                                proximityObserverHandler = proximityObserver.startObserving(workZone)
                             },
                             // onRequirementsMissing
                             { requirements ->
