@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.list_trip.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.os.Handler
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -107,7 +108,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .withBalancedPowerMode()
                     .build()
 
-
             val workZone = ProximityZoneBuilder()
                     .forTag("zone")
                     .inNearRange()
@@ -123,7 +123,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         onexitchecker(email)
                     }
                     .build()
-
 
             RequirementsWizardFactory
                     .createEstimoteRequirementsWizard()
@@ -143,7 +142,11 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
         }
 
-
+        val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.pullToRefresh)
+        pullToRefresh.setOnRefreshListener {
+            recreate()
+            pullToRefresh.isRefreshing = false
+        }
     }
 
 
