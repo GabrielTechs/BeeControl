@@ -400,7 +400,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         text.gravity = Gravity.CENTER
         text.setBackgroundColor(Color.TRANSPARENT)
         text.setTextColor(Color.BLACK)
-        text.textSize = 20F
+        text.textSize = 16F
         toast.show()
     }
 }

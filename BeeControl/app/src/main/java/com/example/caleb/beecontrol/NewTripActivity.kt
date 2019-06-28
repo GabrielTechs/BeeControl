@@ -133,7 +133,7 @@ class NewTripActivity : AppCompatActivity() {
         text.gravity = Gravity.CENTER
         text.setBackgroundColor(Color.TRANSPARENT)
         text.setTextColor(Color.BLUE)
-        text.textSize = 20F
+        text.textSize = 16F
         toast.show()
     }
 }
