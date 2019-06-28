@@ -149,4 +149,5 @@
     <string name="empleado">Empleado</string>
     <string name="fecha_hora">Fecha/Hora</string>
     <string name="correo_electr_nico_incorrecto">Correo electrónico incorrecto</string>
+    <string name="viajes_personales">Viajes Personales</string>
 </resources>

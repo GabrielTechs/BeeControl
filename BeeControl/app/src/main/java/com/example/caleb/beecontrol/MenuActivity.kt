@@ -50,7 +50,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val assistanceRef = db.collection("Assistance")
     private var proximityObserverHandler: ProximityObserver.Handler? = null
     lateinit var email: String
-    lateinit var accountRef :DocumentReference
+    lateinit var accountRef: DocumentReference
     var tripRef = db.collection("Trips")
     private lateinit var exitHandler: Handler
     private lateinit var mRunnable: Runnable
@@ -169,6 +169,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onStart()
         adapter!!.startListening()
     }
+
     override fun onStop() {
         super.onStop()
         adapter!!.stopListening()
@@ -344,12 +345,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.txtControla -> {
-                // Handle the camera action
-                startActivity(Intent(this, TripActivity::class.java))
-            }
-            R.id.txtAsistencia -> {
-                startActivity(Intent(this, AssistanceActivity::class.java))
+            R.id.txtPersonalTrip -> {
+                startActivity(Intent(this, EmployeesTripActivity::class.java))
             }
             R.id.txtConfi -> {
                 startActivity(Intent(this, ProfileActivity::class.java))
@@ -362,15 +359,23 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 firebaseAuth.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
             }
+
             //Grupo de Administrador.
-            R.id.txtRecursosH -> {
-                startActivity(Intent(this, EmployeesActivity::class.java))
+            R.id.txtAsistencia -> {
+                startActivity(Intent(this, AssistanceActivity::class.java))
             }
             R.id.txtAddAssistance -> {
                 startActivity(Intent(this, NewAssistanceActivity::class.java))
             }
+            R.id.txtTrips -> {
+                // Handle the camera action
+                startActivity(Intent(this, TripActivity::class.java))
+            }
             R.id.txtAddTrip -> {
                 startActivity(Intent(this, NewTripActivity::class.java))
+            }
+            R.id.txtRecursosH -> {
+                startActivity(Intent(this, EmployeesActivity::class.java))
             }
             R.id.txtSupport -> {
                 startActivity(Intent(this, SupportMessagesActivity::class.java))
