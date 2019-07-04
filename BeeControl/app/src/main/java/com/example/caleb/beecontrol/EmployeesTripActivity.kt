@@ -35,6 +35,8 @@ class EmployeesTripActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employees_trip)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
         email = firebaseAuth.currentUser?.email.toString()
         val query = tripbookRef.whereGreaterThan("tripId", 0)
                 .whereEqualTo("tripDriverEmail", email)
