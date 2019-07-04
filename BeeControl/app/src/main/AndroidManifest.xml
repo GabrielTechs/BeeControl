@@ -4,7 +4,7 @@
     package="com.example.caleb.beecontrol">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,16 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SupportMessagesActivity"/>
-        <activity android:name=".SupportActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".EmployeesTripActivity"></activity>
+        <activity android:name=".SupportMessagesActivity" />
+        <activity
+            android:name=".SupportActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".AssistanceActivity" />
         <activity android:name=".NewAssistanceActivity" />
         <activity android:name=".EmployeesActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TripActivity" />
-        <activity android:name=".TripDetailActivity"/>
+        <activity android:name=".TripDetailActivity" />
         <activity android:name=".NewPasswordActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
@@ -34,7 +36,7 @@
             android:name=".NewTripActivity"
             android:label="@string/title_activity_assistance"
             android:theme="@style/NoActionBar"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
