@@ -42,7 +42,7 @@ class ProfileActivity : AppCompatActivity() {
         txtEmployeeLastName.text = employee.getString("lastName")
         user.get().addOnSuccessListener { document ->
             if(document["isAdmin"] == true){
-                txtEmployeeRole.text = "Adminitrador"
+                txtEmployeeRole.text = "Administrador"
             }
             else {
                 txtEmployeeRole.text = "Empleado"
@@ -57,7 +57,7 @@ class ProfileActivity : AppCompatActivity() {
                 txtEmployeeLastName.text = document["lastName"].toString()
                 txtEmployeeEmail.text = document["email"].toString()
                 if(document["isAdmin"] == true){
-                    txtEmployeeRole.text = "Adminitrador"
+                    txtEmployeeRole.text = "Administrador"
                 }
                 else {
                     txtEmployeeRole.text = "Empleado"
@@ -73,6 +73,12 @@ class ProfileActivity : AppCompatActivity() {
             var admin = document.toObject(Employee::class.java)?.isAdmin
             if(admin!!){
                 val intent = Intent(this, EditProfileActivity::class.java)
+
+                intent.putExtra("name", txtEmployeeName.text.toString())
+                intent.putExtra("lastName", txtEmployeeLastName.text.toString())
+                intent.putExtra("email", txtEmployeeEmail.text.toString())
+                intent.putExtra("role", txtEmployeeRole.text.toString())
+
                 startActivity(intent)
             }
             else{
