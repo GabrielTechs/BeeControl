@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -38,17 +39,20 @@ class SupportMessagesActivity : AppCompatActivity() {
 
     }
 
+
+
+    fun back(view: View) {
+        onBackPressed()
+    }
+
+
     override fun onStart() {
         super.onStart()
-        adapter.startListening()
+        adapter!!.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-        adapter.stopListening()
-    }
-
-    fun back(view: View) {
-        onBackPressed()
+        adapter!!.stopListening()
     }
 }
