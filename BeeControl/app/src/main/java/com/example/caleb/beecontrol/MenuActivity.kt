@@ -53,7 +53,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var accountRef: DocumentReference
     var tripRef = db.collection("Trips")
     private lateinit var exitHandler: Handler
-    private lateinit var mRunnable: Runnable
     private var adapter: AssistanceAdapter? = null
 
     var query = assistanceRef.orderBy("assistDate", Query.Direction.DESCENDING)
@@ -109,8 +108,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .build()
 
             val workZone = ProximityZoneBuilder()
-                    .forTag("zone")
-                    .inNearRange()
+                    .forTag("coconut")
+                    .inCustomRange(2.0)
                     .onEnter { context ->
                         accountRef.update("exitChecker", false)
                         //val truckBeacon = context.attachments["zone"]
