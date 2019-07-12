@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import android.util.Log
 import android.view.Gravity
 import android.widget.*
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.model.value.FieldValue
 
@@ -26,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtConfPassword: EditText
     lateinit var btnRegister: Button
     lateinit var progressBar: ProgressBar
-    private val path = db.collection("EmployeeID").document("Counter")
+    lateinit var path: DocumentReference
     lateinit var firebaseAuth: FirebaseAuth
     lateinit var db: FirebaseFirestore
 
@@ -46,6 +47,8 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth =  FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
+        path = db.collection("EmployeeID").document("Counter")
+
         btnRegister.setOnClickListener{
             createAccount()
         }
@@ -53,11 +56,11 @@ class RegisterActivity : AppCompatActivity() {
 
     fun createAccount() {
 
-        var name: String = txtName.text.toString()
-        var lastName: String = txtLastName.text.toString()
-        var email: String = txtEmail.text.toString()
-        var password: String = txtPassword.text.toString()
-        var confPass: String = txtConfPassword.text.toString()
+        val name: String = txtName.text.toString()
+        val lastName: String = txtLastName.text.toString()
+        val email: String = txtEmail.text.toString()
+        val password: String = txtPassword.text.toString()
+        val confPass: String = txtConfPassword.text.toString()
 
 
         if(TextUtils.isEmpty(name)){
@@ -96,6 +99,7 @@ class RegisterActivity : AppCompatActivity() {
                         path.get().addOnSuccessListener { document ->
                             val id = document["Id"].toString().toInt()
                             val user = HashMap<String, Any>()
+                            val current = firebaseAuth.currentUser
                             user["name"] = name
                             user["lastName"] = lastName
                             user["email"] = email
@@ -109,7 +113,13 @@ class RegisterActivity : AppCompatActivity() {
                             Log.d("RegisterSuccess", "createUserWithEmail:success")
                             Toast.makeText(applicationContext, "Usuario registrado corractamente!", Toast.LENGTH_SHORT).show()
                             incrementUserId()
-                            var intent = Intent(this, LoginActivity::class.java)
+                            current?.sendEmailVerification()
+                                    ?.addOnCompleteListener { task ->
+                                        if (task.isSuccessful) {
+                                            Log.d("RegisterActivity", "Email sent.")
+                                        }
+                                    }
+                            val intent = Intent(this, MenuActivity::class.java)
                             startActivity(intent)
                         }
                     } else {
