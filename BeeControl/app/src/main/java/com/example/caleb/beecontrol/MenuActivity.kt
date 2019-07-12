@@ -151,8 +151,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     private fun setUpRecyclerView(query: Query) {
-        //val query = AssistancebookRef.orderBy("assistDate", Query.Direction.DESCENDING)
-
         val options = FirestoreRecyclerOptions.Builder<Assistance>()
                 .setQuery(query, Assistance::class.java)
                 .build()
