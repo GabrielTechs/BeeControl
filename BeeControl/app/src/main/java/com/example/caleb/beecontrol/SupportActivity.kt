@@ -82,7 +82,7 @@ class SupportActivity : AppCompatActivity() {
         text.gravity = Gravity.CENTER
         text.setBackgroundColor(Color.WHITE)
         text.setTextColor(Color.BLUE)
-        text.textSize = 20F
+        text.textSize = 16F
         toast.show()
     }
 

@@ -43,7 +43,7 @@ public class EmployeeAdapter extends FirestoreRecyclerAdapter<Employee, Employee
             super(itemView);
             txtEmployeeFullName = itemView.findViewById(R.id.txtEmployeeFullName);
             txtEmployeeId = itemView.findViewById(R.id.txtEmployeeId);
-            txtEmployeeStatus= itemView.findViewWithTag(R.id.txtEmployeeStatus);
+            txtEmployeeStatus = itemView.findViewById(R.id.txtEmployeeStatus);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

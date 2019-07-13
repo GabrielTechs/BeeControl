@@ -140,7 +140,7 @@ class LoginActivity : AppCompatActivity()
         text.gravity = CENTER
         text.setBackgroundColor(Color.TRANSPARENT)
         text.setTextColor(Color.RED)
-        text.textSize = 20F
+        text.textSize = 16F
         toast.show()
     }
 }

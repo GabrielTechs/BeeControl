@@ -21,7 +21,7 @@ class EmployeesActivity : AppCompatActivity() {
 
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     var userRef: CollectionReference = db.collection("user")
-    var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    lateinit var firebaseAuth: FirebaseAuth
 
     lateinit var adapter: EmployeeAdapter
 
@@ -29,6 +29,7 @@ class EmployeesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employees)
 
+        firebaseAuth = FirebaseAuth.getInstance()
         setUpRecyclerView()
     }
 
@@ -98,7 +99,7 @@ class EmployeesActivity : AppCompatActivity() {
         text.gravity = Gravity.CENTER
         text.setBackgroundColor(Color.TRANSPARENT)
         text.setTextColor(Color.BLUE)
-        text.textSize = 20F
+        text.textSize = 16F
         toast.show()
     }
 }
