@@ -13,8 +13,10 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_editprofile.*
 import java.util.*
 import android.media.ExifInterface
-
-
+import android.opengl.ETC1.getHeight
+import android.opengl.ETC1.getWidth
+import android.graphics.Bitmap
+import android.graphics.Matrix
 
 
 class EditProfileActivity : AppCompatActivity()
@@ -56,15 +58,19 @@ class EditProfileActivity : AppCompatActivity()
         {
 
             val filename = UUID.randomUUID().toString()
+            val exif = ExifInterface(filename)
+            val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1)
 
+            val matrix = Matrix()
+            matrix.postRotate(270f)
 
 
 
             val path = data.data
 
             val bitMap = MediaStore.Images.Media.getBitmap(contentResolver, path)
-
-            val bitMapDrawable = BitmapDrawable(bitMap)
+            val rotatedBitmap = Bitmap.createBitmap(bitMap, 0, 0, bitMap.getWidth(), bitMap.getHeight(), matrix, true)
+            val bitMapDrawable = BitmapDrawable(rotatedBitmap)
 
             image.setImageDrawable(bitMapDrawable)
 
