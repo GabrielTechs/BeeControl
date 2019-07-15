@@ -1,9 +1,12 @@
 package com.example.caleb.beecontrol
 
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.content.ContextCompat.startActivity
@@ -34,6 +37,7 @@ import android.os.Handler
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.RemoteViews
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
@@ -57,11 +61,20 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     var query = assistanceRef.orderBy("assistDate", Query.Direction.DESCENDING)
 
+    lateinit var notificationManager : NotificationManager
+    lateinit var notificationChannel : NotificationChannel
+    lateinit var builder : Notification.Builder
+    private val channelId = "com.example.caleb.beecontrol"
+    private val description = "Notification"
+    var notification = ""
+
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         setSupportActionBar(toolbar)
+
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         firebaseAuth = FirebaseAuth.getInstance()
 
@@ -118,7 +131,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     }
                     .onExit {
                         accountRef.update("exitChecker", true)
-                        toast("Si no esta en un viaje se le colocará una ausencia en 10 segundos")
+                        notifications("Si no esta en un viaje se le colocará una ausencia en 10 segundos")
+                        //toast("Si no esta en un viaje se le colocará una ausencia en 10 segundos")
                         onexitchecker(email)
                     }
                     .build()
@@ -211,7 +225,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                             for (document in result) {
                                                 document.toObject(Assistance::class.java)
                                                 if (document["employeeName"] == employeeName && document["assistDate"] == assistDate) {
-                                                    toast("Debe dirigirse a recursos humanos para una nueva asistencia.", Toast.LENGTH_LONG)
+                                                    notifications("Debe dirigirse a recursos humanos para una nueva asistencia.")
+                                                    //toast("Debe dirigirse a recursos humanos para una nueva asistencia.", Toast.LENGTH_LONG)
                                                     assisted = true
                                                 }
                                             }
@@ -222,10 +237,12 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                     status = "Tarde"
                                                 }
                                                 assistanceRef.add(Assistance(employeeName, email, status, assistDate, assistTime))
-                                                toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
+                                                notifications("$employeeName agregado a la lista!")
+                                                //toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                             }
                                         } else {
-                                            toast("No documents!", Toast.LENGTH_LONG)
+                                            notifications("No documents!")
+                                            //toast("No documents!", Toast.LENGTH_LONG)
                                         }
                                     }
                                     .addOnFailureListener { exception ->
@@ -239,7 +256,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
-
     }
 
     fun onexitchecker(email: String) {
@@ -285,7 +301,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                                                                 for (document in resultassis) {
                                                                     if (document["employeeEmail"] == email && document["assistDate"] == assistDate && document["status"] == status) {
-                                                                        toast("Debe dirigirse a recursos humanos para una nueva ausencia.")
+                                                                        notifications("Debe dirigirse a recursos humanos para una nueva ausencia.")
+                                                                        //toast("Debe dirigirse a recursos humanos para una nueva ausencia.")
                                                                         exitchecker = true
                                                                     }
                                                                 }
@@ -295,10 +312,12 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                                 if (!exitchecker && exitTime > "17:00") {
                                                                     //Se pueden poner aqui condiciones de horas extra.
                                                                     assistanceRef.add(Assistance(employeeName, email, status, assistDate, exitTime))
-                                                                    toast("Tenga buen resto del dia")
+                                                                    notifications("Tenga buen resto del dia")
+                                                                    // toast("Tenga buen resto del dia")
                                                                 }
                                                             } else {
-                                                                toast("Gracia por regresar")
+                                                                notifications("Gracia por regresar")
+                                                                //toast("Gracia por regresar")
                                                             }
                                                         }.addOnFailureListener { exception ->
                                                             Log.d(TAG, "Error getting account documents.", exception)
@@ -390,7 +409,39 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navgroup.setGroupVisible(R.id.admingrp, true)
     }
 
-    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
+    fun notifications(notification: String){
+        val intent = Intent(this,LauncherActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val contentView = RemoteViews(packageName,R.layout.notifications)
+        contentView.setTextViewText(R.id.tv_title,"BeeControl")
+        contentView.setTextViewText(R.id.tv_content,notification)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = NotificationChannel(channelId,description, NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.GREEN
+            notificationChannel.enableVibration(false)
+            notificationManager.createNotificationChannel(notificationChannel)
+
+            builder = Notification.Builder(this,channelId)
+                    .setContent(contentView)
+                    .setSmallIcon(R.drawable.icon)
+                    .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.icon))
+                    .setContentIntent(pendingIntent)
+        }else{
+
+            builder = Notification.Builder(this)
+                    .setContent(contentView)
+                    .setSmallIcon(R.drawable.icon)
+                    .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.icon))
+                    .setContentIntent(pendingIntent)
+        }
+        notificationManager.notify(1234,builder.build())
+
+    }
+
+    fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_LONG) {
         val toast = Toast.makeText(this, message, duration)
         toast.setGravity(Gravity.TOP, 0, 250)
         val view = toast.view

@@ -1,11 +1,13 @@
 package com.example.caleb.beecontrol
 
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.app.*
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.ColorFilter
 import android.graphics.PorterDuff
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -61,6 +63,7 @@ class LoginActivity : AppCompatActivity()
             editTextPassw.background.mutate().setColorFilter(resources.getColor(android.R.color.white), PorterDuff.Mode.SRC_ATOP)
             signIn()
         }
+
 /*
         txtRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
