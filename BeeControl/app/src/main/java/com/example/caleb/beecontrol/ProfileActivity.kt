@@ -74,8 +74,6 @@ class ProfileActivity : AppCompatActivity() {
             if(admin!!){
                 val intent = Intent(this, EditProfileActivity::class.java)
 
-                intent.putExtra("name", txtEmployeeName.text.toString())
-                intent.putExtra("lastName", txtEmployeeLastName.text.toString())
                 intent.putExtra("email", txtEmployeeEmail.text.toString())
                 intent.putExtra("role", txtEmployeeRole.text.toString())
 

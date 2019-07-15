@@ -24,14 +24,16 @@ import android.opengl.ETC1.getHeight
 import android.opengl.ETC1.getWidth
 import android.graphics.Bitmap
 import android.graphics.Matrix
+import com.google.firebase.firestore.CollectionReference
 
 
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class EditProfileActivity : AppCompatActivity()
 {
 
     lateinit var db: FirebaseFirestore
     lateinit var firebaseAuth: FirebaseAuth
-    var userRef = db.collection("user")
+    lateinit var userRef: CollectionReference
 
     lateinit var image: ImageView
     lateinit var txtEditName: EditText
@@ -39,6 +41,7 @@ class EditProfileActivity : AppCompatActivity()
     lateinit var txtEditRole: TextView
     lateinit var txtEditEmail: TextView
     lateinit var user: DocumentReference
+    var path: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -47,14 +50,20 @@ class EditProfileActivity : AppCompatActivity()
 
         db = FirebaseFirestore.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
+        userRef = db.collection("user")
 
         val email = firebaseAuth.currentUser?.email.toString()
         user = userRef.document(email)
+
+        val employee = intent.extras
 
         txtEditName = findViewById(R.id.txtEditName)
         txtEditLastName = findViewById(R.id.txtEditLastName)
         txtEditRole = findViewById(R.id.txtEditRole)
         txtEditEmail = findViewById(R.id.txtEditEmail)
+
+        txtEditEmail.text = employee.getString("email")
+        txtEditRole.text = employee.getString("role")
 
         image = findViewById(R.id.imgProfilePic)
 
@@ -67,8 +76,6 @@ class EditProfileActivity : AppCompatActivity()
         }
     }
 
-    var path: Uri? = null
-
     fun back(view: View)
     {
         startActivity(Intent(this, MenuActivity::class.java))
@@ -77,10 +84,23 @@ class EditProfileActivity : AppCompatActivity()
     fun saveData(){
 
         user.get().addOnSuccessListener { document ->
-            user.update("name", txtEditName.text.toString())
-            user.update("lastName", txtEditLastName.text.toString())
+
+            if (!txtEditName.text.isEmpty() && !txtEditLastName.text.isEmpty()){
+                user.update("name", txtEditName.text.toString())
+                user.update("lastName", txtEditLastName.text.toString())
+            }
+            else if (txtEditName.text.isEmpty() && !txtEditLastName.text.isEmpty()){
+                user.update("lastName", txtEditLastName.text.toString())
+            }
+            else if (!txtEditName.text.isEmpty() && txtEditLastName.text.isEmpty()){
+                user.update("name", txtEditName.text.toString())
+            }
         }
 
+        subirFoto()
+
+        val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
     }
 
     fun cargarImagen() {
@@ -94,17 +114,10 @@ class EditProfileActivity : AppCompatActivity()
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 0 && resultCode == Activity.RESULT_OK && data != null)
         {
-
-            val filename = UUID.randomUUID().toString()
-            val exif = ExifInterface(filename)
-            val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1)
-
             val matrix = Matrix()
             matrix.postRotate(270f)
 
-
-
-            val path = data.data
+            path = data.data
 
             val bitMap = MediaStore.Images.Media.getBitmap(contentResolver, path)
             val rotatedBitmap = Bitmap.createBitmap(bitMap, 0, 0, bitMap.getWidth(), bitMap.getHeight(), matrix, true)
@@ -112,18 +125,22 @@ class EditProfileActivity : AppCompatActivity()
 
             image.setImageDrawable(bitMapDrawable)
 
-
-
-            val ref = FirebaseStorage.getInstance().getReference("/imagenes/$filename")
-
-            ref.putFile(path!!)
-            //image.setImageURI(path)
         }
     }
 
     fun subirFoto (){
 
-
+        user.get().addOnSuccessListener { document ->
+            if (path != null) {
+                val filename = UUID.randomUUID().toString()
+                val ref = FirebaseStorage.getInstance().getReference("/imagenes/$filename")
+                ref.putFile(path!!).addOnSuccessListener {
+                    ref.downloadUrl.addOnSuccessListener {
+                        user.update("ImagenPerfilUrl", it.toString())
+                    }
+                }
+            }
+        }
     }
 }
 

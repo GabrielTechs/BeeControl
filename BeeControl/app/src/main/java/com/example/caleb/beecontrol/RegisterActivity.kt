@@ -106,6 +106,7 @@ class RegisterActivity : AppCompatActivity() {
                             user["isAdmin"] = false
                             user["onTrip"] = false
                             user["Id"] = id
+                            user["ImagenPerfilUrl"] = ""
                             db.collection("user").document(email)
                                     .set(user)
                                     .addOnSuccessListener { Log.d("RegisterActivity", "DocumentSnapshot successfully written!") }
