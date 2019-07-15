@@ -89,6 +89,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/txtEditName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -98,9 +99,10 @@
                 android:hint="@string/nombre_de_empleado"
                 android:padding="20dp"
                 android:singleLine="true"
-                android:text="Caleb" />
+                android:text="" />
 
             <EditText
+                android:id="@+id/txtEditLastName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -112,9 +114,10 @@
                 android:hint="@string/apellido"
                 android:padding="20dp"
                 android:singleLine="true"
-                android:text="Gomez" />
+                android:text="" />
 
-            <EditText
+            <TextView
+                android:id="@+id/txtEditRole"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -123,9 +126,11 @@
                 android:elevation="4dp"
                 android:hint="@string/puesto"
                 android:padding="20dp"
+                android:textSize="18sp"
                 android:singleLine="true" />
 
-            <EditText
+            <TextView
+                android:id="@+id/txtEditEmail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -136,8 +141,9 @@
                 android:elevation="4dp"
                 android:hint="@string/correo_electronico"
                 android:padding="20dp"
+                android:textSize="18sp"
                 android:singleLine="true"
-                android:text="belaczemog@gmail.com" />
+                android:text="" />
 
             <Button
                 android:id="@+id/btnSave"

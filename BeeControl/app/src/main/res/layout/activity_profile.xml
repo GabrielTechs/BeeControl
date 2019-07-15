@@ -75,7 +75,7 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Caleb" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/txtEmployeeLastName"
@@ -88,7 +88,7 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Gomez" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/txtEmployeeRole"
@@ -99,7 +99,7 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Camionero" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/txtEmployeeEmail"
@@ -112,7 +112,7 @@
                 android:background="#fff"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="belaczemog@gmail.com" />
+                android:text="" />
 
             <Button
                 android:id="@+id/btnRegister"
