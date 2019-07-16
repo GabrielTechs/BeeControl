@@ -397,6 +397,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.txtSupport -> {
                 startActivity(Intent(this, SupportMessagesActivity::class.java))
             }
+            R.id.txtRegister -> {
+                startActivity(Intent(this, RegisterActivity::class.java))
+            }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

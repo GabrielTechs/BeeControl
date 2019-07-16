@@ -16,7 +16,7 @@
 
     <group android:checkableBehavior="single"
         android:id="@+id/admingrp"
-        android:visible="false">
+        android:visible="true">
         <item
             android:title="@string/opciones_de_administrador">
             <menu>
@@ -42,8 +42,12 @@
                     android:title="@string/recursos_humanos" />
                 <item
                     android:id="@+id/txtSupport"
-                    android:icon="@drawable/ic_recent_actors_menu_24dp"
+                    android:icon="@drawable/ic_contact_mail_menu_24dp"
                     android:title="@string/mensajes" />
+                <item
+                    android:id="@+id/txtRegister"
+                    android:icon="@drawable/ic_recent_actors_menu_24dp"
+                    android:title="Registrar Cuenta" />
             </menu>
         </item>
     </group>

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:gravity="center"
-            android:text="BeeControl"
+            android:text="Asistencias Personales"
             android:textColor="#fff"
             android:textSize="22sp"
             android:textStyle="bold"/>
