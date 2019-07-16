@@ -143,7 +143,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun back(view: View){
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, MenuActivity::class.java))
     }
 
     fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
