@@ -193,6 +193,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     if (document != null) {
                         val employeeName = document.toObject(Employee::class.java)?.name + " " + document.toObject(Employee::class.java)?.lastName
                         var status = "Presente"
+                        docRef.update("status", status)
                         val c = Calendar.getInstance().time
                         val df = SimpleDateFormat("dd-MM-yyyy")
                         val tf = SimpleDateFormat("HH:mm")
@@ -240,7 +241,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                             }
                                         } else {
                                             notifications("No documents!")
-                                            //toast("No documents!", Toast.LENGTH_LONG)
                                         }
                                     }
                                     .addOnFailureListener { exception ->
@@ -274,13 +274,12 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             tripRef.get()
                                     .addOnSuccessListener { resulttrip ->
                                         if (resulttrip != null) {
-
                                             for (document in resulttrip) {
                                                 if (document["tripDriverEmail"] == email && document["tripPartingHour"] == null && document["tripDate"] == assistDate) {
                                                     tripRef.document(document.id).update("tripPartingHour", exitTime)
+                                                    accountRef.update("status", "En viaje")
                                                 }
                                             }
-
                                         }
                                     }
                                     .addOnFailureListener { exception ->
@@ -306,10 +305,12 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                                 }
                                                                 if (!exitchecker && exitTime <= "17:00") {
                                                                     assistanceRef.add(Assistance(employeeName, email, status, assistDate, exitTime))
+                                                                    accountRef.update("status", status)
                                                                 }
                                                                 if (!exitchecker && exitTime > "17:00") {
                                                                     //Se pueden poner aqui condiciones de horas extra.
                                                                     assistanceRef.add(Assistance(employeeName, email, status, assistDate, exitTime))
+                                                                    accountRef.update("status", status)
                                                                     notifications("Tenga buen resto del dia")
                                                                     // toast("Tenga buen resto del dia")
                                                                 }
