@@ -287,9 +287,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             assistanceRef.get()
                                     .addOnSuccessListener { resultassis ->
                                         if (resultassis != null) {
-                                            if(exitTime <= "20:00"){
-                                                notifications("Debe regresar a las instalaciones o se le colocará una ausencia en 20 segundos")
-                                            }
+                                            notifications("Debe regresar a las instalaciones o se le colocará una ausencia en 20 segundos")
                                             exitHandler.postDelayed({
                                                 accountRef.get()
                                                         .addOnSuccessListener { resultuser ->
