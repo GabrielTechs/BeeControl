@@ -126,13 +126,10 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .onEnter { context ->
                         accountRef.update("exitChecker", false)
                         //val truckBeacon = context.attachments["zone"]
-                        //toast("Bienvenido a la $truckBeacon de Supliyeso!", Toast.LENGTH_LONG)
                         onentrychecker(email)
                     }
                     .onExit {
                         accountRef.update("exitChecker", true)
-                        notifications("Si no esta en un viaje se le colocará una ausencia en 10 segundos")
-                        //toast("Si no esta en un viaje se le colocará una ausencia en 10 segundos")
                         onexitchecker(email)
                     }
                     .build()
@@ -290,10 +287,12 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             assistanceRef.get()
                                     .addOnSuccessListener { resultassis ->
                                         if (resultassis != null) {
+                                            if(exitTime <= "20:00"){
+                                                notifications("Debe regresar a las instalaciones o se le colocará una ausencia en 20 segundos")
+                                            }
                                             exitHandler.postDelayed({
                                                 accountRef.get()
                                                         .addOnSuccessListener { resultuser ->
-
                                                             if (resultuser["exitChecker"] == true) {
                                                                 var exitchecker = false
 
@@ -320,7 +319,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                         }.addOnFailureListener { exception ->
                                                             Log.d(TAG, "Error getting account documents.", exception)
                                                         }
-                                            }, 10000)
+                                            }, 20000)
                                         }
                                     }
                                     .addOnFailureListener { exception ->
