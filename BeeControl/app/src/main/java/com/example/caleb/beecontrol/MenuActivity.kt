@@ -9,7 +9,6 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -17,7 +16,6 @@ import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.estimote.proximity_sdk.api.EstimoteCloudCredentials
@@ -29,19 +27,19 @@ import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.app_bar_menu.*
 import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_assistance.*
-import kotlinx.android.synthetic.main.list_trip.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.os.Handler
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.ImageView
 import android.widget.RemoteViews
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.Query
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 
 class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -49,6 +47,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     protected val TAG = "MenuActivity"
     var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     lateinit var firebaseAuth: FirebaseAuth
+    var storageReference = FirebaseStorage.getInstance().getReference("/imagenes/")
     var userRef = db.collection("user")
 
     private val assistanceRef = db.collection("Assistance")
@@ -66,7 +65,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var builder : Notification.Builder
     private val channelId = "com.example.caleb.beecontrol"
     private val description = "Notification"
-    var notification = ""
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,6 +101,13 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val headerLayout = nav_view.getHeaderView(0)
 
         val account: TextView = headerLayout.findViewById(R.id.userEmail)
+
+        val profilePic: ImageView = headerLayout.findViewById(R.id.imageView)
+
+        userRef.document(email).get().addOnSuccessListener { doc ->
+
+
+        }
 
         account.text = email
 
@@ -193,7 +198,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     if (document != null) {
                         val employeeName = document.toObject(Employee::class.java)?.name + " " + document.toObject(Employee::class.java)?.lastName
                         var status = "Presente"
-                        docRef.update("status", status)
                         val c = Calendar.getInstance().time
                         val df = SimpleDateFormat("dd-MM-yyyy")
                         val tf = SimpleDateFormat("HH:mm")
@@ -231,22 +235,41 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                             }
 
                                             if (!assisted) {
-
                                                 if (assistTime >= "08:00") {
                                                     status = "Tarde"
                                                 }
                                                 assistanceRef.add(Assistance(employeeName, email, status, assistDate, assistTime))
+                                                docRef.update("status", status)
                                                 notifications("$employeeName agregado a la lista!")
                                                 //toast("$employeeName agregado a la lista!", Toast.LENGTH_LONG)
                                             }
+
                                         } else {
                                             notifications("No documents!")
                                         }
+
+                                        exitHandler.postDelayed({
+                                            var contador = 0
+                                            val temp = result
+                                            for (document in temp){
+                                                if (document["employeeName"] == employeeName && document["assistDate"] == assistDate && document["assistTime"] == assistTime){
+                                                    contador++
+                                                }
+
+                                                if (contador > 1){
+                                                    assistanceRef.document(document.id).delete()
+                                                            .addOnSuccessListener { toast("Borrando duplicado...", Toast.LENGTH_LONG) }
+                                                            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+                                                    contador--
+                                                }
+                                            }
+                                        }, 20000)
                                     }
                                     .addOnFailureListener { exception ->
                                         Log.d(TAG, "Error getting documents: ", exception)
                                     }
                         }
+
                     } else {
                         Log.d(TAG, "No such document")
                     }
@@ -287,8 +310,8 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                     }
                         } else {
                             assistanceRef.get()
-                                    .addOnSuccessListener { resultassis ->
-                                        if (resultassis != null) {
+                                    .addOnSuccessListener { resultassist ->
+                                        if (resultassist != null) {
                                             exitHandler.postDelayed({
                                                 accountRef.get()
                                                         .addOnSuccessListener { resultuser ->
@@ -296,7 +319,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                                             if (resultuser["exitChecker"] == true) {
                                                                 var exitchecker = false
 
-                                                                for (document in resultassis) {
+                                                                for (document in resultassist) {
                                                                     if (document["employeeEmail"] == email && document["assistDate"] == assistDate && document["status"] == status) {
                                                                         notifications("Debe dirigirse a recursos humanos para una nueva ausencia.")
                                                                         //toast("Debe dirigirse a recursos humanos para una nueva ausencia.")

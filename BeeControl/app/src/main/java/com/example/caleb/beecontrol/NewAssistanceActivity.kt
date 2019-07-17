@@ -103,7 +103,7 @@ class NewAssistanceActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-            var realmonth = mMonth+1
+            val realmonth = mMonth+1
             if (realmonth > 9){
                 txtAssistanceDate.text = "$mDay-$realmonth-$mYear"
             }else{
@@ -130,6 +130,9 @@ class NewAssistanceActivity : AppCompatActivity() {
         val assistTime = tf.format(c).toString()
 
         assistanceRef.add(Assistance(employeeName, employeeEmail, status, assistDate, assistTime))
+
+        userRef.document(employeeEmail).update("status", status)
+
         toast("Empleado agregado a la lista!", Toast.LENGTH_LONG)
 
         val intent = Intent(this, AssistanceActivity::class.java)
